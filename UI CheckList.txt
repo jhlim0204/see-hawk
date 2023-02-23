@@ -1,0 +1,9 @@
+View Fav (if not logged in --> redir)
+
+Empty Query
+Hawker Not Found
+
+
+review validation, username register validation
+
+spinner empty list empty query / invalid id for hawker
