@@ -18,22 +18,29 @@ class Login extends Component {
     }
 
     handleInput = (event) => {
+        if (this.state.invalidPassword){
+            this.setState({invalidPassword: false});
+        }
         this.setState({ [event.target.name]: event.target.value });
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async(event) => {
         event.preventDefault();
+        this.setState({isLoading:true});
         //call controller here
-        SessionManager.login(this.state.username, this.state.password)
-
-        this.setState({ loginSuccess: true }, () => {
-            window.setTimeout(() => {
-                this.props.toggleModal("close")
-            }, 2800)
-            window.setTimeout(() => {
-                this.setState({ loginSuccess: false })
-            }, 3000)
-        });
+        const loginSuccess = await SessionManager.login(this.state.username, this.state.password)
+        if (loginSuccess){
+            this.setState({ loginSuccess: true }, () => {
+                window.setTimeout(() => {
+                    this.props.toggleModal("close")
+                }, 2800)
+                window.setTimeout(() => {
+                    this.setState({ loginSuccess: false, isLoading: false })
+                }, 3000)
+            });
+        } else {
+            this.setState({invalidPassword:true, isLoading: false});
+        }
     }
 
     render() {

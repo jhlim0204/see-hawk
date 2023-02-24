@@ -11,11 +11,13 @@ class Logout extends Component {
         }
     }
 
-    logout = (event) => {
+    logout = async(event) => {
         event.preventDefault();
-        //logout logic here
-        SessionManager.logout();
-        this.props.toggleModal();
+        this.setState({isLoading: true});
+
+        await SessionManager.logout();
+        this.setState({isLoading: false});
+        this.props.toggle();
     }
 
     render() {

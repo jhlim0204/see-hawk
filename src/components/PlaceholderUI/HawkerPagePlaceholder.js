@@ -1,6 +1,4 @@
-import { Row, Col, CardImg } from "reactstrap";
 import Lottie from "lottie-react";
-import BarLoadingAnimation from '../Animation/barLoading.json';
 import RunningLoadingAnimation from '../Animation/runningLoading.json';
 
 export default function HawkerPagePlaceholder(props){

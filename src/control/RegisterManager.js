@@ -1,18 +1,20 @@
 import { auth } from '../firebase'
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import SessionManager from './SessionManager';
 
 class RegisterManager {
     // Registration Fn
     static async register(username, password) {
-
-        auth.createUserWithEmailAndPassword(username, password)
+        username = username + "@seehawk.com"
+        let user = null
+        await createUserWithEmailAndPassword(auth, username, password)
             .then((userCredential) => {
-                var user = userCredential.user
-                console.log(user.email)
+                user = userCredential.user
             })
             .catch((err) => {
-                var errorMessage = err.message
-                alert(errorMessage)
             });
+        await SessionManager.logout();
+        return !!user
     }
 }
 

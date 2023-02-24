@@ -22,27 +22,33 @@ class Register extends Component {
     }
 
     handleInput = (event) => {
+        this.setState({invalidUsername: false, invalidPassword:false, invalidRePassword: false});
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async(event) => {
         event.preventDefault();
         if (!(this.checkUsername() && this.checkPassword() && this.checkRePassword())) {
             return;
         }
+        this.setState({isLoading: true});
 
-        RegisterManager.register(this.state.username, this.state.password);
-
-        this.setState({ loginSuccess: true }, () => {
-            window.setTimeout(() => {
-                this.props.switchTab()
-            }, 2800)
-            window.setTimeout(() => {
-                this.setState({ loginSuccess: false })
-            }, 3000)
-        });
+        const registerSuccess = await RegisterManager.register(this.state.username, this.state.password);;
+        
+        if (registerSuccess){
+            this.setState({ loginSuccess: true }, () => {
+                window.setTimeout(() => {
+                    this.props.switchTab()
+                }, 2800)
+                window.setTimeout(() => {
+                    this.setState({ loginSuccess: false, isLoading: false })
+                }, 3000)
+            });
+        } else {
+            this.setState({invalidUsername: true, errMessUser: "This username has already been taken", isLoading: false})
+        }
     }
 
     checkUsername = () => {

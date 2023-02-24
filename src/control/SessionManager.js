@@ -1,39 +1,26 @@
 import { auth } from '../firebase'
+import {onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
 
 class SessionManager {
     // Login Fn
     static async login(username, password) {
-        auth.signInWithEmailAndPassword(username, password)
+        username = username + "@seehawk.com"
+        var user = null;
+        await signInWithEmailAndPassword(auth, username, password)
             .then((userCredential) => {
-                var user = userCredential.user
-                console.log(user.email)
+                user = userCredential.user
             })
-            .catch((err) => {
-                var errorMessage = err.message
-                alert(errorMessage)
+            .catch((error) => {
             });
-
-        // This method gets invoked in the UI when there are changes in the authentication state
-        // when the user is signed in
-        auth.onAuthStateChanged(function (user) {
-            if (user) {
-                var email = user.email
-
-                var users = document.getElementById('username')
-                var text = document.createTextNode(email)
-
-                if (!users[0]) {
-                    users.appendChild(text)
-                }
-            }
-        })
+        
+        return !!user;
     }
 
     // Logout Fn
     static async logout() {
-        auth.signOut()
+        await signOut(auth)
 
-        auth.onAuthStateChanged(function (user) {
+        /*auth.onAuthStateChanged(function (user) {
             if (user) {
                 var users = document.getElementById('username')
 
@@ -43,7 +30,17 @@ class SessionManager {
             }
         })
 
-        window.location.reload()
+        window.location.reload()*/
+    }
+
+    static async isLoggedIn(){
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                return user.email.substring(0, user.email.length - 12);
+            } else {
+                return ""
+            }
+        })
     }
 }
 

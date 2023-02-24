@@ -4,8 +4,11 @@ import StarsRating from 'react-star-rate';
 import Lottie from "lottie-react";
 import ReviewSubmittedAnimation from '../../Animation/reviewSubmitted.json';
 import { ReviewManager } from '../../../control/ReviewManager';
+import { UserContext } from '../../UserContext';
 
 class GiveReview extends Component {  
+    static contextType = UserContext;
+
     constructor (props) {
         super (props);
 
@@ -14,7 +17,8 @@ class GiveReview extends Component {
             reviewText: this.props.ownReview ? this.props.ownReview.reviewText : "",
             isLoading: false,
             isModalOpen: false,
-            isTooltipOpen: false,
+            isReviewTooltipOpen: false,
+            isSubmitTooltipOpen: false,
             prepareToClose: false,
             submitSuccess: false
         }
@@ -26,11 +30,17 @@ class GiveReview extends Component {
         } else {
             this.setState({isModalOpen: true});
         }
+    }    
+    
+    toggleReviewTooltip = () => {
+        if (!this.context){
+            this.setState({isReviewTooltipOpen: !this.state.isReviewTooltipOpen});
+        }
     }
 
-    toggleTooltip = () => {
+    toggleSubmitTooltip = () => {
         if (this.state.reviewStar === 0 ){
-            this.setState({isTooltipOpen: !this.state.isTooltipOpen});
+            this.setState({isSubmitTooltipOpen: !this.state.isSubmitTooltipOpen});
         }
     }
 
@@ -65,7 +75,12 @@ class GiveReview extends Component {
     render() {
         return(
             <>
-                <Button type="button" onClick={this.toggleModal} size="sm" outline><b><i className="bi bi-pen"></i> {this.props.ownReview ? "Edit Review" : "Give Review"}</b></Button>
+                <span id="review">
+                    <Button type="button" onClick={this.toggleModal} size="sm" outline disabled={!this.context}>
+                        <b><i className="bi bi-pen"></i> {this.props.ownReview ? "Edit Review" : "Give Review"}</b>
+                    </Button>
+                </span>
+                <Tooltip placement="top" isOpen={this.state.isReviewTooltipOpen} target="review" toggle={this.toggleReviewTooltip}>You have to log in first to use this feature.</Tooltip>
                 <Modal className="text-center" toggle={this.toggleModal} isOpen={this.state.isModalOpen}>
                         <ModalHeader toggle={this.toggleModal}>Review Submission</ModalHeader>
                         { this.state.submitSuccess ? 
@@ -83,7 +98,7 @@ class GiveReview extends Component {
                                 <div id="submit">
                                     <Button color="primary" disabled={this.state.reviewStar === 0 || this.state.isLoading} onClick={this.handleSubmit}>Submit</Button>
                                 </div>
-                                <Tooltip placement="top" isOpen={this.state.isTooltipOpen} target="submit" toggle={this.toggleTooltip}>Star rating is required</Tooltip>
+                                <Tooltip placement="top" isOpen={this.state.isSubmitTooltipOpen} target="submit" toggle={this.toggleSubmitTooltip}>Star rating is required</Tooltip>
                                 <Button onClick={this.toggleModal}>Cancel</Button>
                             </ModalFooter>
                         </>              
