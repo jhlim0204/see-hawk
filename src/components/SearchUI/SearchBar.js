@@ -8,7 +8,7 @@ class SearchBar extends Component {
 
         const { search } = this.props.location;
         const urlQuery = new URLSearchParams(search);
-        const qParam = urlQuery.get('q');
+        const qParam = urlQuery.get('q') || "";
 
         this.state = {
             q: qParam
@@ -29,8 +29,7 @@ class SearchBar extends Component {
             this.props.navigate("/search/?q=" + this.state.q.replace(/ /g, '+'));
         }
     }
-
-
+    
     render() {
         return(
             <Form className={this.props.shadow === true ? "shadow-sm" : ""} onSubmit={this.handleSubmit}>

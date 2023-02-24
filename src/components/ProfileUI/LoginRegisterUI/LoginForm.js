@@ -11,7 +11,6 @@ class Login extends Component {
             username: '',
             password: '',
             isLoading: false,
-            invalidUsername: false,
             invalidPassword: false,
             loginSuccess: false
         }
@@ -21,60 +20,8 @@ class Login extends Component {
         this.setState({[event.target.name]: event.target.value});
     }
 
-    /*handleSubmit = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
-        const user = {username: this.state.username, password: this.state.password}
-        this.setState({isLoading: true, invalidPassword: false, invalidUsername: false,});
-        fetch('/loginuser', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(user),
-                credentials: 'same-origin'
-            })
-            .then(response => {
-                if (response.ok){
-                    return response.json();
-                } else {
-                    var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                    throw error;
-                }   
-            })
-            .then(data => {
-                if (Cookies.get('username')){
-                    alert (Cookies.get('username')+', you have previously logged in before.');
-                    this.setState({
-                        isLoading: false
-                    })
-                }
-                else if (!data.username){
-                    this.setState({
-                        invalidUsername: true,
-                        isLoading: false
-                    })
-                } else if (!data.password){
-                    this.setState({
-                        invalidPassword: true,
-                        isLoading: false
-                    })
-                } else {
-                    this.setState({
-                        username: '',
-                        password: '',
-                        isLoading: false
-                    });
-                    alert("Logged in successfully");
-                    Cookies.set('username', user.username, { expires: 7 });
-                    this.props.updateStatus();
-                }
-            })
-            .catch(error => {
-                alert(`An error has occured, message: ${error.message}`);
-            });
-    }*/
-
-    handleSubmit = () => {
         //call controller here
 
         this.setState({loginSuccess: true}, ()=>{
@@ -106,15 +53,11 @@ class Login extends Component {
                                     <Input 
                                         type="text" 
                                         name="username" 
-                                        value={this.state.username} 
-                                        onChange={this.handleInput} 
-                                        invalid={this.state.invalidUsername} 
+                                        value={this.state.username}
+                                        onChange={this.handleInput}
                                         autoComplete="off" 
                                         spellCheck="false"
                                     />
-                                    <FormFeedback>
-                                        Username not found.
-                                    </FormFeedback>
                                 </FormGroup>
                                 <FormGroup>
                                     <Label htmlFor="password">Password: </Label>
@@ -130,8 +73,8 @@ class Login extends Component {
                                     </FormFeedback>
                                 </FormGroup>
                                 <FormGroup className="float-end mt-2">
-                                    <Button className="me-2" form="loginForm" type="submit" color="primary" disabled={this.state.isLoading} onClick={this.handleSubmit}>
-                                        <div className={this.state.isLoading?"d-inline":"d-none"}><span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></div> Login
+                                    <Button className="me-2" form="loginForm" type="submit" color="primary" disabled={this.state.isLoading || !(this.state.username && this.state.password)} onClick={this.handleSubmit}>
+                                        Login
                                     </Button>
                                     <Button onClick={this.props.toggleModal}>Cancel</Button>
                                 </FormGroup>

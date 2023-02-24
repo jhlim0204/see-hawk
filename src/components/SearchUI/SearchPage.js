@@ -14,14 +14,20 @@ class SearchPage extends Component{
             openingNow: false,
             star: "",
             region: {
-                west: false,
-                east: false,
-                north: false,
-                northEast: false,
-                central: false
+                W: false,
+                E: false,
+                N: false,
+                NE: false,
+                C: false
             }
         }
-    } 
+    }
+
+    handleSearch = () => {
+        const { search } = this.props.location;
+        const urlQuery = new URLSearchParams(search);
+        const qParam = urlQuery.get('q');
+    }
 
     handleOpeningNow = () => {
         this.setState({openingNow: !this.state.openingNow})
@@ -91,31 +97,31 @@ class SearchPage extends Component{
                         <Form className="filter-form">
                             <FormGroup check>
                                 <Label check>
-                                    <Input type="checkbox" name="west" checked={this.state.region.west} onChange={this.handleRegion}></Input>
+                                    <Input type="checkbox" name="W" checked={this.state.region.W} onChange={this.handleRegion}></Input>
                                     West Region
                                 </Label>
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
-                                    <Input type="checkbox" name="east" checked={this.state.region.east} onChange={this.handleRegion}></Input>
+                                    <Input type="checkbox" name="E" checked={this.state.region.E} onChange={this.handleRegion}></Input>
                                     East Region
                                 </Label>
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
-                                    <Input type="checkbox" name="north" checked={this.state.region.north} onChange={this.handleRegion}></Input>
+                                    <Input type="checkbox" name="N" checked={this.state.region.N} onChange={this.handleRegion}></Input>
                                     North Region
                                 </Label>
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
-                                    <Input type="checkbox" name="northEast" checked={this.state.region.northEast} onChange={this.handleRegion}></Input>
+                                    <Input type="checkbox" name="NE" checked={this.state.region.NE} onChange={this.handleRegion}></Input>
                                     North-East Region
                                 </Label>
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
-                                    <Input type="checkbox" name="central" checked={this.state.region.central} onChange={this.handleRegion}></Input>
+                                    <Input type="checkbox" name="C" checked={this.state.region.C} onChange={this.handleRegion}></Input>
                                     Central Region
                                 </Label>
                             </FormGroup>

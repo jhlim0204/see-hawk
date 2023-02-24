@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReviewDetail from "./ReviewUI/ReviewDetail";
-import CarkparkDetail from "./CarparkDetail";
+import CarparkList from "./CarparkUI/CarparkList";
 import {
     Nav,
     NavItem,
@@ -82,7 +82,7 @@ class HawkerPage extends Component {
                                 <h3>List of Nearby Carparks</h3>
                                 <ViewOnMap carpark/>
                             </div>
-                            <CarkparkDetail/>
+                            <CarparkList/>
                         </TabPane>
                     </TabContent>
                 </div>
