@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
-import { Col, Form, Label, Input, FormGroup, FormFeedback, Row, Button} from 'reactstrap';
+import React, { Component } from 'react';
+import { Col, Form, Label, Input, FormGroup, FormFeedback, Row, Button } from 'reactstrap';
 import Lottie from "lottie-react";
 import SuccessTickAnimation from '../../Animation/successTick.json';
+import SessionManager from '../../../control/SessionManager';
 
 class Login extends Component {
-    constructor (props) {
-        super (props);
+    constructor(props) {
+        super(props);
 
         this.state = {
             username: '',
@@ -17,30 +18,38 @@ class Login extends Component {
     }
 
     handleInput = (event) => {
-        this.setState({[event.target.name]: event.target.value});
+        if (this.state.invalidPassword){
+            this.setState({invalidPassword: false});
+        }
+        this.setState({ [event.target.name]: event.target.value });
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async(event) => {
         event.preventDefault();
+        this.setState({isLoading:true});
         //call controller here
-
-        this.setState({loginSuccess: true}, ()=>{
-            window.setTimeout(()=>{
-                this.props.toggleModal("close")
-            }, 2800)
-            window.setTimeout(()=>{
-                this.setState({loginSuccess: false})
-            }, 3000)
-        });
+        const loginSuccess = await SessionManager.login(this.state.username, this.state.password)
+        if (loginSuccess){
+            this.setState({ loginSuccess: true }, () => {
+                window.setTimeout(() => {
+                    this.props.toggleModal("close")
+                }, 2800)
+                window.setTimeout(() => {
+                    this.setState({ loginSuccess: false, isLoading: false })
+                }, 3000)
+            });
+        } else {
+            this.setState({invalidPassword:true, isLoading: false});
+        }
     }
 
-    render (){
-        if (this.state.loginSuccess){
+    render() {
+        if (this.state.loginSuccess) {
             return (
-            <>
-                <Lottie animationData={SuccessTickAnimation} style={{height: 100}}/>
-                <p className="text-center mt-2 fs-5">Logged in Successfully</p>
-            </>
+                <>
+                    <Lottie animationData={SuccessTickAnimation} style={{ height: 100 }} />
+                    <p className="text-center mt-2 fs-5">Logged in Successfully</p>
+                </>
             )
         } else {
             return (
@@ -50,22 +59,22 @@ class Login extends Component {
                             <Form id="loginForm" onSubmit={this.handleSubmit}>
                                 <FormGroup>
                                     <Label className="text-start" htmlFor="username">Username: </Label>
-                                    <Input 
-                                        type="text" 
-                                        name="username" 
+                                    <Input
+                                        type="text"
+                                        name="username"
                                         value={this.state.username}
                                         onChange={this.handleInput}
-                                        autoComplete="off" 
+                                        autoComplete="off"
                                         spellCheck="false"
                                     />
                                 </FormGroup>
                                 <FormGroup>
                                     <Label htmlFor="password">Password: </Label>
-                                    <Input 
-                                        type="password" 
-                                        name="password" 
-                                        value={this.state.password} 
-                                        invalid={this.state.invalidPassword} 
+                                    <Input
+                                        type="password"
+                                        name="password"
+                                        value={this.state.password}
+                                        invalid={this.state.invalidPassword}
                                         onChange={this.handleInput}
                                     />
                                     <FormFeedback>

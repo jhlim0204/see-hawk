@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-import {Button, Toast, ToastBody} from 'reactstrap';
+import {Button, Toast, ToastBody, Tooltip} from 'reactstrap';
+import { UserContext } from '../UserContext';
 
 class FavouriteToggle extends Component {
+    static contextType = UserContext;
+
     constructor (props) {
         super (props);
 
         this.state = {
             isSavedNotificationOpen: false,
             isUnsavedNotificationOpen: false,
+            isTooltipOpen: false,
             isSaved: false,
             disabled: false
         }
@@ -40,6 +44,12 @@ class FavouriteToggle extends Component {
         }
     }
 
+    toggleTooltip = () => {
+        if (!this.context){
+            this.setState({isTooltipOpen: !this.state.isTooltipOpen});
+        }
+    }
+
     setDisabled = () => {
         this.setState({disabled: true}, ()=>{
             window.setTimeout(()=>{
@@ -50,10 +60,14 @@ class FavouriteToggle extends Component {
 
     render() {
         return(
-            <>
-                <Button color="warning" disabled={this.state.disabled} onClick={this.toggleNotification} className="ms-3">
-                    <i className="bi bi-bookmark-fill"></i> { !this.state.isSaved ? "Save" : "Unsave"} as Favourite
-                </Button>
+            <>  
+                <span id="favourite">
+                    <Button color="warning" disabled={!this.context || this.state.disabled} onClick={this.toggleNotification} className="ms-2">
+                        <i className="bi bi-bookmark-fill"></i> { !this.state.isSaved ? "Save" : "Unsave"} as Favourite
+                    </Button>
+                </span>
+                <Tooltip placement="top" isOpen={this.state.isTooltipOpen} target="favourite" toggle={this.toggleTooltip}>You have to log in first to use this feature.</Tooltip>
+                
                 <div className="toast-container position-fixed bottom-0 start-0 p-4">
                 <Toast fade isOpen={this.state.isSavedNotificationOpen} className="text-bg-dark" delay={2000}>
                     <div className="d-flex">

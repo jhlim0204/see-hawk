@@ -49,19 +49,15 @@ class ViewOnMap extends Component {
                     clickableIcons={false}
                 >
                     { /* Child components, such as markers, info windows, etc. */ }
-                    <CarparkMarker position={this.state.center}/>
-                    <CarparkMarker position={
-                        {
-                            lat: 1.4575035315189897, 
-                            lng: 103.74558303052623
-                        }
-                    }/>
+                    {this.props.carpark ?
+                    <>{/*carpark marker here*/}</>:
                     <HawkerMarker position={
                         {
-                            lat: 1.438091111558483, 
-                            lng:103.81724371702082
+                            lat: Number(this.props.lat),
+                            lng: Number(this.props.lng)
                         }
                     }/>
+                    }
                 </GoogleMap>
                 </LoadScript>
                 </div>

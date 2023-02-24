@@ -9,20 +9,14 @@ class ReviewDetail extends Component {
 
     render() {
         return(
-            <Card className='my-2 grey-card shadow-sm'>
+            <Card className='mb-3 grey-card shadow-sm'>
                 <Row>
-                    <Col xs="1" className="mt-1">
+                    <Col className="col-auto mt-1">
                         <div className="mt-2 ms-4"> <img className="profile-pic" src="/assets/images/profile-pic.png"/> </div>
                     </Col>
-                    <Col xs="11" className="text-start mt-auto mb-auto">
-                        <h4 className="mt-2 mb-0">{this.props.userName}</h4>
-                        <p className="mb-3"><DisplayStarsSmall activeCount={this.props.reviewStar}/></p>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs="1">
-                    </Col>
-                    <Col xs="11">
+                    <Col xs="11" className="text-start mt-1">
+                        <h5 className="mt-3 mb-0">{this.props.userName}</h5>
+                        <p className='mt-2 mb-0'><DisplayStarsSmall activeCount={this.props.reviewStar}/></p>
                         <p>{this.props.reviewText}</p>
                     </Col>
                 </Row>
