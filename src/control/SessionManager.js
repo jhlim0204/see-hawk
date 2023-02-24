@@ -19,28 +19,6 @@ class SessionManager {
     // Logout Fn
     static async logout() {
         await signOut(auth)
-
-        /*auth.onAuthStateChanged(function (user) {
-            if (user) {
-                var users = document.getElementById('username')
-
-                while (users.hasChildNodes()) {
-                    users.removeChild(users.firstChild);
-                }
-            }
-        })
-
-        window.location.reload()*/
-    }
-
-    static async isLoggedIn(){
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                return user.email.substring(0, user.email.length - 12);
-            } else {
-                return ""
-            }
-        })
     }
 }
 
