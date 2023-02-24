@@ -12,13 +12,32 @@ import {
   } from 'reactstrap';
 import ViewOnMap from './ViewOnMapUI/ViewOnMap';
 import FavouriteToggle from './FavouriteToggle';
-import ReviewSummary from './ReviewUI/ReviewSummary';
+import ReviewPage from './ReviewUI/ReviewPage';
+import { HawkerCentreManager } from '../../control/HawkerCentreManager';
 
 class HawkerPage extends Component {
     constructor (props){
         super(props);
 
         this.state = {
+            hawkerData: {
+                name: "",
+                cleaningStartDate1: "",
+                cleaningEndDate1: "",
+                cleaningStartDate2: "",
+                cleaningEndDate2: "",
+                cleaningStartDate3: "",
+                cleaningEndDate3: "",
+                cleaningStartDate4: "",
+                cleaningEndDate4: "",
+                latitude: "",
+                longitude: "",
+                photoURL: "",
+                address: "",
+                noOfStall: "",
+                description: "",
+                status: ""
+            },
             currentActiveTab: "review"
         }
     }
@@ -29,33 +48,37 @@ class HawkerPage extends Component {
         }
     }
 
+    async getHawkerCenterDetail(){
+        let hawkerData = await HawkerCentreManager.retrieveHawkerCentreDetails("105")
+        this.setState({hawkerData: hawkerData});
+    }
+
     render() {
         return(
             <div className="background page-transition">
             <Row className="mb-3">
                 <Col xs={3}>
                     <img 
-                        src="http://www.nea.gov.sg/images/default-source/Hawker-Centres-Division/resize_1267438077554.jpg" 
+                        src={this.state.hawkerData.photoURL}
                         className="img-thumbnail img-fluid border-1 shadow-sm float-left" 
                         alt="Hawker Centre"
                     />
                 </Col>
                 <Col xs={9} className="mt-auto mb-2 d-flex align-items-center">
-                    <h1 className='me-auto' style={{fontFamily: 'Open Sans', fontWeight: 700}}>Boon Lay Hawker Centre</h1><FavouriteToggle/><ViewOnMap/>
+                    <h1 className='me-auto fw-bold'>{this.state.hawkerData.name}</h1><FavouriteToggle/><ViewOnMap/>
                 </Col>
             </Row>
             <div className="content rounded shadow-sm">
                 <Row className="mt-2">
                     <Col xs={4} className="hawker-detail border-end">
-                        <p><b>Address:</b> 221A Boon Lay Pl, Singapore 641221</p>
-                        <p><b>Type:</b> Market and Hawker Centre</p>
-                        <p><b>No. of Stalls:</b> 33</p>
+                        <p><b>Address:</b> {this.state.hawkerData.address}</p>
+                        <p><b>No. of Stalls:</b> {this.state.hawkerData.noOfStall}</p>
                         <p><b>Opening Hours:</b> 6:00 am - 9:00 pm</p>
-                        <p><b>Closure Date:</b> 11 Dec 2023</p>
+                        <p><b>Closure Date:</b> {this.state.hawkerData.cleaningEndDate1}</p>
                     </Col>
                     <Col xs={8} className="mt-auto mb-auto">
                         <p className="lead mb-0">
-                            Also known as Hong Lim Food Centre, the hawker centre is famous for dishes such as Bak Ku Teh, Crayfish Hor Fun, Curry Chicken Noodles, Fish Head Bee Hoon etc. Expect to see long queues at different stalls, especially during lunch hours. Apart from the 103 cooked food stalls, the hawker centre also has 40 market stalls to serve the needs of the residents in the vicinity.
+                            {this.state.hawkerData.description}
                         </p>
                     </Col>
                 </Row>
@@ -74,8 +97,7 @@ class HawkerPage extends Component {
                     </Nav>
                     <TabContent activeTab={this.state.currentActiveTab}>
                         <TabPane tabId="review">
-                            <ReviewSummary/>
-                            <ReviewDetail/>
+                            <ReviewPage/>
                         </TabPane>
                         <TabPane tabId="carpark">
                             <div className="d-flex align-items-center">
@@ -91,6 +113,7 @@ class HawkerPage extends Component {
     }
 
     componentDidMount() {
+        this.getHawkerCenterDetail();
         document.title = "Hawker Centre - SeeHawk"
     }
 }

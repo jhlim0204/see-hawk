@@ -23,7 +23,7 @@ class Main extends Component {
                     */}
 
                     <Route path="/view" element={<Navigate to="/" replace />} />
-                    <Route path="/view/*" element={<HawkerPage />}/>
+                    <Route path="/view/:id" element={<HawkerPage />}/>
 
                     <Route path="/favourites" element={<FavouritePage />}/>
                     <Route path="*" element={<Navigate to="/" replace />} />

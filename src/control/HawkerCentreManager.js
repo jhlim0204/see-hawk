@@ -1,10 +1,5 @@
-import{db} from './firebase.js';
-import{
-    collection, getDocs, 
-    doc,setDoc,serverTimestamp,
-    query, where,
-    getDoc, updateDoc, 
-} from"https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import{ db } from '../firebase.js';
+import { collection, getDocs, doc, setDoc, serverTimestamp, query, where, getDoc, updateDoc } from 'firebase/firestore';
 
 export class HawkerCentreManager{
     static async retrieveHawkerCentreDetails(hawkerCentreId){
@@ -30,8 +25,7 @@ export class HawkerCentreManager{
                     address:hawkerCentre.data().address,
                     noOfStall:hawkerCentre.data().noOfStall,
                     description:hawkerCentre.data().description,
-                    status:hawkerCentre.data().status,
-                    reviewList: hawkerCentre.data().reviewList
+                    status:hawkerCentre.data().status
                 }
              })
 

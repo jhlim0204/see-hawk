@@ -3,56 +3,57 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Tooltip} fro
 import StarsRating from 'react-star-rate';
 import Lottie from "lottie-react";
 import ReviewSubmittedAnimation from '../../Animation/reviewSubmitted.json';
+import { ReviewManager } from '../../../control/ReviewManager';
 
-class GiveReview extends Component {
-    //props: hawker ID, state(for edit)    
+class GiveReview extends Component {  
     constructor (props) {
         super (props);
 
         this.state = {
-            //todo: default val for edit, i.e this.props.value && this.props.reviewText
-            value: 0,
+            reviewStar: this.props.ownReview ? this.props.ownReview.reviewStar : 0,
+            reviewText: this.props.ownReview ? this.props.ownReview.reviewText : "",
+            isLoading: false,
             isModalOpen: false,
             isTooltipOpen: false,
-            reviewText: '',
             prepareToClose: false,
             submitSuccess: false
         }
     }
 
     toggleModal = () => {
-        //reset value if toggle without submit
-        //temporary:
         if(this.state.isModalOpen === true){
-            this.setState({value: 0, reviewText: '', isModalOpen: false});
+            this.setState({reviewStar: this.props.ownReview ? this.props.ownReview.reviewStar : 0, reviewText: this.props.ownReview ? this.props.ownReview.reviewText : "", isModalOpen: false});
         } else {
             this.setState({isModalOpen: true});
         }
     }
 
     toggleTooltip = () => {
-        this.setState({isTooltipOpen: !this.state.isTooltipOpen});
+        if (this.state.reviewStar ===0 ){
+            this.setState({isTooltipOpen: !this.state.isTooltipOpen});
+        }
     }
 
-    setValue = (value) => {
-        this.setState({value: value});
+    setReviewStar = (reviewStar) => {
+        this.setState({reviewStar: reviewStar});
     }
 
     handleInput = (event) => {
-        this.setState({[event.target.name]: event.target.value});
+        this.setState({[event.target.name]: event.target.reviewStar});
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async(event) => {
         event.preventDefault();
-        //call controller here        
-        
-        //if success
+        //Calling controller
+        this.setState({isLoading: true});
+        await ReviewManager.addReview(this.props.hawkerID, "byebye", this.state.reviewStar, this.state.reviewText);
+        this.setState({isLoading: false});
         this.setState({submitSuccess: true}, ()=>{
             window.setTimeout(()=>{
                 this.setState({isModalOpen: false})
             }, 2800)
             window.setTimeout(()=>{
-                this.setState({submitSuccess: false})
+                this.props.updateParent();
             }, 3000)
         });
     }
@@ -60,7 +61,7 @@ class GiveReview extends Component {
     render() {
         return(
             <>
-                <Button type="button" onClick={this.toggleModal} size="sm" outline><b><i className="bi bi-pen"></i> Give Review</b></Button>
+                <Button type="button" onClick={this.toggleModal} size="sm" outline><b><i className="bi bi-pen"></i> {this.props.ownReview ? "Edit Review" : "Give Review"}</b></Button>
                 <Modal className="text-center" toggle={this.toggleModal} isOpen={this.state.isModalOpen}>
                         <ModalHeader toggle={this.toggleModal}>Review Submission</ModalHeader>
                         { this.state.submitSuccess ? 
@@ -71,14 +72,14 @@ class GiveReview extends Component {
                         :
                         <>
                             <ModalBody>
-                                <StarsRating value={this.state.value} onChange={this.setValue} allowHalf={false}/>
-                                <Input maxLength={200} id="reviewText" className="mt-2" name="reviewText" type="textarea"  style={{resize: 'none'}} onChange={this.handleInput} onKeyDown={this.handleKeyDown} rows="5" placeholder="Share details of your own experience at this hawker centre (optional, max 200 words)"/>
+                                <StarsRating value={this.state.reviewStar} onChange={this.setReviewStar} allowHalf={false}/>
+                                <Input value={this.state.reviewText} maxLength={200} id="reviewText" className="mt-2" name="reviewText" type="textarea"  style={{resize: 'none'}} onChange={this.handleInput} onKeyDown={this.handleKeyDown} rows="5" placeholder="Share details of your own experience at this hawker centre (optional, max 200 words)"/>
                             </ModalBody>
                             <ModalFooter className="border-0 pt-0">
                                 <div id="submit">
-                                    <Button color="primary" disabled={this.state.value === 0} onClick={this.handleSubmit}>Submit</Button>
+                                    <Button color="primary" disabled={this.state.reviewStar === 0 || this.state.isLoading} onClick={this.handleSubmit}>Submit</Button>
                                 </div>
-                                <Tooltip placement="top" isOpen={this.state.isTooltipOpen} target="submit" toggle={this.state.value ===0 && this.toggleTooltip}>Star rating is required</Tooltip>
+                                <Tooltip placement="top" isOpen={this.state.isTooltipOpen} target="submit" toggle={this.toggleTooltip}>Star rating is required</Tooltip>
                                 <Button onClick={this.toggleModal}>Cancel</Button>
                             </ModalFooter>
                         </>              
