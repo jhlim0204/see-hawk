@@ -6,8 +6,11 @@ import { ReviewManager } from '../../../control/ReviewManager';
 import ReviewDetail from './ReviewDetail';
 import { withRouter } from "../../Utility/withRouter";
 import ReviewPagePlaceholder from '../../PlaceholderUI/ReviewPagePlaceholder';
+import { UserContext } from '../../UserContext';
 
 class ReviewPage extends Component {
+    static contextType = UserContext;
+
     constructor (props){
         super(props);
 
@@ -42,7 +45,7 @@ class ReviewPage extends Component {
                 <Row className="mb-3">
                 <Col xs={Object.keys(this.state.reviewList).length === 0 ? 12: 8}>
                     <div className="d-flex align-items-center">
-                        <h3 className="me-3">Review Summary</h3><GiveReview hawkerID={this.props.params.id} ownReview={this.state.reviewList["byebye"]} updateParent={this.updateParent}/>
+                        <h3 className="me-3">Review Summary</h3><GiveReview hawkerID={this.props.params.id} ownReview={this.state.reviewList[this.context]} updateParent={this.updateParent}/>
                     </div>
                     {Object.keys(this.state.reviewList).length === 0 ?
                     <>

@@ -56,7 +56,7 @@ class GiveReview extends Component {
         event.preventDefault();
         //Calling controller
         this.setState({isLoading: true});
-        let updateSuccess = await ReviewManager.addReview(this.props.hawkerID, "byebye", this.state.reviewStar, this.state.reviewText);
+        let updateSuccess = await ReviewManager.addReview(this.props.hawkerID, this.context, this.state.reviewStar, this.state.reviewText);
         if (updateSuccess){
             this.setState({isLoading: false});
             this.setState({submitSuccess: true}, ()=>{
