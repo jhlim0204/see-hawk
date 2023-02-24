@@ -29,7 +29,7 @@ class GiveReview extends Component {
     }
 
     toggleTooltip = () => {
-        if (this.state.reviewStar ===0 ){
+        if (this.state.reviewStar === 0 ){
             this.setState({isTooltipOpen: !this.state.isTooltipOpen});
         }
     }
@@ -39,23 +39,27 @@ class GiveReview extends Component {
     }
 
     handleInput = (event) => {
-        this.setState({[event.target.name]: event.target.reviewStar});
+        this.setState({[event.target.name]: event.target.value});
     }
 
     handleSubmit = async(event) => {
         event.preventDefault();
         //Calling controller
         this.setState({isLoading: true});
-        await ReviewManager.addReview(this.props.hawkerID, "byebye", this.state.reviewStar, this.state.reviewText);
-        this.setState({isLoading: false});
-        this.setState({submitSuccess: true}, ()=>{
-            window.setTimeout(()=>{
-                this.setState({isModalOpen: false})
-            }, 2800)
-            window.setTimeout(()=>{
-                this.props.updateParent();
-            }, 3000)
-        });
+        let updateSuccess = await ReviewManager.addReview(this.props.hawkerID, "byebye", this.state.reviewStar, this.state.reviewText);
+        if (updateSuccess){
+            this.setState({isLoading: false});
+            this.setState({submitSuccess: true}, ()=>{
+                window.setTimeout(()=>{
+                    this.setState({isModalOpen: false})
+                }, 2800)
+                window.setTimeout(()=>{
+                    this.props.updateParent();
+                }, 3000)
+            });
+        } else {
+            window.alert("Error submitting the review, please try again.");
+        }
     }
 
     render() {

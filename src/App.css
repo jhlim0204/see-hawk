@@ -5,7 +5,7 @@
 }
 
 .background {
-  background-color: #fff7e0;
+  background-color: #fef3d4;
   min-height: 90vh;
   padding-left: 30px;
   padding-right: 30px;
@@ -51,6 +51,8 @@
 
 .profile-pic {
   height: 43px;
+  border: 3px solid gray;
+  border-radius: 100px;
 }
 
 .profile-pic-small {

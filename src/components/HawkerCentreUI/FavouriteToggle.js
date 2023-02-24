@@ -51,7 +51,7 @@ class FavouriteToggle extends Component {
     render() {
         return(
             <>
-                <Button color="warning" disabled={this.state.disabled} onClick={this.toggleNotification} className="ms-3">
+                <Button color="warning" disabled={this.state.disabled} onClick={this.toggleNotification} className="ms-2">
                     <i className="bi bi-bookmark-fill"></i> { !this.state.isSaved ? "Save" : "Unsave"} as Favourite
                 </Button>
                 <div className="toast-container position-fixed bottom-0 start-0 p-4">

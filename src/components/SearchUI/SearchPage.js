@@ -5,6 +5,7 @@ import HawkerPreviewPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
 import { withRouter } from "../Utility/withRouter";
 import SidebarPlaceholder from '../PlaceholderUI/SidebarPlaceholder';
 import DisplayStarsSmall from '../Utility/DisplayStarsSmall';
+import { HawkerCentreManager } from '../../control/HawkerCentreManager';
 
 class SearchPage extends Component{
     constructor (props) {
@@ -23,10 +24,17 @@ class SearchPage extends Component{
         }
     }
 
-    handleSearch = () => {
+    handleSearch = async () => {
         const { search } = this.props.location;
         const urlQuery = new URLSearchParams(search);
         const qParam = urlQuery.get('q');
+        if (qParam && qParam.trim()!==""){
+            let resultList = [];
+
+            resultList = await HawkerCentreManager.searchHawkerCentre(qParam);
+            console.log(resultList);
+
+        }
     }
 
     handleOpeningNow = () => {
@@ -137,6 +145,7 @@ class SearchPage extends Component{
     }
 
     componentDidMount() {
+        this.handleSearch();
         document.title = "Search Results - SeeHawk"
     }
 }
