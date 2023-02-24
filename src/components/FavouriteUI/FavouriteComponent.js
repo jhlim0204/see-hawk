@@ -7,12 +7,17 @@ class FavouriteComponent extends Component{
         super (props);
 
         this.state = {
-            isModalOpen: false
+            isModalOpen: false,
+            isLoading: false
         }
     } 
 
-    remove = () => {
+    removeFavourite = () => {
+        this.setState({isLoading:true});
 
+        /* remove logic here*/
+
+        this.updateList();
     }
 
     toggleModal = () => {
@@ -48,7 +53,9 @@ class FavouriteComponent extends Component{
                             </Link>
                         </Col>
                         <Col xs="1">
-                            <Button className='w-100 h-100 border-0 card-right' color="danger" onClick={this.toggleModal} outline><i className="bi bi-trash3"></i></Button>
+                            <Button className='w-100 h-100 border-0 card-right' color="danger" onClick={this.toggleModal} outline>
+                                <i className="bi bi-trash3"></i>
+                            </Button>
                         </Col>
                 </Row>
                 </Card>
@@ -56,7 +63,7 @@ class FavouriteComponent extends Component{
                     <ModalHeader toggle={this.toggleModal}>Remove from Favorite List</ModalHeader>
                     <ModalBody>Are you sure you want to remove this hawker centre?</ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.remove} color="primary">Yes</Button>
+                        <Button onClick={this.removeFavourite} disabled={this.state.isLoading} color="primary">Yes</Button>
                         <Button onClick={this.toggleModal}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
