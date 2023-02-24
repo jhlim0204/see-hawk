@@ -3,72 +3,45 @@ import { collection, getDocs, doc, setDoc, serverTimestamp, query, where, getDoc
 
 export class HawkerCentreManager{
     static async retrieveHawkerCentreDetails(hawkerCentreId){
-        // return hawkerCentre object with attributes:
-        //name, type, noOfStall, address, reviewList, imageURL
-        let retrievedHawkerCentre
-        const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId)
-         await getDoc(hawkerCentreRef)
-             .then(async (hawkerCentre) =>{
-                retrievedHawkerCentre = {
-                    name: hawkerCentre.data().name,
-                    cleaningStartDate1: hawkerCentre.data().cleaningStartDate1,
-                    cleaningEndDate1: hawkerCentre.data().cleaningEndDate1,
-                    cleaningStartDate2:hawkerCentre.data().cleaningStartDate2,
-                    cleaningEndDate2:hawkerCentre.data().cleaningEndDate2,
-                    cleaningStartDate3:hawkerCentre.data().cleaningStartDate3,
-                    cleaningEndDate3: hawkerCentre.data().cleaningEndDate3,
-                    cleaningStartDate4:hawkerCentre.data().cleaningStartDate4,
-                    cleaningEndDate4:hawkerCentre.data().cleaningEndDate4,
-                    latitude:hawkerCentre.data().latitude,
-                    longitude:hawkerCentre.data().longitude,
-                    photoURL:hawkerCentre.data().photoURL,
-                    address:hawkerCentre.data().address,
-                    noOfStall:hawkerCentre.data().noOfStall,
-                    description:hawkerCentre.data().description,
-                    status:hawkerCentre.data().status
-                }
-             })
-
-             return retrievedHawkerCentre;
+        //Return hawkerCentre object with relevant attributes
+        let retrievedHawkerCentre;
+        const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId);
+        const hawkerCentre = await getDoc(hawkerCentreRef);
+        retrievedHawkerCentre = hawkerCentre.data();
+        delete retrievedHawkerCentre.reviewList;
+        
+        return retrievedHawkerCentre;
     }
 
-    static async searchHawkerCentre(subAddress){
-        // get all the hawker centre where address contains subAddress
-        // return array of hawkercentres with: id, name, address, imageURL
+    static async searchHawkerCentre(subString){
+        //Get all the hawker centre where address contains subString or name contains subString
         const hawkerCentreRef = collection(db, 'HawkerCentre')
         const q = query(hawkerCentreRef, where("name", '!=', null))
         let returnList = []
-        await getDocs(q)
-        .then((snapshot)=>{
-        snapshot.docs.forEach((doc)=>{
-            if(doc.data().name.toUpperCase().trim().includes(subAddress.toUpperCase()) ||
-            doc.data().address.toUpperCase().trim().includes(subAddress.toUpperCase())){
+
+        //Firebase doesn't support query by substring. Since our database is not very large we decided to fetch all documents and filter them, as a workaround.
+        
+        const hawkerCentreList = await getDocs(q);
+        hawkerCentreList.forEach((doc)=>{
+            if(doc.data().name.toUpperCase().trim().includes(subString.toUpperCase()) ||
+               doc.data().address.toUpperCase().trim().includes(subString.toUpperCase())){
                 returnList.push({
-                    id:doc.id, 
+                    id:doc.id,
                     name:doc.data().name, 
                     address: doc.data().address, 
                     url: doc.data().imageURL,
                     status: doc.data().status
                 })
-            }
-        }) 
+               }
         })
         return returnList
     }
 
     static async checkIfIDExist(hawkerCentreID){
-        const hawkerCentreRef = collection(db, 'HawkerCentre')
-        let exist = 0;
-        await getDocs(hawkerCentreRef)
-            .then((snapshot)=>{
-                snapshot.docs.forEach((doc)=>{
-                    if(doc.id == hawkerCentreID){
-                        exist = 1;
-                    }
-                })
-                
-            })
-        return exist;
+        const hawkerCentreRef = doc(db, "HawkerCentre", hawkerCentreID)
+        const hawkerCentre = await getDoc(hawkerCentreRef);
+
+        return hawkerCentre.exists();
     }
 
     static async updateTime(){
@@ -78,7 +51,7 @@ export class HawkerCentreManager{
             time: serverTimestamp()
         })
              
-             console.log(previousTime)
+        console.log(previousTime)
         return previousTime 
     }
 
@@ -87,7 +60,7 @@ export class HawkerCentreManager{
         await this.updateTime()
         for(var i = 0;i<updatedHawkerCentreArray.length;i++){
             var exist = await this.checkIfIDExist(updatedHawkerCentreArray[i].id)
-            if(exist == 1){
+            if(exist){
                 //console.log("If", i)
                 var hawkerCentreRef = doc(db, "HawkerCentre", updatedHawkerCentreArray[i].id)
                 await updateDoc(hawkerCentreRef, {
