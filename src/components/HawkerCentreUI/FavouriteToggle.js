@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Button, Toast, ToastBody, Tooltip} from 'reactstrap';
 import { UserContext } from '../UserContext';
+import { withRouter } from "../Utility/withRouter";
+import { FavouriteManager } from '../../control/FavouriteManager';
 
 class FavouriteToggle extends Component {
     static contextType = UserContext;
@@ -9,13 +11,13 @@ class FavouriteToggle extends Component {
         super (props);
 
         this.state = {
+            hawkerID: this.props.params.id,
             isSavedNotificationOpen: false,
             isUnsavedNotificationOpen: false,
             isTooltipOpen: false,
             isSaved: false,
             disabled: false
         }
-
     }
 
     closeSavedNotification = () => {
@@ -26,21 +28,25 @@ class FavouriteToggle extends Component {
         this.setState({isUnsavedNotificationOpen: false});
     }
 
-    toggleNotification = () => {
+    toggleNotification = async () => {
         if (this.state.isSaved){
             this.setDisabled();
+            await FavouriteManager.deleteFavourite(this.context, this.state.hawkerID);
             this.setState({isUnsavedNotificationOpen: true, isSaved: false}, ()=>{
                 window.setTimeout(()=>{
                     this.setState({isUnsavedNotificationOpen: false})
                 }, 2000)
             });
+            this.checkFavourite();
         } else {
             this.setDisabled();
-            this.setState({isSavedNotificationOpen: true, isSaved: true}, ()=>{
+            await FavouriteManager.addFavourite(this.context, this.state.hawkerID);
+            this.setState({isSavedNotificationOpen: true}, ()=>{
                 window.setTimeout(()=>{
                     this.setState({isSavedNotificationOpen: false})
                 }, 2000)
             });
+            this.checkFavourite();
         }
     }
 
@@ -58,12 +64,17 @@ class FavouriteToggle extends Component {
         })
     }
 
+    checkFavourite = async() => {
+        const isSaved = await FavouriteManager.isFavourite(this.context, this.state.hawkerID);
+        this.setState({isSaved: isSaved});
+    }
+
     render() {
         return(
             <>  
                 <span id="favourite">
                     <Button color="warning" disabled={!this.context || this.state.disabled} onClick={this.toggleNotification} className="ms-2">
-                        <i className="bi bi-bookmark-fill"></i> { !this.state.isSaved ? "Save" : "Unsave"} as Favourite
+                        <i className="bi bi-bookmark-fill"></i> { !this.state.isSaved ? "Save" : "Unsave"} Favourite
                     </Button>
                 </span>
                 <Tooltip placement="top" isOpen={this.state.isTooltipOpen} target="favourite" toggle={this.toggleTooltip}>You have to log in first to use this feature.</Tooltip>
@@ -90,6 +101,10 @@ class FavouriteToggle extends Component {
             </>
         )
     }
+
+    componentDidMount() {
+        this.checkFavourite();
+    }
 }
 
-export default FavouriteToggle;
+export default withRouter(FavouriteToggle);

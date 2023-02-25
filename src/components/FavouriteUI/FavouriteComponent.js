@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import {Card, CardImg, CardBody, CardTitle, CardText, Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { FavouriteManager } from '../../control/FavouriteManager';
+import { UserContext } from '../UserContext';
 
 class FavouriteComponent extends Component{ 
+    static contextType = UserContext;
+
     constructor (props) {
         super (props);
 
@@ -12,12 +16,12 @@ class FavouriteComponent extends Component{
         }
     } 
 
-    removeFavourite = () => {
+    removeFavourite = async() => {
         this.setState({isLoading:true});
-
-        /* remove logic here*/
-
-        this.updateList();
+        await FavouriteManager.deleteFavourite(this.context, String(this.props.id));
+        this.setState({isLoading:false});
+        this.toggleModal();
+        await this.props.updateList();
     }
 
     toggleModal = () => {
@@ -30,10 +34,10 @@ class FavouriteComponent extends Component{
                 <Card className="my-3 text-start border-0 shadow-sm clickable-card">
                     <Row>
                         <Col xs="3">
-                            <Link to="/view/123" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+                            <Link to={"/view/"+this.props.id} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                             <CardImg
                             alt="Card image cap"
-                            src="https://picsum.photos/900/180"
+                            src={this.props.photoURL}
                             className="rounded-start card-left"
                             style={{
                                 height: 130
@@ -42,12 +46,12 @@ class FavouriteComponent extends Component{
                             </Link>
                         </Col>
                         <Col xs="8">
-                            <Link to="/view/123" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+                            <Link to={"/view/"+this.props.id} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                                 <CardBody>
-                                <CardTitle tag="h3">Hawker Centre</CardTitle>
+                                <CardTitle tag="h3">{this.props.name}</CardTitle>
                                 <CardText>
-                                    <p className='mb-1'>Location: Chinatown</p>
-                                    <p className='mb-1'>Opening Hours: Chinatown</p>
+                                    <p className='mb-1'>Address: {this.props.address}</p>
+                                    <p className='mb-1'>Number of stalls: {this.props.noOfStall}</p>
                                 </CardText>
                                 </CardBody>
                             </Link>

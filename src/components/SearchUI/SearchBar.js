@@ -27,6 +27,7 @@ class SearchBar extends Component {
         event.preventDefault();
         if (this.state.q && this.state.q.trim()) {
             this.props.navigate("/search/?q=" + this.state.q.replace(/ /g, '+'));
+            window.location.reload();
         }
     }
     

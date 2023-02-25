@@ -44,7 +44,7 @@ class Profile extends Component {
         return (
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} direction="down">
                 <DropdownToggle className="dropdown-title dropdown-text" id="username" color="light" caret>
-                    <img className="profile-pic-small me-2" src="/assets/images/profile-pic.png" />
+                    <img className="profile-pic-small me-2" src={this.context ?"/assets/images/profile-pic.png" : "/assets/images/guest-pic.png"} />
                     {this.context ? this.context : "Guest"}
                 </DropdownToggle>
                 <DropdownMenu className="shadow-lg w-100 border-0" end={true}>

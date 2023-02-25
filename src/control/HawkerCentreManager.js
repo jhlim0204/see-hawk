@@ -1,5 +1,6 @@
 import{ db } from '../firebase.js';
 import { collection, getDocs, doc, setDoc, serverTimestamp, query, where, getDoc, updateDoc } from 'firebase/firestore';
+import { ReviewManager } from './ReviewManager.js';
 
 export class HawkerCentreManager{
     static async retrieveHawkerCentreDetails(hawkerCentreId){
@@ -22,18 +23,27 @@ export class HawkerCentreManager{
         //Firebase doesn't support query by substring. Since our database is not very large we decided to fetch all documents and filter them, as a workaround.
         
         const hawkerCentreList = await getDocs(q);
+
         hawkerCentreList.forEach((doc)=>{
-            if(doc.data().name.toUpperCase().trim().includes(subString.toUpperCase()) ||
-               doc.data().address.toUpperCase().trim().includes(subString.toUpperCase())){
+            if(doc.data().name.toUpperCase().trim().includes(subString.toUpperCase().trim()) ||
+               doc.data().address.toUpperCase().trim().includes(subString.toUpperCase().trim())){
+
                 returnList.push({
-                    id:doc.id,
-                    name:doc.data().name, 
-                    address: doc.data().address, 
-                    url: doc.data().imageURL,
-                    status: doc.data().status
+                    id: doc.id,
+                    name: doc.data().name, 
+                    address: doc.data().address,
+                    noOfStall: doc.data().noOfStall,
+                    photoURL: doc.data().photoURL
                 })
                }
         })
+
+        for (const hawkerCentre of returnList){
+            let reviewList = await ReviewManager.getReview(hawkerCentre.id);
+            let averageRating = ReviewManager.calculateAverage(reviewList);
+            hawkerCentre.averageRating = averageRating;
+        }
+
         return returnList
     }
 

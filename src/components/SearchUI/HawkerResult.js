@@ -4,15 +4,19 @@ import StarsRating from 'react-star-rate';
 import { Link } from 'react-router-dom';
 
 class HawkerPreview extends Component{  
+    constructor (props) {
+        super (props)
+    }
+
     render() {
         return(
-            <Link to="/view/123" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+            <Link to={"/view/"+this.props.id} style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <Card className="mb-3 text-start border-0 shadow-sm clickable-card">
                 <Row>
                     <Col xs="3">
                         <CardImg
                         alt="Card image cap"
-                        src="https://picsum.photos/900/180"
+                        src={this.props.photoURL}
                         style={{
                             height: 125
                         }}
@@ -22,17 +26,17 @@ class HawkerPreview extends Component{
                     <Col xs="6">
                         <CardBody>
                         <CardTitle tag="h4">
-                            Boon Lay Hawker Centre
+                            {this.props.name}
                         </CardTitle>
                         <CardText>
-                            <p className='mb-1'>Location: Boon Lay</p>
-                            <p className='mb-1'>Opening Hours:</p>
+                            <p className='mb-1'>Address: {this.props.address}</p>
+                            <p className='mb-1'>Number of stalls: {this.props.noOfStall}</p>
                         </CardText>
                         </CardBody>
                     </Col>
                     <Col xs="3" className="text-center align-items-center mt-auto mb-auto">
-                        <h2 className='mb-0'>4.5</h2>
-                        <StarsRating classNamePrefix="small-rating" value={4.5} disabled={true}/>
+                        <h2 className='mb-0'>{this.props.averageRating}</h2>
+                        <StarsRating classNamePrefix="small-rating" value={this.props.averageRating} disabled={true}/>
                     </Col>
             </Row>
             </Card>

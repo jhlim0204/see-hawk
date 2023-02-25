@@ -1,26 +1,32 @@
-import {db} from './firebase.js'
-import {getDoc, doc, updateDoc} from 'firebase/firestore'
-
+import {db} from '../firebase.js'
+import {getDoc, doc, setDoc, arrayRemove, arrayUnion} from 'firebase/firestore'
+import { HawkerCentreManager } from './HawkerCentreManager.js';
 
 export class FavouriteManager{
-   
     static async getFavourite(accountName){
         const docRef = doc(db, 'Account', accountName);
-        const acc = (await getDoc(docRef)).data;
+        const favouriteList = (await getDoc(docRef)).data().favList;
         
-        return acc.favList;
+        const returnList = [];
+        for (let favourite of favouriteList){
+            let tempFavouriteDetail = await HawkerCentreManager.retrieveHawkerCentreDetails(favourite);
+            let favouriteDetail = (({ name, address, photoURL, noOfStall }) => ({ name, address, photoURL, noOfStall }))(tempFavouriteDetail);
+            favouriteDetail.id = favourite;
+            returnList.push(favouriteDetail);
+        }
+
+        return returnList;
     }
 
     static async isFavourite(accountName, hawkerID){
         const docRef = doc(db, 'Account', accountName);
-        const favouriteList = (await getDoc(docRef)).data();
-
-        return hawkerID in favouriteList;
+        const favouriteList = (await getDoc(docRef)).data().favList;
+        return (favouriteList.includes(hawkerID));
     }
 
     static async addFavourite(accountName, hawkerID){
         const docRef = doc(db, 'Account', accountName);
-        await updateDoc(docRef, {
+        await setDoc(docRef, {
             favList: arrayUnion(hawkerID)
         })
         .then(() => {
@@ -35,7 +41,7 @@ export class FavouriteManager{
 
     static async deleteFavourite(accountName, hawkerID){
         const docRef = doc(db, 'Account', accountName);
-        await updateDoc(docRef, {
+        await setDoc(docRef, {
             favList: arrayRemove(hawkerID)
         })
         .then(() => {
