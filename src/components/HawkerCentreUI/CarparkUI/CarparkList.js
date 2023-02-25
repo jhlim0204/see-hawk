@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CarkparkDetail from './CarparkDetail';
-import { CarfetchData,CarfetchDataWithQuery,fetchCarParkAvailability } from "../../../control/APIManager";
+import { APIManager} from "../../../control/APIManager";
 import proj4 from 'proj4';
 
 // Define the EPSG:3414 and EPSG:4326 projections
@@ -18,7 +18,7 @@ class CarkparkList extends Component {
       }
 
       async componentDidMount() {
-        const data = await CarfetchData();
+        const data = await APIManager.CarfetchData();
         this.setState({ data });
       }
 
