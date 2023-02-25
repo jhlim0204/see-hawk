@@ -8,7 +8,9 @@ export class FilterManager{
 
     static filterStar(hawkerCentreList, minStar){
         let returnList = hawkerCentreList.filter((hawkerCentre)=>
-            hawkerCentre.averageRating >= minStar
+            {
+                return (hawkerCentre.averageRating >= minStar) || (hawkerCentre.averageRating === "Unrated" && minStar === 0);
+            }
         )
         return returnList;
     }
