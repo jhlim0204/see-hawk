@@ -18,7 +18,7 @@ class CarkparkList extends Component {
       }
 
       async componentDidMount() {
-        const data = await APIManager.CarfetchData();
+        const data = await APIManager.getCarParkAvailability();
         this.setState({ data });
       }
 
@@ -27,20 +27,33 @@ class CarkparkList extends Component {
         const wgs84Coords = proj4("EPSG:3414", "EPSG:4326", svy21Coords);
         return wgs84Coords;
       };
+      //Don delete, test case for another function(it works)
+      // render() {
+      //   return (
+      //     <div>
+      //       {this.state.data.map((record) => {
+      //         const x = parseInt(record.x_coord);
+      //         const y = parseInt(record.y_coord);
+      //         const transformedCoords = this.transformCoords(x, y);
+      //         return (
+      //           <p key={record._id}>
+      //             {record.car_park_no} - Transformed Coordinates: {transformedCoords[0]}, {transformedCoords[1]}
+      //           </p>
+      //         );
+      //       })}
+      //     </div>
+      //   );
+      // }
 
       render() {
         return (
           <div>
-            {this.state.data.map((record) => {
-              const x = parseInt(record.x_coord);
-              const y = parseInt(record.y_coord);
-              const transformedCoords = this.transformCoords(x, y);
-              return (
-                <p key={record._id}>
-                  {record.car_park_no} - Transformed Coordinates: {transformedCoords[0]}, {transformedCoords[1]}
-                </p>
-              );
-            })}
+            {this.state.data.map((record) => (
+              <p key={record.carpark_number}>
+                {record.carpark_number} :  Carpark Number: {record.carpark_number} -
+                Address: {record.address} - Parking System: {record.total_lots}
+              </p>
+            ))}
           </div>
         );
       }
@@ -50,3 +63,5 @@ class CarkparkList extends Component {
 }
 
 export default CarkparkList;
+
+
