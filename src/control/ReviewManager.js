@@ -31,7 +31,7 @@ export class ReviewManager{
 
     static calculateAverage(reviewList){
         if (Object.keys(reviewList).length == 0){
-            return "N/A"
+            return "Unrated"
         }
 
         let sumOfRating = 0;
