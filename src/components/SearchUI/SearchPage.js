@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { Col, FormGroup, Row, Label, Input, Form } from 'reactstrap';
 import HawkerPreview from './HawkerResult';
-import HawkerPreviewPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
 import { withRouter } from "../Utility/withRouter";
 import SidebarPlaceholder from '../PlaceholderUI/SidebarPlaceholder';
 import DisplayStarsSmall from '../Utility/DisplayStarsSmall';
 import { HawkerCentreManager } from '../../control/HawkerCentreManager';
 import HawkerPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
+import { FilterManager } from '../../control/FilterManager';
 
 class SearchPage extends Component{
     constructor (props) {
@@ -14,9 +14,10 @@ class SearchPage extends Component{
 
         this.state = {
             isLoading: true,
+            oriSearchResult: [],
             searchResult: [],
             openingNow: false,
-            star: "",
+            star: 0,
             region: {
                 W: false,
                 E: false,
@@ -38,22 +39,27 @@ class SearchPage extends Component{
             resultList = await HawkerCentreManager.searchHawkerCentre(qParam);
         }
 
-        this.setState({searchResult: resultList});
+        this.setState({searchResult: resultList, oriSearchResult: resultList});
         this.setState({isLoading: false});
     }
 
+    handleFilter = () => {
+        /* ori search result*/
+        this.setState({searchResult: FilterManager.filter(this.state.oriSearchResult, {star: this.state.star, region: this.state.region})})
+    }
+
     handleOpeningNow = () => {
-        this.setState({openingNow: !this.state.openingNow})
+        this.setState({openingNow: !this.state.openingNow}, ()=>{this.handleFilter()})
     }
 
     handleRating = (event) => {
-        this.setState({star: parseInt(event.target.value)})
+        this.setState({star: parseInt(event.target.value)}, ()=>{this.handleFilter()})
     }
 
     handleRegion = (event) => {
         let regionCopy = {...this.state.region}
         regionCopy[event.target.name] = !regionCopy[event.target.name]
-        this.setState({region: regionCopy})
+        this.setState({region: regionCopy}, ()=>{this.handleFilter()})
     }
 
     render() {
