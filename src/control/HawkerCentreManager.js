@@ -1,6 +1,8 @@
 import{ db } from '../firebase.js';
-import { collection, getDocs, doc, setDoc, serverTimestamp, query, where, getDoc, updateDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, setDoc, 
+    serverTimestamp, query, where, getDoc, updateDoc } from 'firebase/firestore';//"https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 import { ReviewManager } from './ReviewManager.js';
+import{APIManager} from './APIManager.js';
 
 export class HawkerCentreManager{
     static async retrieveHawkerCentreDetails(hawkerCentreId){
@@ -65,31 +67,31 @@ export class HawkerCentreManager{
         return previousTime 
     }
 
-    static async updateFireBaseHawkerCentreList(updatedHawkerCentreArray){
-        //console.log("In updateFireBaseHawkerCentre")
+    static async updateFireBaseHawkerCentreList(){
         await this.updateTime()
+        const updatedHawkerCentreArray = await APIManager.fetchhawkerCentre();
         for(var i = 0;i<updatedHawkerCentreArray.length;i++){
-            var exist = await this.checkIfIDExist(updatedHawkerCentreArray[i].id)
+            var exist = await this.checkIfIDExist(updatedHawkerCentreArray[i].serial_no)
             if(exist){
                 //console.log("If", i)
-                var hawkerCentreRef = doc(db, "HawkerCentre", updatedHawkerCentreArray[i].id)
+                var hawkerCentreRef = doc(db, "HawkerCentre", updatedHawkerCentreArray[i].serial_no)
                 await updateDoc(hawkerCentreRef, {
             
                 name: updatedHawkerCentreArray[i].name,
-                cleaningStartDate1: updatedHawkerCentreArray[i].cleaningStartDate1,
-                cleaningEndDate1: updatedHawkerCentreArray[i].cleaningEndDate1,
-                cleaningStartDate2:updatedHawkerCentreArray[i].cleaningStartDate2,
-                cleaningEndDate2:updatedHawkerCentreArray[i].cleaningEndDate2,
-                cleaningStartDate3:updatedHawkerCentreArray[i].cleaningStartDate3,
-                cleaningEndDate3: updatedHawkerCentreArray[i].cleaningEndDate3,
-                cleaningStartDate4:updatedHawkerCentreArray[i].cleaningStartDate4,
-                cleaningEndDate4:updatedHawkerCentreArray[i].cleaningEndDate4,
-                latitude:updatedHawkerCentreArray[i].latitude,
-                longitude:updatedHawkerCentreArray[i].longitude,
-                photoURL:updatedHawkerCentreArray[i].photoURL,
-                address:updatedHawkerCentreArray[i].address,
-                noOfStall:updatedHawkerCentreArray[i].noOfStall,
-                description:updatedHawkerCentreArray[i].description,
+                cleaningStartDate1: updatedHawkerCentreArray[i].q1_cleaningstartdate,
+                cleaningEndDate1: updatedHawkerCentreArray[i].q1_cleaningenddate,
+                cleaningStartDate2:updatedHawkerCentreArray[i].q2_cleaningstartdate,
+                cleaningEndDate2:updatedHawkerCentreArray[i].q2_cleaningenddate,
+                cleaningStartDate3:updatedHawkerCentreArray[i].q3_cleaningstartdate,
+                cleaningEndDate3: updatedHawkerCentreArray[i].q3_cleaningenddate,
+                cleaningStartDate4:updatedHawkerCentreArray[i].q4_cleaningstartdate,
+                cleaningEndDate4:updatedHawkerCentreArray[i].q4_cleaningenddate,
+                latitude:updatedHawkerCentreArray[i].latitude_hc,
+                longitude:updatedHawkerCentreArray[i].longitude_hc,
+                photoURL:updatedHawkerCentreArray[i].photourl,
+                address:updatedHawkerCentreArray[i].address_myenv,
+                noOfStall:updatedHawkerCentreArray[i].no_of_food_stalls,
+                description:updatedHawkerCentreArray[i].description_myenv,
                 status:updatedHawkerCentreArray[i].status
             
             /*
@@ -100,26 +102,26 @@ export class HawkerCentreManager{
             }
             else{
                 //console.log("Else", i)
-                await setDoc(doc(db, "HawkerCentre", updatedHawkerCentreArray[i].id), {
+                await setDoc(doc(db, "HawkerCentre", updatedHawkerCentreArray[i].serial_no), {
             
             
                 name: updatedHawkerCentreArray[i].name,
-                cleaningStartDate1: updatedHawkerCentreArray[i].cleaningStartDate1,
-                cleaningEndDate1: updatedHawkerCentreArray[i].cleaningEndDate1,
-                cleaningStartDate2:updatedHawkerCentreArray[i].cleaningStartDate2,
-                cleaningEndDate2:updatedHawkerCentreArray[i].cleaningEndDate2,
-                cleaningStartDate3:updatedHawkerCentreArray[i].cleaningStartDate3,
-                cleaningEndDate3: updatedHawkerCentreArray[i].cleaningEndDate3,
-                cleaningStartDate4:updatedHawkerCentreArray[i].cleaningStartDate4,
-                cleaningEndDate4:updatedHawkerCentreArray[i].cleaningEndDate4,
-                latitude:updatedHawkerCentreArray[i].latitude,
-                longitude:updatedHawkerCentreArray[i].longitude,
-                photoURL:updatedHawkerCentreArray[i].photoURL,
-                address:updatedHawkerCentreArray[i].address,
-                noOfStall:updatedHawkerCentreArray[i].noOfStall,
-                description:updatedHawkerCentreArray[i].description,
+                cleaningStartDate1: updatedHawkerCentreArray[i].q1_cleaningstartdate,
+                cleaningEndDate1: updatedHawkerCentreArray[i].q1_cleaningenddate,
+                cleaningStartDate2:updatedHawkerCentreArray[i].q2_cleaningstartdate,
+                cleaningEndDate2:updatedHawkerCentreArray[i].q2_cleaningenddate,
+                cleaningStartDate3:updatedHawkerCentreArray[i].q3_cleaningstartdate,
+                cleaningEndDate3: updatedHawkerCentreArray[i].q3_cleaningenddate,
+                cleaningStartDate4:updatedHawkerCentreArray[i].q4_cleaningstartdate,
+                cleaningEndDate4:updatedHawkerCentreArray[i].q4_cleaningenddate,
+                latitude:updatedHawkerCentreArray[i].latitude_hc,
+                longitude:updatedHawkerCentreArray[i].longitude_hc,
+                photoURL:updatedHawkerCentreArray[i].photourl,
+                address:updatedHawkerCentreArray[i].address_myenv,
+                noOfStall:updatedHawkerCentreArray[i].no_of_food_stalls,
+                description:updatedHawkerCentreArray[i].description_myenv,
                 status:updatedHawkerCentreArray[i].status,
-                reviewList: []
+                reviewList: {}
             
             /*
                 name: updatedHawkerCentreArray[i].name,

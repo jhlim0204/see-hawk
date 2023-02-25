@@ -124,6 +124,12 @@ class SearchPage extends Component{
                                         <DisplayStarsSmall activeCount={1}/> & Up
                                     </Label>
                                 </FormGroup>
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input name="star" type="radio" value={0} onChange={this.handleRating} checked={this.state.star ===  0}></Input>
+                                        <DisplayStarsSmall activeCount={0}/> & Up
+                                    </Label>
+                                </FormGroup>
                             </Form>
                             <div className='line my-4'></div>
                             <h6 className='mb-3'>Located Region</h6>
