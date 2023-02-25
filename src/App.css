@@ -164,3 +164,8 @@
   from {bottom: 30px; opacity: 1;}
   to {bottom: -10px; opacity: 0;}
 }
+
+.white-background {
+  background-color: white;
+  border-radius: 100px;
+}

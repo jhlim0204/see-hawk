@@ -27,7 +27,7 @@ class FavouritePage extends Component {
                     this.state.favouriteList.length === 0 ?
                         <>                        
                         <div className='mt-5 d-flex justify-content-center'>
-                            <img src="/assets/images/empty-box.svg" height={"180px"}></img>
+                            <img className='white-background' src="/assets/images/empty-box.svg" height={"180px"}></img>
                         </div>
                         <div className='mt-2 d-flex justify-content-center'>
                             <h4 className='fw-semibold text-center'>Your favourite list is empty.</h4>

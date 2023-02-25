@@ -25,8 +25,8 @@ export class HawkerCentreManager{
         const hawkerCentreList = await getDocs(q);
 
         hawkerCentreList.forEach((doc)=>{
-            if(doc.data().name.toUpperCase().trim().includes(subString.toUpperCase().trim()) ||
-               doc.data().address.toUpperCase().trim().includes(subString.toUpperCase().trim())){
+            if(doc.data().name.toUpperCase().replace(/\s/g,'').includes(subString.toUpperCase().replace(/\s/g,'')) ||
+               doc.data().address.toUpperCase().replace(/\s/g,'').includes(subString.toUpperCase().replace(/\s/g,''))){
 
                 returnList.push({
                     id: doc.id,

@@ -7,6 +7,8 @@ import DisplayStarsSmall from '../Utility/DisplayStarsSmall';
 import { HawkerCentreManager } from '../../control/HawkerCentreManager';
 import HawkerPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
 import { FilterManager } from '../../control/FilterManager';
+import Lottie from "lottie-react";
+import SearchEmptyAnimation from "../Animation/searchEmpty.json";
 
 class SearchPage extends Component{
     constructor (props) {
@@ -175,7 +177,7 @@ class SearchPage extends Component{
                                 :
                                 <>
                                     <div className='mt-5 d-flex justify-content-center'>
-                                        <img src="/assets/images/magnifier-icon.png" height={"150px"}></img>
+                                        <Lottie loop={false} animationData={SearchEmptyAnimation} style={{ height: 180 }} />
                                     </div>
                                     <div className='mt-2 d-flex justify-content-center'>
                                         <h4 className='fw-semibold text-center'>No results found.</h4>
