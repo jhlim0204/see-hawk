@@ -1,8 +1,7 @@
+/* View Component */
 import React, {Component} from "react";
 import {Route, Routes, Navigate} from 'react-router-dom';
 import { withRouter } from "./Utility/withRouter";
-
-//temp
 import HawkerPage from "./HawkerCentreUI/HawkerPage";
 import Header from "./NavUI/Header";
 import HomePage from "./HomeUI/HomePage";
@@ -10,8 +9,8 @@ import FavouritePage from "./FavouriteUI/FavouritePage";
 import SearchPage from "./SearchUI/SearchPage";
 import { UserContext } from "./UserContext";
 
-import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+/* Controller */
+import SessionManager from "../control/SessionManager";
 
 class Main extends Component {
     constructor(props) {
@@ -19,6 +18,14 @@ class Main extends Component {
         this.state = {
             username: ""
         };
+    }
+
+    updateUserStatus = (user) => {
+        if (user) {
+            this.setState({username: user.email.substring(0, user.email.length - 12)});
+        } else {
+            this.setState({username: ""});
+        }
     }
 
     render() {
@@ -46,13 +53,7 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                this.setState({username: user.email.substring(0, user.email.length - 12)});
-            } else {
-                this.setState({username: ""});
-            }
-        })
+        SessionManager.authListener(this.updateUserStatus);
     }
 }
 

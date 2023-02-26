@@ -27,7 +27,7 @@ class Login extends Component {
     handleSubmit = async(event) => {
         event.preventDefault();
         this.setState({isLoading:true});
-        //call controller here
+        
         const loginSuccess = await SessionManager.login(this.state.username, this.state.password)
         if (loginSuccess){
             this.setState({ loginSuccess: true }, () => {
@@ -39,7 +39,7 @@ class Login extends Component {
                 }, 3000)
             });
         } else {
-            this.setState({invalidPassword:true, isLoading: false});
+            this.setState({ invalidPassword:true, isLoading: false });
         }
     }
 
@@ -53,44 +53,42 @@ class Login extends Component {
             )
         } else {
             return (
-                <>
-                    <Row className='justify-content-sm-center'>
-                        <Col sm={11}>
-                            <Form id="loginForm" onSubmit={this.handleSubmit}>
-                                <FormGroup>
-                                    <Label className="text-start" htmlFor="username">Username: </Label>
-                                    <Input
-                                        type="text"
-                                        name="username"
-                                        value={this.state.username}
-                                        onChange={this.handleInput}
-                                        autoComplete="off"
-                                        spellCheck="false"
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label htmlFor="password">Password: </Label>
-                                    <Input
-                                        type="password"
-                                        name="password"
-                                        value={this.state.password}
-                                        invalid={this.state.invalidPassword}
-                                        onChange={this.handleInput}
-                                    />
-                                    <FormFeedback>
-                                        The password that you've entered is incorrect.
-                                    </FormFeedback>
-                                </FormGroup>
-                                <FormGroup className="float-end mt-2">
-                                    <Button className="me-2" form="loginForm" type="submit" color="primary" disabled={this.state.isLoading || !(this.state.username && this.state.password)} onClick={this.handleSubmit}>
-                                        Login
-                                    </Button>
-                                    <Button onClick={this.props.toggleModal}>Cancel</Button>
-                                </FormGroup>
-                            </Form>
-                        </Col>
-                    </Row>
-                </>
+                <Row className='justify-content-sm-center'>
+                    <Col sm={11}>
+                        <Form id="loginForm" onSubmit={this.handleSubmit}>
+                            <FormGroup>
+                                <Label className="text-start" htmlFor="username">Username: </Label>
+                                <Input
+                                    type="text"
+                                    name="username"
+                                    value={this.state.username}
+                                    onChange={this.handleInput}
+                                    autoComplete="off"
+                                    spellCheck="false"
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="password">Password: </Label>
+                                <Input
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    invalid={this.state.invalidPassword}
+                                    onChange={this.handleInput}
+                                />
+                                <FormFeedback>
+                                    The password that you've entered is incorrect.
+                                </FormFeedback>
+                            </FormGroup>
+                            <FormGroup className="float-end mt-2">
+                                <Button className="me-2" form="loginForm" type="submit" color="primary" disabled={this.state.isLoading || !(this.state.username && this.state.password)} onClick={this.handleSubmit}>
+                                    Login
+                                </Button>
+                                <Button onClick={this.props.toggleModal}>Cancel</Button>
+                            </FormGroup>
+                        </Form>
+                    </Col>
+                </Row>
             )
         }
     }

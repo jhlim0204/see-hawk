@@ -5,15 +5,23 @@ import { ReviewManager } from './ReviewManager.js';
 import{APIManager} from './APIManager.js';
 
 export class HawkerCentreManager{
+    constructor(){
+        throw Error('A static class cannot be instantiated.');
+    }
+    
     static async retrieveHawkerCentreDetails(hawkerCentreId){
         //Return hawkerCentre object with relevant attributes
         let retrievedHawkerCentre;
         const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId);
-        const hawkerCentre = await getDoc(hawkerCentreRef);
-        retrievedHawkerCentre = hawkerCentre.data();
-        delete retrievedHawkerCentre.reviewList;
-        
-        return retrievedHawkerCentre;
+        try {
+            const hawkerCentre = await getDoc(hawkerCentreRef);
+            retrievedHawkerCentre = hawkerCentre.data();
+            delete retrievedHawkerCentre.reviewList;
+            
+            return retrievedHawkerCentre;
+        } catch (error) {
+            return null;
+        }
     }
 
     static async searchHawkerCentre(subString){

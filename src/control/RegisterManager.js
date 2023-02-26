@@ -3,6 +3,10 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import SessionManager from './SessionManager';
 
 class RegisterManager {
+    constructor(){
+        throw Error('A static class cannot be instantiated.');
+    }
+    
     // Registration Fn
     static async register(username, password) {
         username = username + "@seehawk.com"

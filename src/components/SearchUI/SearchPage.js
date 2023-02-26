@@ -23,7 +23,6 @@ class SearchPage extends Component{
             isLoading: true,
             oriSearchResult: [],
             searchResult: [],
-            openingNow: false,
             star: 0,
             region: {
                 W: false,
@@ -46,17 +45,12 @@ class SearchPage extends Component{
             resultList = await HawkerCentreManager.searchHawkerCentre(qParam);
         }
 
-        this.setState({searchResult: resultList, oriSearchResult: resultList});
-        this.setState({isLoading: false});
+        this.setState({searchResult: resultList, oriSearchResult: resultList, isLoading: false});
     }
 
     handleFilter = () => {
         /* ori search result*/
         this.setState({searchResult: FilterManager.filter(this.state.oriSearchResult, {star: this.state.star, region: this.state.region})})
-    }
-
-    handleOpeningNow = () => {
-        this.setState({openingNow: !this.state.openingNow}, ()=>{this.handleFilter()})
     }
 
     handleRating = (event) => {
@@ -87,16 +81,6 @@ class SearchPage extends Component{
                     <Row>
                         <Col xs={3} className="rounded-3 content shadow-sm">
                             <h5 className='mb-4'><i className="bi bi-funnel"></i> FILTERS</h5>
-                            <h6 className='mb-3'>Opening Hours</h6>
-                            <Form className="filter-form">
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input type="checkbox" onChange={this.handleOpeningNow} checked={this.state.openingNow}></Input>
-                                        Opening Now
-                                    </Label>
-                                </FormGroup>
-                            </Form>
-                            <div className='line my-4'></div>
                             <h6 className='mb-3'>Star Rating</h6>
                             <Form className="filter-form">
                                 <FormGroup check>

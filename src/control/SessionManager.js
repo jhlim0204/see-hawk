@@ -1,7 +1,12 @@
 import { auth } from '../firebase'
-import {onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 class SessionManager {
+    constructor(){
+        throw Error('A static class cannot be instantiated.');
+    }
+
+
     // Login Fn
     static async login(username, password) {
         username = username + "@seehawk.com"
@@ -19,6 +24,10 @@ class SessionManager {
     // Logout Fn
     static async logout() {
         await signOut(auth)
+    }
+
+    static authListener(callback){        
+        onAuthStateChanged(auth, (user) => callback(user))
     }
 }
 

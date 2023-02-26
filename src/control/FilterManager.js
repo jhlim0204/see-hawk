@@ -1,4 +1,8 @@
 export class FilterManager{
+    constructor(){
+        throw Error('A static class cannot be instantiated.');
+    }
+    
     static filter(hawkerCentreList, criteria){
         let returnList = hawkerCentreList;
         returnList = FilterManager.filterStar(returnList, criteria.star);

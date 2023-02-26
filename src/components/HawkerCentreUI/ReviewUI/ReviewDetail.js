@@ -11,10 +11,10 @@ class ReviewDetail extends Component {
         return(
             <Card className='mb-3 grey-card shadow-sm'>
                 <Row>
-                    <Col className="col-auto mt-1">
+                    <Col xs="1"className="mt-1 pe-0">
                         <div className="mt-2 ms-4"> <img className="profile-pic" src="/assets/images/profile-pic.png"/> </div>
                     </Col>
-                    <Col xs="11" className="text-start mt-1">
+                    <Col xs="11" className="text-start mt-1 ps-0">
                         <h5 className="mt-3 mb-0">{this.props.userName}</h5>
                         <p className='mt-2 mb-0'><DisplayStarsSmall activeCount={this.props.reviewStar}/></p>
                         <p>{this.props.reviewText}</p>

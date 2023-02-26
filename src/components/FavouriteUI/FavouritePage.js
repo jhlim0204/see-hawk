@@ -26,24 +26,24 @@ class FavouritePage extends Component {
                 {
                     this.state.favouriteList.length === 0 ?
                         <>                        
-                        <div className='mt-5 d-flex justify-content-center'>
-                            <img className='white-background' src="/assets/images/empty-box.svg" height={"180px"}></img>
-                        </div>
-                        <div className='mt-2 d-flex justify-content-center'>
-                            <h4 className='fw-semibold text-center'>Your favourite list is empty.</h4>
-                        </div>
+                            <div className='mt-5 d-flex justify-content-center'>
+                                <img className='white-background' src="/assets/images/empty-box.svg" height={"180px"}></img>
+                            </div>
+                            <div className='mt-2 d-flex justify-content-center'>
+                                <h4 className='fw-semibold text-center'>Your favourite list is empty.</h4>
+                            </div>
                         </>
                     :
-                    this.state.favouriteList.map((favourite) => (
-                        <FavouriteComponent 
-                            updateList={this.updateList}
-                            name={favourite.name} 
-                            address={favourite.address} 
-                            noOfStall={favourite.noOfStall} 
-                            id={favourite.id} 
-                            photoURL={favourite.photoURL}
-                        />
-                    ))
+                        this.state.favouriteList.map((favourite) => (
+                            <FavouriteComponent 
+                                updateList={this.updateList}
+                                name={favourite.name} 
+                                address={favourite.address} 
+                                noOfStall={favourite.noOfStall} 
+                                id={favourite.id} 
+                                photoURL={favourite.photoURL}
+                            />
+                        ))
                 }
             </div>
         )

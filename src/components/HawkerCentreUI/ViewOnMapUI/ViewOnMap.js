@@ -12,10 +12,10 @@ class ViewOnMap extends Component {
             isModalOpen: false,
             infoWindowOpen: false,
             center: {
-                lat: 1.3700141117737719, 
-                lng: 103.80453419723774
+                lat: Number(this.props.lat), 
+                lng: Number(this.props.lng)
             },
-            zoom: 12
+            zoom: 13
         }
 
     }
@@ -31,7 +31,7 @@ class ViewOnMap extends Component {
     render() {
         return(
             <>
-            <Button color="primary" onClick={this.toggleModal} outline={this.props.carpark} size={this.props.carpark && "sm"} className="ms-3"><i className="bi bi-map-fill"></i> View on Map</Button>
+            <Button color="primary" onClick={this.toggleModal} outline={this.props.carpark} size={this.props.carpark && "sm"} className="ms-2"><i className="bi bi-map-fill"></i> View on Map</Button>
             <Modal className="text-center modal-xl" toggle={this.toggleModal} isOpen={this.state.isModalOpen}>
             <ModalHeader toggle={this.toggleModal}>View on Map</ModalHeader>
             <ModalBody className="px-0 py-0">
@@ -50,13 +50,20 @@ class ViewOnMap extends Component {
                 >
                     { /* Child components, such as markers, info windows, etc. */ }
                     {this.props.carpark ?
-                    <>{/*carpark marker here*/}</>:
-                    <HawkerMarker position={
-                        {
-                            lat: Number(this.props.lat),
-                            lng: Number(this.props.lng)
-                        }
-                    }/>
+                        this.props.carparkList.map((carpark)=> 
+                            <CarparkMarker 
+                                position= { {lat:carpark.lat, lng:carpark.lng} }
+                                address = {carpark.address}
+                                availableSlots = {carpark.availableSlots}
+                            />
+                        )
+                    :
+                        <HawkerMarker position={
+                            {
+                                lat: Number(this.props.lat),
+                                lng: Number(this.props.lng)
+                            }
+                        }/>
                     }
                 </GoogleMap>
                 </LoadScript>

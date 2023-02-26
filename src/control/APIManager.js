@@ -1,79 +1,55 @@
-// Start of HDB Carpark Information
-//https://data.gov.sg/dataset/hdb-carpark-information?view_id=398e65ae-e2cb-4312-8651-6e65d6f19ed1&resource_id=139a3035-e624-4f56-b63f-89ae28d4ae4c
-/*
+import proj4 from 'proj4';
 
-Take note 
-limit = number of things you want query
-q = search term
+export class APIManager {
+	static async fetchhawkerCentre() {
+		const response = await fetch(
+			"https://data.gov.sg/api/action/datastore_search?resource_id=b80cb643-a732-480d-86b5-e03957bc82aa"
+		);
+		const json = await response.json();
+		return json.result.records;
+	}
 
-*/
-export class APIManager{
-  static async fetchhawkerCentre(){
-    const response = await fetch(
-      "https://data.gov.sg/api/action/datastore_search?resource_id=b80cb643-a732-480d-86b5-e03957bc82aa&limit=118"
-    );
-    const json = await response.json();
-    return json.result.records;
-  }
-  static async CarfetchData() {
-    const resource_id = "139a3035-e624-4f56-b63f-89ae28d4ae4c";
-    const response = await fetch(
-      `https://data.gov.sg/api/action/datastore_search?resource_id=${resource_id}`
-    );
-    const json = await response.json();
-    return json.result.records;
-  }
-static async CarfetchDataWithQuery(query) {
-    const resource_id = "139a3035-e624-4f56-b63f-89ae28d4ae4c";
-    //const query = "yishun";
-    const response = await fetch(
-        `https://data.gov.sg/api/action/datastore_search?resource_id=${resource_id}&q=${query}`
-    );
-    const json = await response.json();
-    return json.result.records;
-}  
-//end of HDB Carpark Information
-//Carpark Availability
-//https://data.gov.sg/dataset/carpark-availability?view_id=f89b0f89-4760-45a0-af61-30b1e27d0fc3&resource_id=4f4a57d1-e904-4326-b83e-dae99358edf9
-//Temp
-static async fetchCarParkAvailability() {
-    const response = await fetch(
-      "https://api.data.gov.sg/v1/transport/carpark-availability"
-    );
-    const json = await response.json();
-    return json.items[0].carpark_data;
-  }
+	static transformCoords = (x, y) => {
+		const svy21Coords = [x, y];
+		// Define the EPSG:3414 and EPSG:4326 projections
+		proj4.defs("EPSG:3414", "+proj=tmerc +lat_0=1.366666666666667 +lon_0=103.8333333333333 +k=1 +x_0=28001.642 +y_0=38744.572 +ellps=WGS84 +datum=WGS84 +units=m +no_defs");
+		proj4.defs("EPSG:4326", "+proj=longlat +datum=WGS84 +no_defs");
+		const wgs84Coords = proj4("EPSG:3414", "EPSG:4326", svy21Coords);
+		return wgs84Coords;
+	}
 
-  static async getCarParkAvailability() {
-    const response1 = await fetch(
-      "https://data.gov.sg/api/action/datastore_search?resource_id=139a3035-e624-4f56-b63f-89ae28d4ae4c&limit=5"
-    );
-    const response2 = await fetch(
-      "https://api.data.gov.sg/v1/transport/carpark-availability"
-    );
+	static async fetchCarpark() {
+		const responseCarparkInfo = await fetch(
+			"https://data.gov.sg/api/action/datastore_search?resource_id=139a3035-e624-4f56-b63f-89ae28d4ae4c&limit=5000"
+		);
+		const responseCarparkAvail = await fetch(
+			"https://api.data.gov.sg/v1/transport/carpark-availability"
+		);
 
-    const json1 = await response1.json();
-    const json2 = await response2.json();
+		const jsonCarparkInfo = await responseCarparkInfo.json();
+		const jsonCarparkAvail = await responseCarparkAvail.json();
 
-    const carparkData = json2.items[0].carpark_data;
+		const carparkInfoData = jsonCarparkInfo.result.records;
+		const carparkAvailData = jsonCarparkAvail.items[0].carpark_data;
 
-    const combinedData = json1.result.records.map((record) => {
-      const matchingCarpark = carparkData.find(
-        (carpark) => carpark.carpark_number === record.car_park_no
-      );
+		let combinedData = carparkInfoData.map(item => {
+			let matchedData = carparkAvailData.find((carpark) => carpark.carpark_number === item.car_park_no)
 
-      return {
-        carpark_number: record.car_park_no,
-        address: record.address,
-        total_lots: matchingCarpark?.carpark_info[0].total_lots,
-        lots_available: matchingCarpark?.carpark_info[0].lots_available,
-      };
-    });
+			if (matchedData){
+				let lat, lng;
+				[lng, lat] = APIManager.transformCoords(Number(item.x_coord), Number(item.y_coord))
+				return ({
+					carparkNumber: item.car_park_no,
+					address: item.address,
+					totalSlots: matchedData.carpark_info[0].total_lots,
+					availableSlots: matchedData.carpark_info[0].lots_available,
+					lat: lat,
+					lng: lng
+				})
+			}
+		})
 
-    return combinedData;
-  }
-  
-  
+		combinedData = combinedData.filter( Boolean );
+		return combinedData;
+	}
 }
-
-

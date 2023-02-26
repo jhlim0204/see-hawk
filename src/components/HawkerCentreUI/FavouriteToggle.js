@@ -73,7 +73,7 @@ class FavouriteToggle extends Component {
         return(
             <>  
                 <span id="favourite">
-                    <Button color="warning" disabled={!this.context || this.state.disabled} onClick={this.toggleNotification} className="ms-2">
+                    <Button color="warning" disabled={!this.context || this.state.disabled} onClick={this.toggleNotification} className="ms-1">
                         <i className="bi bi-bookmark-fill"></i> { !this.state.isSaved ? "Save" : "Unsave"} Favourite
                     </Button>
                 </span>

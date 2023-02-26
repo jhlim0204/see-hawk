@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CarparkList from "./CarparkUI/CarparkList";
+import CarparkPage from "./CarparkUI/CarparkPage";
 import {
     Nav,
     NavItem,
@@ -53,8 +53,11 @@ class HawkerPage extends Component {
     async getHawkerCenterDetail(){
         this.setState({isLoading: true});
         let hawkerData = await HawkerCentreManager.retrieveHawkerCentreDetails(this.props.params.id);
-        this.setState({hawkerData: hawkerData, isLoading: false}, () => document.title = this.state.hawkerData.name + " - SeeHawk");
-        
+        if (hawkerData === null){
+            this.props.navigate('/');
+        } else {
+            this.setState({hawkerData: hawkerData, isLoading: false}, () => document.title = this.state.hawkerData.name + " - SeeHawk");
+        }
     }
 
     render() {
@@ -81,7 +84,7 @@ class HawkerPage extends Component {
                                     {hawkerData.name}
                                 </h1>
                             </Col>
-                            <Col className="col-auto px-0 mt-2">
+                            <Col className="col-auto ps-0 mt-2">
                                 <FavouriteToggle/>
                                 <ViewOnMap lat={hawkerData.latitude} lng={hawkerData.longitude}/>
                             </Col>
@@ -134,11 +137,7 @@ class HawkerPage extends Component {
                             <ReviewPage/>
                         </TabPane>
                         <TabPane tabId="carpark">
-                            <div className="d-flex align-items-center">
-                                <h3>List of Nearby Carparks</h3>
-                                <ViewOnMap carpark/>
-                            </div>
-                            {<CarparkList/>}
+                            <CarparkPage lat={hawkerData.latitude} lng={hawkerData.longitude}/>
                         </TabPane>
                     </TabContent>
                     </div>

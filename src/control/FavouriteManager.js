@@ -1,8 +1,12 @@
-import {db} from '../firebase.js'
-import {getDoc, doc, setDoc, arrayRemove, arrayUnion} from 'firebase/firestore'
+import { db } from '../firebase.js'
+import { getDoc, doc, setDoc, arrayRemove, arrayUnion } from 'firebase/firestore'
 import { HawkerCentreManager } from './HawkerCentreManager.js';
 
 export class FavouriteManager{
+    constructor(){
+        throw Error('A static class cannot be instantiated.');
+    }
+    
     static async getFavourite(accountName){
         const docRef = doc(db, 'Account', accountName);
         const favouriteList = (await getDoc(docRef)).data().favList;

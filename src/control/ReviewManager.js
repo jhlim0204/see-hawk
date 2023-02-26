@@ -1,9 +1,11 @@
-import{db} from '../firebase.js';
-import{
-    doc, getDoc, updateDoc, setDoc
-} from 'firebase/firestore';//from"https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { db } from '../firebase.js';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 export class ReviewManager{
+    constructor(){
+        throw Error('A static class cannot be instantiated.');
+    }
+    
     static async getReview(hawkerCentreId){
         const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId);
         const hawkerCentre = await getDoc(hawkerCentreRef);
@@ -20,10 +22,16 @@ export class ReviewManager{
         console.log(retrievedReviewList)
         retrievedReviewList[accountID] = {reviewStar: reviewStar, reviewText: reviewText}
         const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId)
-        await updateDoc(hawkerCentreRef, {
-            reviewList: retrievedReviewList
-        })
-        return true;
+
+        try {
+            await updateDoc(hawkerCentreRef, {
+                reviewList: retrievedReviewList
+            })
+            return true;
+        } catch (error) {
+            console.log("Error adding review");
+            return false;
+        }
     }
 
     static calculateAverage(reviewList){
