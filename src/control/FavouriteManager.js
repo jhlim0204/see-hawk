@@ -30,17 +30,33 @@ export class FavouriteManager{
 
     static async addFavourite(accountName, hawkerID){
         const docRef = doc(db, 'Account', accountName);
-        await updateDoc(docRef, {
+        const account = await getDoc(docRef);
+
+        if (account.exists()){
+            await updateDoc(docRef, {
+                favList: arrayUnion(hawkerID)
+            })
+            .then(() => {
+                console.log("Succesfully added favourite");
+                return true;
+            }) 
+            .catch(() => {
+                console.log("Error Adding favourite");
+                return false;
+            })
+        } else {            
+            await setDoc(docRef, {
             favList: arrayUnion(hawkerID)
-        })
-        .then(() => {
-            console.log("Succesfully added favourite");
-            return true;
-        }) 
-        .catch(() => {
-            console.log("Error Adding favourite");
-            return false;
-        })
+            })
+            .then(() => {
+                console.log("Succesfully added favourite");
+                return true;
+            }) 
+            .catch(() => {
+                console.log("Error Adding favourite");
+                return false;
+            })
+        }
     }
 
     static async deleteFavourite(accountName, hawkerID){

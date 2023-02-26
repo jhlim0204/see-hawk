@@ -35,7 +35,11 @@ class HawkerPreview extends Component{
                         </CardBody>
                     </Col>
                     <Col xs="2" className="text-center align-items-center mt-auto mb-auto ps-1">
-                        <h2 className='mb-0'>{this.props.averageRating}</h2>
+                        {
+                            this.props.averageRating === 'Unrated' ?
+                            <h4 className='mb-0 fst-italic'>Unrated</h4> :
+                            <h2 className='mb-0'>{this.props.averageRating}</h2>
+                        }
                         <StarsRating classNamePrefix="small-rating" value={this.props.averageRating} disabled={true}/>
                     </Col>
             </Row>
