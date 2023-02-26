@@ -53,7 +53,8 @@ class HawkerPage extends Component {
     async getHawkerCenterDetail(){
         this.setState({isLoading: true});
         let hawkerData = await HawkerCentreManager.retrieveHawkerCentreDetails(this.props.params.id);
-        this.setState({hawkerData: hawkerData, isLoading: false});
+        this.setState({hawkerData: hawkerData, isLoading: false}, () => document.title = this.state.hawkerData.name + " - SeeHawk");
+        
     }
 
     render() {
@@ -64,7 +65,7 @@ class HawkerPage extends Component {
         } else {
             return(
 
-                <div className="background">
+                <div className="background page-transition">
                 <Row className="mb-3">
                     <Col xs={3}>
                         <img 

@@ -1,14 +1,19 @@
+/* View Component*/
 import React, {Component} from 'react';
 import { Col, FormGroup, Row, Label, Input, Form } from 'reactstrap';
 import HawkerPreview from './HawkerResult';
-import { withRouter } from "../Utility/withRouter";
-import SidebarPlaceholder from '../PlaceholderUI/SidebarPlaceholder';
-import DisplayStarsSmall from '../Utility/DisplayStarsSmall';
-import { HawkerCentreManager } from '../../control/HawkerCentreManager';
-import HawkerPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
-import { FilterManager } from '../../control/FilterManager';
 import Lottie from "lottie-react";
 import SearchEmptyAnimation from "../Animation/searchEmpty.json";
+import { withRouter } from "../Utility/withRouter";
+import DisplayStarsSmall from '../Utility/DisplayStarsSmall';
+
+/* Placeholder Component*/
+import SidebarPlaceholder from '../PlaceholderUI/SidebarPlaceholder';
+import HawkerPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
+
+/* Controller*/
+import { HawkerCentreManager } from '../../control/HawkerCentreManager';
+import { FilterManager } from '../../control/FilterManager';
 
 class SearchPage extends Component{
     constructor (props) {
