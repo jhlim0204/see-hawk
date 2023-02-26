@@ -1,12 +1,47 @@
 import proj4 from 'proj4';
 
 export class APIManager {
+    constructor(){
+        throw Error('A static class cannot be instantiated.');
+    }
+
 	static async fetchhawkerCentre() {
-		const response = await fetch(
-			"https://data.gov.sg/api/action/datastore_search?resource_id=b80cb643-a732-480d-86b5-e03957bc82aa"
+		const responseHawker = await fetch(
+			"https://data.gov.sg/api/action/datastore_search?resource_id=b80cb643-a732-480d-86b5-e03957bc82aa&limit=500"
 		);
-		const json = await response.json();
-		return json.result.records;
+		const jsonHawker = await responseHawker.json();
+		let hawkerCentreList = jsonHawker.result.records;
+
+		hawkerCentreList = hawkerCentreList.map(item => {
+			/* Extract name*/
+			var regExp = /\(([^)]+)\)/;
+			var match  = regExp.exec(item.name);
+			if (match){
+				item.name = match[1];
+			}
+
+			return(
+				{
+					id: item.serial_no,
+					name: item.name,
+					cleaningStartDate1: item.q1_cleaningstartdate,
+					cleaningEndDate1: item.q1_cleaningenddate,
+					cleaningStartDate2: item.q2_cleaningstartdate,
+					cleaningEndDate2: item.q2_cleaningenddate,
+					cleaningStartDate3: item.q3_cleaningstartdate,
+					cleaningEndDate3: item.q3_cleaningenddate,
+					cleaningStartDate4: item.q4_cleaningstartdate,
+					cleaningEndDate4: item.q4_cleaningenddate,
+					latitude: Number(item.latitude_hc),
+					longitude: Number(item.longitude_hc),
+					photoURL: item.photourl,
+					address: item.address_myenv,
+					noOfStall: Number(item.no_of_food_stalls),
+					description: item.description_myenv,
+				}
+			)
+		})
+		return hawkerCentreList;
 	}
 
 	static transformCoords = (x, y) => {

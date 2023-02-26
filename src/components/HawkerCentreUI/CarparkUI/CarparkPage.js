@@ -10,13 +10,15 @@ class CarkparkList extends Component {
 		super(props);
 		this.state = {
 			carparkList: [],
-			isLoading: true
+			isLoading: true,
+			updatedTime: 'Not available'
 		};
 	}
 
 	fetchNearbyCarpark = async() => {
 		const carparkList = await CarparkManager.fetchNearbyCarpark(this.props.lat, this.props.lng);
-		this.setState({ carparkList: carparkList, isLoading: false});
+		const dateString = (new Date(Date.now())).toLocaleString('en-SG', {timeZone: 'Asia/Singapore'}).toUpperCase();
+		this.setState({ carparkList: carparkList, isLoading: false, updatedTime: dateString});
 	}
 
 	render() {
@@ -32,6 +34,7 @@ class CarkparkList extends Component {
 					<div className="d-flex align-items-center">
 						<h3>List of Nearby Carparks</h3>
 						<ViewOnMap lat={this.props.lat} lng={this.props.lng} carparkList={this.state.carparkList} carpark/>
+						<p className='text-muted ms-auto fst-italic mt-1'>Last updated: {this.state.updatedTime}</p>
 					</div>
 					<div>
 						{
@@ -56,7 +59,8 @@ class CarkparkList extends Component {
 	}
 
 	componentDidMount() {
-		this.fetchNearbyCarpark();
+		this.fetchNearbyCarpark()
+		setInterval(this.fetchNearbyCarpark, 60001);
 	}
 }
 

@@ -1,12 +1,12 @@
 import { db } from '../firebase.js'
-import { getDoc, doc, setDoc, arrayRemove, arrayUnion } from 'firebase/firestore'
+import { getDoc, doc, setDoc, arrayRemove, arrayUnion, updateDoc } from 'firebase/firestore'
 import { HawkerCentreManager } from './HawkerCentreManager.js';
 
 export class FavouriteManager{
     constructor(){
         throw Error('A static class cannot be instantiated.');
     }
-    
+
     static async getFavourite(accountName){
         const docRef = doc(db, 'Account', accountName);
         const favouriteList = (await getDoc(docRef)).data().favList;
@@ -30,7 +30,7 @@ export class FavouriteManager{
 
     static async addFavourite(accountName, hawkerID){
         const docRef = doc(db, 'Account', accountName);
-        await setDoc(docRef, {
+        await updateDoc(docRef, {
             favList: arrayUnion(hawkerID)
         })
         .then(() => {
@@ -45,7 +45,7 @@ export class FavouriteManager{
 
     static async deleteFavourite(accountName, hawkerID){
         const docRef = doc(db, 'Account', accountName);
-        await setDoc(docRef, {
+        await updateDoc(docRef, {
             favList: arrayRemove(hawkerID)
         })
         .then(() => {

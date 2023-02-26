@@ -11,30 +11,30 @@ class HawkerPreview extends Component{
     render() {
         return(
             <Link to={"/view/"+this.props.id} style={{ color: 'inherit', textDecoration: 'inherit'}}>
-            <Card className="mb-3 text-start border-0 shadow-sm clickable-card">
+            <Card className="mb-4 text-start border-0 shadow-sm clickable-card">
                 <Row>
                     <Col xs="3">
                         <CardImg
                         alt="Card image cap"
                         src={this.props.photoURL}
                         style={{
-                            height: 125
+                            height: 155
                         }}
                         className="card-left"
                         />
                     </Col>
-                    <Col xs="6">
+                    <Col xs="7" className='px-0'>
                         <CardBody>
                         <CardTitle tag="h4">
                             {this.props.name}
                         </CardTitle>
-                        <CardText>
-                            <p className='mb-1'>Address: {this.props.address}</p>
-                            <p className='mb-1'>Number of stalls: {this.props.noOfStall}</p>
+                        <CardText className='mt-2'>
+                            <p className='mb-1'><b>Address:</b> {this.props.address}</p>
+                            <p className='mb-1'><b>Number of stalls:</b> {this.props.noOfStall}</p>
                         </CardText>
                         </CardBody>
                     </Col>
-                    <Col xs="3" className="text-center align-items-center mt-auto mb-auto">
+                    <Col xs="2" className="text-center align-items-center mt-auto mb-auto ps-1">
                         <h2 className='mb-0'>{this.props.averageRating}</h2>
                         <StarsRating classNamePrefix="small-rating" value={this.props.averageRating} disabled={true}/>
                     </Col>

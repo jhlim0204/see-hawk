@@ -1,6 +1,6 @@
-import{ db } from '../firebase.js';//'./firebase.js'//
+import{ db } from '../firebase.js';
 import { collection, getDocs, doc, setDoc, 
-    serverTimestamp, query, where, getDoc, updateDoc } from 'firebase/firestore';//'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';//
+    query, where, getDoc, updateDoc } from 'firebase/firestore';
 import { ReviewManager } from './ReviewManager.js';
 import{APIManager} from './APIManager.js';
 
@@ -11,7 +11,7 @@ export class HawkerCentreManager{
     
     static async retrieveHawkerCentreDetails(hawkerCentreId){
         // update firebase if needed
-        this.updateFireBaseHawkerCentreList()
+        HawkerCentreManager.updateFireBaseHawkerCentreList()
         //Return hawkerCentre object with relevant attributes
         let retrievedHawkerCentre;
         const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId);
@@ -28,7 +28,7 @@ export class HawkerCentreManager{
 
     static async searchHawkerCentre(subString){
         // update firebase if needed
-        this.updateFireBaseHawkerCentreList()
+        HawkerCentreManager.updateFireBaseHawkerCentreList()
         //Get all the hawker centre where address contains subString or name contains subString
         const hawkerCentreRef = collection(db, 'HawkerCentre')
         const q = query(hawkerCentreRef, where("name", '!=', null))
@@ -39,9 +39,7 @@ export class HawkerCentreManager{
         const hawkerCentreList = await getDocs(q);
 
         hawkerCentreList.forEach((doc)=>{
-            if(doc.data().name.toUpperCase().replace(/\s/g,'').includes(subString.toUpperCase().replace(/\s/g,'')) ||
-               doc.data().address.toUpperCase().replace(/\s/g,'').includes(subString.toUpperCase().replace(/\s/g,''))){
-
+            if(doc.data().name.toUpperCase().replace(/\s/g,'').includes(subString.toUpperCase().replace(/\s/g,''))){
                 returnList.push({
                     id: doc.id,
                     name: doc.data().name, 
@@ -74,96 +72,39 @@ export class HawkerCentreManager{
         await setDoc(timeRef,{
             time: Date.now()
         })
-             
-        console.log(previousTime)
+
         return previousTime 
     }
 
     static async shouldUpdate(){
-        
         let currentTime = Date.now()
         const previousTimeRef = doc(db, 'Time', 'updateTime')
         const pTime = await getDoc(previousTimeRef);
         let previousUpdateTime = pTime.data().time;
-        if((previousUpdateTime + 604800000)> currentTime){
-            //console.log("No update")
-            return false;
-        }
-        else{
-            //console.log("Need Update")
-            return true;
-        }
-        
+
+        return ((previousUpdateTime + 604800000) <= currentTime);
     }
 
     static async updateFireBaseHawkerCentreList(){
         
-        
-        if(await this.shouldUpdate()){
-            await this.updateTime()
+        if(await HawkerCentreManager.shouldUpdate()){
+            await HawkerCentreManager.updateTime();
+
             const updatedHawkerCentreArray = await APIManager.fetchhawkerCentre();
-            for(var i = 0;i<updatedHawkerCentreArray.length;i++){
-            var exist = await this.checkIfIDExist(updatedHawkerCentreArray[i].serial_no)
-            if(exist){
-                //console.log("If", i)
-                var hawkerCentreRef = doc(db, "HawkerCentre", updatedHawkerCentreArray[i].serial_no)
-                await updateDoc(hawkerCentreRef, {
-            
-                name: updatedHawkerCentreArray[i].name,
-                cleaningStartDate1: updatedHawkerCentreArray[i].q1_cleaningstartdate,
-                cleaningEndDate1: updatedHawkerCentreArray[i].q1_cleaningenddate,
-                cleaningStartDate2:updatedHawkerCentreArray[i].q2_cleaningstartdate,
-                cleaningEndDate2:updatedHawkerCentreArray[i].q2_cleaningenddate,
-                cleaningStartDate3:updatedHawkerCentreArray[i].q3_cleaningstartdate,
-                cleaningEndDate3: updatedHawkerCentreArray[i].q3_cleaningenddate,
-                cleaningStartDate4:updatedHawkerCentreArray[i].q4_cleaningstartdate,
-                cleaningEndDate4:updatedHawkerCentreArray[i].q4_cleaningenddate,
-                latitude:updatedHawkerCentreArray[i].latitude_hc,
-                longitude:updatedHawkerCentreArray[i].longitude_hc,
-                photoURL:updatedHawkerCentreArray[i].photourl,
-                address:updatedHawkerCentreArray[i].address_myenv,
-                noOfStall:updatedHawkerCentreArray[i].no_of_food_stalls,
-                description:updatedHawkerCentreArray[i].description_myenv,
-                status:updatedHawkerCentreArray[i].status
-            
-            /*
-                name: updatedHawkerCentreArray[i].name,
-                address: updatedHawkerCentreArray[i].address,
-            */
+            for(var i = 0; i < updatedHawkerCentreArray.length; i++){
+                var exist = await HawkerCentreManager.checkIfIDExist(updatedHawkerCentreArray[i].id)
+
+                if(exist){
+                    var hawkerCentreRef = doc(db, "HawkerCentre", updatedHawkerCentreArray[i].id)
+                    await updateDoc(hawkerCentreRef, updatedHawkerCentreArray[i]);
+                }
+                else{
+                    await setDoc(doc(db, "HawkerCentre", updatedHawkerCentreArray[i].id), {
+                        ...updatedHawkerCentreArray[i],
+                        reviewList: {}
                 });
-            }
-            else{
-                //console.log("Else", i)
-                await setDoc(doc(db, "HawkerCentre", updatedHawkerCentreArray[i].serial_no), {
-            
-            
-                name: updatedHawkerCentreArray[i].name,
-                cleaningStartDate1: updatedHawkerCentreArray[i].q1_cleaningstartdate,
-                cleaningEndDate1: updatedHawkerCentreArray[i].q1_cleaningenddate,
-                cleaningStartDate2:updatedHawkerCentreArray[i].q2_cleaningstartdate,
-                cleaningEndDate2:updatedHawkerCentreArray[i].q2_cleaningenddate,
-                cleaningStartDate3:updatedHawkerCentreArray[i].q3_cleaningstartdate,
-                cleaningEndDate3: updatedHawkerCentreArray[i].q3_cleaningenddate,
-                cleaningStartDate4:updatedHawkerCentreArray[i].q4_cleaningstartdate,
-                cleaningEndDate4:updatedHawkerCentreArray[i].q4_cleaningenddate,
-                latitude:updatedHawkerCentreArray[i].latitude_hc,
-                longitude:updatedHawkerCentreArray[i].longitude_hc,
-                photoURL:updatedHawkerCentreArray[i].photourl,
-                address:updatedHawkerCentreArray[i].address_myenv,
-                noOfStall:updatedHawkerCentreArray[i].no_of_food_stalls,
-                description:updatedHawkerCentreArray[i].description_myenv,
-                status:updatedHawkerCentreArray[i].status,
-                reviewList: {}
-            
-            /*
-                name: updatedHawkerCentreArray[i].name,
-                address: updatedHawkerCentreArray[i].address,
-                reviewList: []
-            */
-              });
+                }
             }
         }
-        }
-        
     }
 }

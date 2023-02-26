@@ -15,7 +15,7 @@ class ViewOnMap extends Component {
                 lat: Number(this.props.lat), 
                 lng: Number(this.props.lng)
             },
-            zoom: 13
+            zoom: this.props.carpark ? 15 : 13
         }
 
     }
@@ -37,7 +37,7 @@ class ViewOnMap extends Component {
             <ModalBody className="px-0 py-0">
                 <div style={{ height: '80vh', width: '100%' }}>
                 <LoadScript
-                    googleMapsApiKey=""
+                    googleMapsApiKey="AIzaSyBLYQy-AtpqQjTyBRO1Wu6lxmORkwNihGI"
                 >
                 <GoogleMap
                     mapContainerStyle= {{

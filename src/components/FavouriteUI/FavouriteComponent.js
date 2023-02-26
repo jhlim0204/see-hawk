@@ -38,20 +38,21 @@ class FavouriteComponent extends Component{
                             <CardImg
                             alt="Card image cap"
                             src={this.props.photoURL}
-                            className="rounded-start card-left"
+                            className="rounded-start card-left img-fluid"
                             style={{
-                                height: 130
+                                height: 165,
+                                width: 270
                             }}
                             />
                             </Link>
                         </Col>
-                        <Col xs="8">
+                        <Col xs="8" className='ps-0'>
                             <Link to={"/view/"+this.props.id} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                                 <CardBody>
-                                <CardTitle tag="h3">{this.props.name}</CardTitle>
+                                <CardTitle tag="h3" className='mb-3'>{this.props.name}</CardTitle>
                                 <CardText>
-                                    <p className='mb-1'>Address: {this.props.address}</p>
-                                    <p className='mb-1'>Number of stalls: {this.props.noOfStall}</p>
+                                    <p className='mb-1'><b>Address:</b> {this.props.address}</p>
+                                    <p className='mb-1'><b>Number of stalls:</b> {this.props.noOfStall}</p>
                                 </CardText>
                                 </CardBody>
                             </Link>
