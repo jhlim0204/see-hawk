@@ -1,5 +1,7 @@
 import{db} from '../firebase.js';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import{
+    doc, getDoc, updateDoc, setDoc
+} from 'firebase/firestore';//from"https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 
 export class ReviewManager{
     static async getReview(hawkerCentreId){
@@ -15,18 +17,13 @@ export class ReviewManager{
 
     static async addReview(hawkerCentreId, accountID, reviewStar, reviewText){
         let retrievedReviewList = await ReviewManager.getReview(hawkerCentreId)
-        if (retrievedReviewList){
-            retrievedReviewList[accountID] = {reviewStar: reviewStar, reviewText: reviewText}
-            const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId)
-            
-            await updateDoc(hawkerCentreRef, {
-                reviewList: retrievedReviewList
-            })
-            return true;
-        } else {
-            console.log("No such document!");
-            return false;
-        }
+        console.log(retrievedReviewList)
+        retrievedReviewList[accountID] = {reviewStar: reviewStar, reviewText: reviewText}
+        const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId)
+        await updateDoc(hawkerCentreRef, {
+            reviewList: retrievedReviewList
+        })
+        return true;
     }
 
     static calculateAverage(reviewList){

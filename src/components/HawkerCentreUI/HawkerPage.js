@@ -138,7 +138,7 @@ class HawkerPage extends Component {
                                 <h3>List of Nearby Carparks</h3>
                                 <ViewOnMap carpark/>
                             </div>
-                            {/*<CarparkList/>*/}
+                            {<CarparkList/>}
                         </TabPane>
                     </TabContent>
                     </div>
