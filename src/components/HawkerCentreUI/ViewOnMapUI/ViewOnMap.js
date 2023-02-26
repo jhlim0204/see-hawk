@@ -44,6 +44,12 @@ class ViewOnMap extends Component {
                         width: '100%',
                         height: '100%'
                       }}
+                    options = {
+                        {
+                            mapTypeControlOptions: { mapTypeIds: [] },
+                            streetViewControl: false
+                        }
+                    }
                     center={this.state.center}
                     zoom={this.state.zoom}
                     clickableIcons={false}
