@@ -1,6 +1,6 @@
-import{ db } from '../firebase.js';
+import{ db } from '../firebase.js';//'./firebase.js'//
 import { collection, getDocs, doc, setDoc, 
-    serverTimestamp, query, where, getDoc, updateDoc } from 'firebase/firestore';//"https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+    serverTimestamp, query, where, getDoc, updateDoc } from 'firebase/firestore';//'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';//
 import { ReviewManager } from './ReviewManager.js';
 import{APIManager} from './APIManager.js';
 
@@ -10,6 +10,8 @@ export class HawkerCentreManager{
     }
     
     static async retrieveHawkerCentreDetails(hawkerCentreId){
+        // update firebase if needed
+        this.updateFireBaseHawkerCentreList()
         //Return hawkerCentre object with relevant attributes
         let retrievedHawkerCentre;
         const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId);
@@ -25,6 +27,8 @@ export class HawkerCentreManager{
     }
 
     static async searchHawkerCentre(subString){
+        // update firebase if needed
+        this.updateFireBaseHawkerCentreList()
         //Get all the hawker centre where address contains subString or name contains subString
         const hawkerCentreRef = collection(db, 'HawkerCentre')
         const q = query(hawkerCentreRef, where("name", '!=', null))
@@ -68,17 +72,37 @@ export class HawkerCentreManager{
         const timeRef = doc(db, 'Time', 'updateTime')
         let previousTime
         await setDoc(timeRef,{
-            time: serverTimestamp()
+            time: Date.now()
         })
              
         console.log(previousTime)
         return previousTime 
     }
 
+    static async shouldUpdate(){
+        
+        let currentTime = Date.now()
+        const previousTimeRef = doc(db, 'Time', 'updateTime')
+        const pTime = await getDoc(previousTimeRef);
+        let previousUpdateTime = pTime.data().time;
+        if((previousUpdateTime + 604800000)> currentTime){
+            //console.log("No update")
+            return false;
+        }
+        else{
+            //console.log("Need Update")
+            return true;
+        }
+        
+    }
+
     static async updateFireBaseHawkerCentreList(){
-        await this.updateTime()
-        const updatedHawkerCentreArray = await APIManager.fetchhawkerCentre();
-        for(var i = 0;i<updatedHawkerCentreArray.length;i++){
+        
+        
+        if(await this.shouldUpdate()){
+            await this.updateTime()
+            const updatedHawkerCentreArray = await APIManager.fetchhawkerCentre();
+            for(var i = 0;i<updatedHawkerCentreArray.length;i++){
             var exist = await this.checkIfIDExist(updatedHawkerCentreArray[i].serial_no)
             if(exist){
                 //console.log("If", i)
@@ -139,5 +163,7 @@ export class HawkerCentreManager{
               });
             }
         }
+        }
+        
     }
 }
