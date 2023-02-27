@@ -32,7 +32,7 @@ class Main extends Component {
         return (
             <UserContext.Provider value={this.state.username}>
                 <div className='container'>
-                    <Header></Header>
+                    <Header />
                     <Routes>
                         <Route path='/' element={<HomePage />} />
                         <Route path='/search/*' element={<SearchPage />} />

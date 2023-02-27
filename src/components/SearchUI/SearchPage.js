@@ -90,7 +90,7 @@ class SearchPage extends Component {
                     <Row>
                         <Col xs={3} className='rounded-3 content shadow-sm'>
                             <h5 className='mb-4'>
-                                <i className='bi bi-funnel'></i> FILTERS
+                                <i className='bi bi-funnel' /> FILTERS
                             </h5>
                             <h6 className='mb-3'>Star Rating</h6>
                             <Form className='filter-form'>
@@ -167,7 +167,7 @@ class SearchPage extends Component {
                                     </Label>
                                 </FormGroup>
                             </Form>
-                            <div className='line my-4'></div>
+                            <div className='line my-4' />
                             <h6 className='mb-3'>Located Region</h6>
                             <Form className='filter-form'>
                                 <FormGroup check>

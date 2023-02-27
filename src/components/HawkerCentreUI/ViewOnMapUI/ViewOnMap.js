@@ -37,7 +37,7 @@ class ViewOnMap extends Component {
                     size={this.props.carpark && 'sm'}
                     className='ms-2'
                 >
-                    <i className='bi bi-map-fill'></i> View on Map
+                    <i className='bi bi-map-fill' /> View on Map
                 </Button>
                 <Modal
                     className='text-center modal-xl'

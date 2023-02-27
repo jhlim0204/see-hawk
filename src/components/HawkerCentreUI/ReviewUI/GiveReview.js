@@ -93,7 +93,7 @@ class GiveReview extends Component {
                         disabled={!this.context}
                     >
                         <b>
-                            <i className='bi bi-pen'></i>{' '}
+                            <i className='bi bi-pen' />{' '}
                             {this.props.ownReview ? 'Edit Review' : 'Give Review'}
                         </b>
                     </Button>

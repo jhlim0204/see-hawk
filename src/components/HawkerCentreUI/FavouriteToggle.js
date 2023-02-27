@@ -79,7 +79,7 @@ class FavouriteToggle extends Component {
                         onClick={this.toggleNotification}
                         className='ms-1'
                     >
-                        <i className='bi bi-bookmark-fill'></i>{' '}
+                        <i className='bi bi-bookmark-fill' />{' '}
                         {!this.state.isSaved ? 'Save' : 'Unsave'} Favourite
                     </Button>
                 </span>
@@ -104,7 +104,7 @@ class FavouriteToggle extends Component {
                             <button
                                 className='btn-close btn-close-white me-2 m-auto'
                                 onClick={this.closeSavedNotification}
-                            ></button>
+                             />
                         </div>
                     </Toast>
 
@@ -119,7 +119,7 @@ class FavouriteToggle extends Component {
                             <button
                                 className='btn-close btn-close-white me-2 m-auto'
                                 onClick={this.closeUnsavedNotification}
-                            ></button>
+                             />
                         </div>
                     </Toast>
                 </div>

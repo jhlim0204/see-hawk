@@ -64,18 +64,18 @@ class Profile extends Component {
                         <>
                             <Link to='/favourites' style={{ textDecoration: 'none' }}>
                                 <DropdownItem>
-                                    <i className='bi bi-bookmark me-2'></i>Favourite List
+                                    <i className='bi bi-bookmark me-2' />Favourite List
                                 </DropdownItem>
                             </Link>
                             <DropdownItem onClick={this.toggleLogoutModal}>
-                                <i className='bi bi-power me-2'></i>Logout
+                                <i className='bi bi-power me-2' />Logout
                             </DropdownItem>
                         </>
                     ) : (
                         /* Display option for guest*/
                         <>
                             <DropdownItem toggle={false} onClick={this.toggleLoginModal}>
-                                <i className='bi bi-box-arrow-in-left me-2'></i>Login / Register
+                                <i className='bi bi-box-arrow-in-left me-2' />Login / Register
                             </DropdownItem>
                         </>
                     )}

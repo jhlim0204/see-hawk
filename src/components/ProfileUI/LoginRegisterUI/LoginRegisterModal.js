@@ -64,7 +64,7 @@ class LoginRegister extends Component {
                         </NavItem>
                     </Nav>
                 </ModalHeader>
-                <div className='line'></div>
+                <div className='line' />
                 <ModalBody className='pt-4 pb-2 bg-light'>
                     <TabContent activeTab={this.state.currentActiveTab}>
                         <TabPane tabId='login'>

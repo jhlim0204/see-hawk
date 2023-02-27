@@ -41,7 +41,7 @@ class FavouritePage extends Component {
                                     src='/assets/images/empty-box.svg'
                                     height={'180px'}
                                     alt='Empty'
-                                ></img>
+                                 />
                             </div>
                             <div className='mt-2 d-flex justify-content-center'>
                                 <h4 className='fw-semibold text-center'>

@@ -89,7 +89,7 @@ class FavouriteComponent extends Component {
                                 onClick={this.toggleModal}
                                 outline
                             >
-                                <i className='bi bi-trash3'></i>
+                                <i className='bi bi-trash3' />
                             </Button>
                         </Col>
                     </Row>

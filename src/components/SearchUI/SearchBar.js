@@ -39,7 +39,7 @@ class SearchBar extends Component {
             >
                 <InputGroup>
                     <InputGroupText className='bg-white pe-0'>
-                        <i className='bi bi-search'></i>
+                        <i className='bi bi-search' />
                     </InputGroupText>
                     <Input
                         name='q'
