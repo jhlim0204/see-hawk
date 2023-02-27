@@ -54,7 +54,7 @@ export class FavouriteManager {
             })
         } else {            
             await setDoc(docRef, {
-            favList: arrayUnion(hawkerID)
+                favList: arrayUnion(hawkerID)
             })
             .then(() => {
                 return true;

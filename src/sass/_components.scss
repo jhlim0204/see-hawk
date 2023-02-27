@@ -1,0 +1,130 @@
+@include fadeIn;
+@include toastIn;
+@include toastOut;
+
+/* Line Styling */
+.line {
+	background-color: $line-background;
+	height: 1px;
+	width: 100%;
+}
+
+/* Page Animation Styling */
+.page-transition {
+	animation-name: fadeIn;
+	animation-duration: 350ms;
+	animation-timing-function: linear;
+}
+
+/* Dropdown Styling */
+.dropdown {
+	font-family: $dropdown-font;
+	font-weight: 500;
+    
+    .dropdown-title {
+        font-size: 17px;
+    }
+
+    .dropdown-item {
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+}
+
+/* Tabs styling */
+.tabs {
+	padding-bottom: 10px;
+	cursor: pointer;
+}
+
+/* Nav Tabs Styling */
+.nav-tabs {
+	.nav-link {
+		color: $black;
+		border: none;
+		margin-bottom: -0.5px;
+
+		&:hover {
+			border-bottom: 1.5px solid #2196F3;
+		}
+
+        &.active {
+            border-bottom: 1.5px solid $black;
+        }
+	}
+}
+
+/* Tab Pane Styling */
+.tab-pane.active {
+	animation-name: fadeIn;
+	animation-duration: 300ms;
+	animation-timing-function: linear;
+}
+
+/* Form Styling */
+.filter-form {
+	div.form-check {
+		margin-top: 8px;
+	}
+}
+
+.form-check-input {
+	box-shadow: none !important;
+}
+
+/* Card Styling*/
+.card {
+    .card-left {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+
+    .card-right {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    &.clickable-card {
+        &:hover {
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+            background-color: $card-hover-background;
+        }
+    }
+}
+
+/* Star Styling*/
+
+.bi-star-fill {
+	color: $star-empty;
+
+    &.active{
+        color: $star-filled;
+    }
+}
+.small-rating {
+	font-size: 25px !important;
+	li {
+		margin-right: 2px;
+	}
+}
+
+/* Hawker Page Text Styling*/
+.hawker-detail {
+	p {
+		font-size: 17px;
+	}
+}
+
+/* Toast Animation Styling */
+.toast.show {
+	visibility: visible;
+	-webkit-animation: toastIn 0.3s, toastOut 0.3s 1.7s;
+	animation: toastIn 0.3s, toastOut 0.3s 1.7s;
+}
+
+/* Updated Date Animation Styling */
+.updated-date {
+	animation-name: fadeIn;
+	animation-duration: 200ms;
+	animation-timing-function: linear;
+}

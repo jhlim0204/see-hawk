@@ -44,7 +44,7 @@ class Profile extends Component {
     render() {
         return (
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} direction="down">
-                <DropdownToggle className="dropdown-title dropdown-text" id="username" color="light" caret>
+                <DropdownToggle className="dropdown-title" id="username" color="light" caret>
                 
                     {this.context ? <Avatar name={this.context} size="35" textSizeRatio={2} round className="me-2"/> : <img className="profile-pic-small me-2" src="/assets/images/guest-pic.png" height="35px" alt="Guest" /> }
                     {this.context ? this.context : "Guest"}
@@ -54,16 +54,16 @@ class Profile extends Component {
                         /* Display option for logged in user*/
                         <>
                             <Link to='/favourites' style={{ textDecoration: 'none' }}>
-                                <DropdownItem className="dropdown-text"><i className="bi bi-bookmark me-2"></i>Favourite List</DropdownItem>
+                                <DropdownItem><i className="bi bi-bookmark me-2"></i>Favourite List</DropdownItem>
                             </Link>
-                            <DropdownItem className="dropdown-text" onClick={this.toggleLogoutModal}>
+                            <DropdownItem onClick={this.toggleLogoutModal}>
                                 <i className="bi bi-power me-2"></i>Logout
                             </DropdownItem>
                         </>
                     :
                         /* Display option for guest*/
                         <>
-                            <DropdownItem className="dropdown-text" toggle={false} onClick={this.toggleLoginModal}>
+                            <DropdownItem toggle={false} onClick={this.toggleLoginModal}>
                                 <i className="bi bi-box-arrow-in-left me-2"></i>Login / Register
                             </DropdownItem>
                         </>

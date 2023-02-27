@@ -6,7 +6,6 @@ class SessionManager {
         throw Error('A static class cannot be instantiated.');
     }
 
-
     // Login Fn
     static async login(username, password) {
         username = username + "@seehawk.com"

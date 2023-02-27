@@ -9,7 +9,7 @@ class HawkerResult extends Component{
             <Link to={"/view/"+this.props.id} style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <Card className="mb-4 text-start border-0 shadow-sm clickable-card">
                 <Row>
-                    <Col xs="3">
+                    <Col xs="3" className='pe-0'>
                         <CardImg
                         alt="Card image cap"
                         src={this.props.photoURL}
@@ -19,18 +19,18 @@ class HawkerResult extends Component{
                         className="card-left"
                         />
                     </Col>
-                    <Col xs="7" className='px-0'>
+                    <Col xs="9" xl="7" className='px-0'>
                         <CardBody>
                         <CardTitle tag="h4">
                             {this.props.name}
                         </CardTitle>
                         <CardText className='mt-2'>
-                            <p className='mb-1'><b>Address:</b> {this.props.address}</p>
-                            <p className='mb-1'><b>Number of stalls:</b> {this.props.noOfStall}</p>
+                            <span className='d-block mb-1'><b>Address:</b> {this.props.address}</span>
+                            <span><b>Number of stalls:</b> {this.props.noOfStall}</span>
                         </CardText>
                         </CardBody>
                     </Col>
-                    <Col xs="2" className="text-center align-items-center mt-auto mb-auto ps-1">
+                    <Col xs="0" xl="2" className="text-center align-items-center mt-auto mb-auto ps-0 d-none d-xl-block">
                         {
                             this.props.averageRating === 'Unrated' ?
                             <h4 className='mb-0 fst-italic'>Unrated</h4> :

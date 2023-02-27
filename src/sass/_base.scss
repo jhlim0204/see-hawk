@@ -1,0 +1,73 @@
+$black: black;
+$star-empty: #CFD8DC;
+$star-filled: #FBC02D;
+$dropdown-font: Helvetica;
+$app-background: #edede8;
+$content-background: white;
+$line-background: #CFD8DC;
+$card-hover-background: #f3f7ff;
+
+/* Animations to fade the tab pane in and out */
+@mixin fadeIn{
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        40% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+/* Animations to fade the notification in */
+@mixin toastIn {
+    @-webkit-keyframes toastIn {
+        from {
+            bottom: -10px;
+            opacity: 0;
+        }
+        to {
+            bottom: 30px;
+            opacity: 1;
+        }
+    }
+    
+    @keyframes toastIn {
+        from {
+            bottom: -10px;
+            opacity: 0;
+        }
+        to {
+            bottom: 30px;
+            opacity: 1;
+        }
+    }
+}
+
+/* Animations to fade the notification out */
+@mixin toastOut {
+    @-webkit-keyframes toastOut {
+        from {
+            bottom: 30px;
+            opacity: 1;
+        }
+        to {
+            bottom: -10px;
+            opacity: 0;
+        }
+    }
+    
+    @keyframes toastOut {
+        from {
+            bottom: 30px;
+            opacity: 1;
+        }
+        to {
+            bottom: -10px;
+            opacity: 0;
+        }
+    }
+}

@@ -101,7 +101,12 @@ class ReviewPage extends Component {
                 </Row>
                 {
                     Object.entries(this.state.reviewList).map( ([userName, review]) => 
-                    <ReviewDetail userName={userName} reviewStar={review.reviewStar} reviewText={review.reviewText}/>
+                        <ReviewDetail 
+                            key={userName}
+                            userName={userName} 
+                            reviewStar={review.reviewStar} 
+                            reviewText={review.reviewText}
+                        />
                     )
                 }
                 </>

@@ -10,8 +10,7 @@ export class CarparkManager {
         let carparks = await APIManager.fetchCarpark();
         carparks = carparks.filter((carpark) => {
             return (haversine({lat: carpark.lat, lng: carpark.lng}, {lat, lng}) <= 500)
-        }
-        );
+        });
         carparks.sort((a,b) => b.availableSlots/b.totalSlots - a.availableSlots/a.totalSlots)
         return carparks;
     }
