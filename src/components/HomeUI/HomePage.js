@@ -8,7 +8,7 @@ class HomePage extends Component {
             <Row>
                 <Col xs={2}/>
                 <Col xs={8} className="text-center">
-                    <img className='mt-5 mb-4 img-fluid' src='/assets/images/logo_large.png'/>
+                    <img className='mt-5 mb-4 img-fluid' src='/assets/images/logo_large.png' alt="SeeHawk"/>
                     <SearchBar shadow/>
                 </Col>
                 <Col xs={2}/>

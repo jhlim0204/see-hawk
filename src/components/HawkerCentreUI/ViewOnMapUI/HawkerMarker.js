@@ -2,10 +2,6 @@ import { Marker } from '@react-google-maps/api';
 import React, {Component} from 'react';
 
 class HawkerMarker extends Component {
-    constructor (props) {
-        super (props);
-    }
-
     render (){
         return(
             <>

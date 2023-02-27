@@ -4,7 +4,7 @@ import { collection, getDocs, doc, setDoc,
 import { ReviewManager } from './ReviewManager.js';
 import{APIManager} from './APIManager.js';
 
-export class HawkerCentreManager{
+export class HawkerCentreManager {
     constructor(){
         throw Error('A static class cannot be instantiated.');
     }

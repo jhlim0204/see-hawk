@@ -1,4 +1,4 @@
-export class FilterManager{
+export class FilterManager {
     constructor(){
         throw Error('A static class cannot be instantiated.');
     }

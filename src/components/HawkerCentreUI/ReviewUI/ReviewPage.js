@@ -50,7 +50,7 @@ class ReviewPage extends Component {
                     {Object.keys(this.state.reviewList).length === 0 ?
                     <>
                         <div className='mt-2 d-flex justify-content-center'>
-                            <img src="/assets/images/empty-box.svg" height={"180px"}></img>
+                            <img src="/assets/images/empty-box.svg" height={"180px"} alt="Empty"/>
                         </div>
                         <div className='mt-2 d-flex justify-content-center'>
                             <p className='fw-semibold text-center'>It looks like we don't have any reviews available at the moment.<br/>Why not be the first to share your review?</p>

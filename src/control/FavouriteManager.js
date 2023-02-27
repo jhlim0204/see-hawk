@@ -2,7 +2,7 @@ import { db } from '../firebase.js'
 import { getDoc, doc, setDoc, arrayRemove, arrayUnion, updateDoc } from 'firebase/firestore'
 import { HawkerCentreManager } from './HawkerCentreManager.js';
 
-export class FavouriteManager{
+export class FavouriteManager {
     constructor(){
         throw Error('A static class cannot be instantiated.');
     }
@@ -47,11 +47,9 @@ export class FavouriteManager{
                 favList: arrayUnion(hawkerID)
             })
             .then(() => {
-                console.log("Succesfully added favourite");
                 return true;
             }) 
             .catch(() => {
-                console.log("Error Adding favourite");
                 return false;
             })
         } else {            
@@ -59,11 +57,9 @@ export class FavouriteManager{
             favList: arrayUnion(hawkerID)
             })
             .then(() => {
-                console.log("Succesfully added favourite");
                 return true;
             }) 
             .catch(() => {
-                console.log("Error Adding favourite");
                 return false;
             })
         }
@@ -75,11 +71,9 @@ export class FavouriteManager{
             favList: arrayRemove(hawkerID)
         })
         .then(() => {
-            console.log("Sucessfully deleted favourite");
             return true;
         })
         .catch(() =>{
-            console.log("Error deleting favourite");
             return false;
         })
     }

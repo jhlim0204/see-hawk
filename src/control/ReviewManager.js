@@ -1,7 +1,7 @@
 import { db } from '../firebase.js';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
-export class ReviewManager{
+export class ReviewManager {
     constructor(){
         throw Error('A static class cannot be instantiated.');
     }
@@ -35,7 +35,7 @@ export class ReviewManager{
     }
 
     static calculateAverage(reviewList){
-        if (Object.keys(reviewList).length == 0){
+        if (Object.keys(reviewList).length === 0){
             return "Unrated"
         }
 
