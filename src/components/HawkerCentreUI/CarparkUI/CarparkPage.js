@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
-import CarkparkDetail from './CarparkDetail';
+import CarparkDetail from './CarparkDetail';
 import { CarparkManager } from "../../../control/CarparkManager";
 import ViewOnMap from '../ViewOnMapUI/ViewOnMap';
 import Lottie from "lottie-react";
 import RunningLoadingAnimation from '../../Animation/runningLoading.json';
 
-class CarkparkList extends Component {
+class CarparkPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			carparkList: [],
 			isLoading: true,
-			updatedTime: 'Not available'
+			updatedTime: 'Not available',
+			updatedTimeKey: Math.random()
 		};
 	}
 
 	fetchNearbyCarpark = async() => {
 		const carparkList = await CarparkManager.fetchNearbyCarpark(this.props.lat, this.props.lng);
 		const dateString = (new Date(Date.now())).toLocaleString('en-SG', {timeZone: 'Asia/Singapore'}).toUpperCase();
-		this.setState({ carparkList: carparkList, isLoading: false, updatedTime: dateString});
+		this.setState({ carparkList: carparkList, isLoading: false, updatedTime: dateString, updatedTimeKey: Math.random()});
 	}
 
 	render() {
@@ -33,17 +34,21 @@ class CarkparkList extends Component {
 				<>
 					<div className="d-flex align-items-center">
 						<h3>List of Nearby Carparks</h3>
-						<ViewOnMap lat={this.props.lat} lng={this.props.lng} carparkList={this.state.carparkList} carpark/>
-						<p className='text-muted ms-auto fst-italic mt-1'>Last updated: {this.state.updatedTime}</p>
+						<ViewOnMap 
+							lat={this.props.lat} 
+							lng={this.props.lng} 
+							carparkList={this.state.carparkList} carpark
+						/>
+						<p key={this.state.updatedTimeKey} className='text-muted ms-auto fst-italic mt-1 updated-date'>Last updated: {this.state.updatedTime}</p>
 					</div>
 					<div>
 						{
 							this.state.carparkList.length === 0 ?
-								<h4>No nearby carpark available</h4>
+								<h5 className='fst-italic'>No nearby carpark available</h5>
 							:
 								this.state.carparkList.map((carpark) =>
-									<CarkparkDetail 
-										key={carpark.carparkNumber} 
+									<CarparkDetail 
+										key={carpark.carparkNumber}
 										number={carpark.carparkNumber}
 										address={carpark.address} 
 										totalSlots={carpark.totalSlots} 
@@ -64,4 +69,4 @@ class CarkparkList extends Component {
 	}
 }
 
-export default CarkparkList;
+export default CarparkPage;

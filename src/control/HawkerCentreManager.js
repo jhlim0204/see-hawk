@@ -29,7 +29,7 @@ export class HawkerCentreManager{
     static async searchHawkerCentre(subString){
         // update firebase if needed
         HawkerCentreManager.updateFireBaseHawkerCentreList()
-        //Get all the hawker centre where address contains subString or name contains subString
+        //Get all the hawker centre where name contains subString
         const hawkerCentreRef = collection(db, 'HawkerCentre')
         const q = query(hawkerCentreRef, where("name", '!=', null))
         let returnList = []
@@ -90,17 +90,17 @@ export class HawkerCentreManager{
         if(await HawkerCentreManager.shouldUpdate()){
             await HawkerCentreManager.updateTime();
 
-            const updatedHawkerCentreArray = await APIManager.fetchhawkerCentre();
-            for(var i = 0; i < updatedHawkerCentreArray.length; i++){
-                var exist = await HawkerCentreManager.checkIfIDExist(updatedHawkerCentreArray[i].id)
+            const updatedHawkerCentreList = await APIManager.fetchhawkerCentre();
+            for(const hawkerCentre of updatedHawkerCentreList){
+                var exist = await HawkerCentreManager.checkIfIDExist(hawkerCentre.id)
 
                 if(exist){
-                    var hawkerCentreRef = doc(db, "HawkerCentre", updatedHawkerCentreArray[i].id)
-                    await updateDoc(hawkerCentreRef, updatedHawkerCentreArray[i]);
+                    var hawkerCentreRef = doc(db, "HawkerCentre", hawkerCentre.id)
+                    await updateDoc(hawkerCentreRef, hawkerCentre);
                 }
                 else{
-                    await setDoc(doc(db, "HawkerCentre", updatedHawkerCentreArray[i].id), {
-                        ...updatedHawkerCentreArray[i],
+                    await setDoc(doc(db, "HawkerCentre", hawkerCentre.id), {
+                        ...hawkerCentre,
                         reviewList: {}
                 });
                 }

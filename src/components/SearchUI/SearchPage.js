@@ -1,7 +1,7 @@
 /* View Component*/
 import React, {Component} from 'react';
 import { Col, FormGroup, Row, Label, Input, Form } from 'reactstrap';
-import HawkerPreview from './HawkerResult';
+import HawkerResult from './HawkerResult';
 import Lottie from "lottie-react";
 import SearchEmptyAnimation from "../Animation/searchEmpty.json";
 import { withRouter } from "../Utility/withRouter";
@@ -160,13 +160,14 @@ class SearchPage extends Component{
                                 this.state.searchResult.length !== 0 ?
 
                                 this.state.searchResult.map((result) => (
-                                    <HawkerPreview 
-                                        name={result.name} 
-                                        address={result.address} 
-                                        noOfStall={result.noOfStall} 
-                                        id={result.id} 
-                                        photoURL={result.photoURL}
-                                        averageRating={result.averageRating}
+                                    <HawkerResult 
+                                        key = {result.id}
+                                        name = {result.name} 
+                                        address = {result.address} 
+                                        noOfStall = {result.noOfStall} 
+                                        id = {result.id} 
+                                        photoURL = {result.photoURL}
+                                        averageRating = {result.averageRating}
                                     />
                                 ))
                                 :

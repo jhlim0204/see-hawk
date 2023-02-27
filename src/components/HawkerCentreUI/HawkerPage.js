@@ -97,7 +97,7 @@ class HawkerPage extends Component {
                             <p><b>Address:</b> {hawkerData.address}</p>
                             <p><b>No. of Stalls:</b> {hawkerData.noOfStall}</p>
                             <p><b>Opening Hours:</b> 6:00 am - 9:00 pm</p>
-                            <p><b>Closure Date:</b> 
+                            <p className='mb-0'><b>Closure Date:</b></p>
                                 <ul>
                                     <li>
                                         {hawkerData.cleaningStartDate1} - {hawkerData.cleaningEndDate1}
@@ -112,7 +112,6 @@ class HawkerPage extends Component {
                                         {hawkerData.cleaningStartDate4} - {hawkerData.cleaningEndDate4}
                                     </li>
                                 </ul>
-                            </p>
                         </Col>
                         <Col xs={7} className="mt-auto mb-auto">
                             <p className="lead mb-0">
@@ -122,12 +121,12 @@ class HawkerPage extends Component {
                     </Row>
                     <Nav tabs className='my-4'>
                         <NavItem>
-                            <NavLink role="button" className={this.state.currentActiveTab === 'review' && "active"} onClick={() => this.toggleTab("review")}>
+                            <NavLink role="button" className={this.state.currentActiveTab === 'review' ? "active" : ""} onClick={() => this.toggleTab("review")}>
                                 <h5 className={this.state.currentActiveTab === 'review' ? "fw-bold" : "text-muted"}>Reviews</h5>
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink role="button" className={this.state.currentActiveTab === 'carpark' && "active"} onClick={() => this.toggleTab("carpark")}>
+                            <NavLink role="button" className={this.state.currentActiveTab === 'carpark' ? "active" : ""} onClick={() => this.toggleTab("carpark")}>
                                 <h5 className={this.state.currentActiveTab === 'carpark' ? "fw-bold" : "text-muted"}>Nearby Carparks</h5>
                             </NavLink>
                         </NavItem>

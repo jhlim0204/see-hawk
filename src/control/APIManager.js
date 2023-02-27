@@ -53,6 +53,12 @@ export class APIManager {
 		return wgs84Coords;
 	}
 
+
+	static cleanAddress(address) {
+		address = address.replace(/\b[a-zA-Z]+\b/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+		return address.replace("Blk", "Block");
+	}
+
 	static async fetchCarpark() {
 		const responseCarparkInfo = await fetch(
 			"https://data.gov.sg/api/action/datastore_search?resource_id=139a3035-e624-4f56-b63f-89ae28d4ae4c&limit=5000"
@@ -75,12 +81,14 @@ export class APIManager {
 				[lng, lat] = APIManager.transformCoords(Number(item.x_coord), Number(item.y_coord))
 				return ({
 					carparkNumber: item.car_park_no,
-					address: item.address,
+					address: APIManager.cleanAddress(item.address),
 					totalSlots: matchedData.carpark_info[0].total_lots,
 					availableSlots: matchedData.carpark_info[0].lots_available,
 					lat: lat,
 					lng: lng
 				})
+			} else {
+				return null;
 			}
 		})
 

@@ -49,16 +49,6 @@
 
 @keyframes fadeIn { 0% { opacity: 0; } 40% {opacity: 0;} 100% { opacity: 1; } }
 
-.profile-pic {
-  height: 43px;
-  border: 3px solid gray;
-  border-radius: 100px;
-}
-
-.profile-pic-small {
-  height: 35px;
-}
-
 .tabs {
   padding-bottom: 10px;
   cursor: pointer;
@@ -136,8 +126,6 @@
   animation-timing-function: linear; 
 }
 
-@keyframes fadeIn { 0% { opacity: 0; } 40% {opacity: 0;} 100% { opacity: 1; } }
-
 .toast.show {
   visibility: visible;
   -webkit-animation: toastIn 0.3s, toastOut 0.3s 1.7s;
@@ -168,4 +156,10 @@
 .white-background {
   background-color: white;
   border-radius: 100px;
+}
+
+.updated-date {
+  animation-name: fadeIn; 
+  animation-duration: 200ms; 
+  animation-timing-function: linear; 
 }

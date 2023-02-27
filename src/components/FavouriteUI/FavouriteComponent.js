@@ -36,7 +36,7 @@ class FavouriteComponent extends Component{
                         <Col xs="3">
                             <Link to={"/view/"+this.props.id} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                             <CardImg
-                            alt="Card image cap"
+                            alt="Hawker Centre"
                             src={this.props.photoURL}
                             className="rounded-start card-left img-fluid"
                             style={{
@@ -51,8 +51,8 @@ class FavouriteComponent extends Component{
                                 <CardBody>
                                 <CardTitle tag="h3" className='mb-3'>{this.props.name}</CardTitle>
                                 <CardText>
-                                    <p className='mb-1'><b>Address:</b> {this.props.address}</p>
-                                    <p className='mb-1'><b>Number of stalls:</b> {this.props.noOfStall}</p>
+                                    <span className='d-block mb-1'><b>Address:</b> {this.props.address}</span>
+                                    <span><b>Number of stalls:</b> {this.props.noOfStall}</span>
                                 </CardText>
                                 </CardBody>
                             </Link>

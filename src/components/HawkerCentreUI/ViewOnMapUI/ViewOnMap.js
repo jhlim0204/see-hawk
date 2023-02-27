@@ -58,7 +58,9 @@ class ViewOnMap extends Component {
                     {this.props.carpark ?
                         this.props.carparkList.map((carpark)=> 
                             <CarparkMarker 
-                                position= { {lat:carpark.lat, lng:carpark.lng} }
+                                key = {carpark.carparkNumber}
+                                number = {carpark.carparkNumber}
+                                position = { {lat:carpark.lat, lng:carpark.lng} }
                                 address = {carpark.address}
                                 availableSlots = {carpark.availableSlots}
                             />

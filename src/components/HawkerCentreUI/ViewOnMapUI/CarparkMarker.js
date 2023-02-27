@@ -25,6 +25,7 @@ class CarparkMarker extends Component {
                     position={this.props.position} onCloseClick={this.openInfoWindow}
                 >
                     <>
+                    <h6 className='text-start'>{this.props.number}</h6>
                     <p className='mb-0 text-start'><b>Address:</b> {this.props.address}</p>
                     <p className='mb-0 text-start'><b>Available Slot:</b> {this.props.availableSlots}</p>
                     </>

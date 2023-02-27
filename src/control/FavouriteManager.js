@@ -23,9 +23,19 @@ export class FavouriteManager{
     }
 
     static async isFavourite(accountName, hawkerID){
+        if(!accountName){
+            return false;
+        }
+
         const docRef = doc(db, 'Account', accountName);
-        const favouriteList = (await getDoc(docRef)).data().favList;
-        return (favouriteList.includes(hawkerID));
+        const docSnap = await getDoc(docRef);
+        
+        if (docSnap.exists()){
+            const favouriteList = docSnap.data().favList;
+            return (favouriteList.includes(hawkerID));
+        } else {
+            return false;
+        }
     }
 
     static async addFavourite(accountName, hawkerID){

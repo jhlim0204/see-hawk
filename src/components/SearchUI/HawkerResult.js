@@ -3,11 +3,7 @@ import {Card, CardImg, CardBody, CardTitle, CardText, Col, Row} from 'reactstrap
 import StarsRating from 'react-star-rate';
 import { Link } from 'react-router-dom';
 
-class HawkerPreview extends Component{  
-    constructor (props) {
-        super (props)
-    }
-
+class HawkerResult extends Component{
     render() {
         return(
             <Link to={"/view/"+this.props.id} style={{ color: 'inherit', textDecoration: 'inherit'}}>
@@ -49,4 +45,4 @@ class HawkerPreview extends Component{
     }
 }
 
-export default HawkerPreview;
+export default HawkerResult;
