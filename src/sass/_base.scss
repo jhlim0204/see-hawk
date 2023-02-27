@@ -1,14 +1,14 @@
 $black: black;
-$star-empty: #CFD8DC;
-$star-filled: #FBC02D;
+$star-empty: #cfd8dc;
+$star-filled: #fbc02d;
 $dropdown-font: Helvetica;
 $app-background: #edede8;
 $content-background: white;
-$line-background: #CFD8DC;
+$line-background: #cfd8dc;
 $card-hover-background: #f3f7ff;
 
 /* Animations to fade the tab pane in and out */
-@mixin fadeIn{
+@mixin fadeIn {
     @keyframes fadeIn {
         0% {
             opacity: 0;
@@ -34,7 +34,7 @@ $card-hover-background: #f3f7ff;
             opacity: 1;
         }
     }
-    
+
     @keyframes toastIn {
         from {
             bottom: -10px;
@@ -59,7 +59,7 @@ $card-hover-background: #f3f7ff;
             opacity: 0;
         }
     }
-    
+
     @keyframes toastOut {
         from {
             bottom: 30px;

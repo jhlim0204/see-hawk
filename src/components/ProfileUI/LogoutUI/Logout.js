@@ -8,17 +8,17 @@ class Logout extends Component {
 
         this.state = {
             isLoading: false
-        }
+        };
     }
 
-    logout = async(event) => {
+    logout = async (event) => {
         event.preventDefault();
-        this.setState({isLoading: true});
+        this.setState({ isLoading: true });
 
         await SessionManager.logout();
-        this.setState({isLoading: false});
+        this.setState({ isLoading: false });
         this.props.toggle();
-    }
+    };
 
     render() {
         return (
@@ -26,11 +26,13 @@ class Logout extends Component {
                 <ModalHeader toggle={this.props.toggle}>Log out</ModalHeader>
                 <ModalBody>Are you sure you want to log out?</ModalBody>
                 <ModalFooter>
-                    <Button onClick={this.logout} color="primary" disabled={this.state.isLoading}>Yes</Button>
+                    <Button onClick={this.logout} color='primary' disabled={this.state.isLoading}>
+                        Yes
+                    </Button>
                     <Button onClick={this.props.toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>
-        )
+        );
     }
 }
 

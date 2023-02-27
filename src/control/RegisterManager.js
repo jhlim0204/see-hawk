@@ -1,25 +1,24 @@
-import { auth } from '../firebase'
+import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import SessionManager from './SessionManager';
 
 class RegisterManager {
-    constructor(){
+    constructor() {
         throw Error('A static class cannot be instantiated.');
     }
-    
+
     // Registration Fn
     static async register(username, password) {
-        username = username + "@seehawk.com"
-        let user = null
+        username = username + '@seehawk.com';
+        let user = null;
         await createUserWithEmailAndPassword(auth, username, password)
             .then((userCredential) => {
-                user = userCredential.user
+                user = userCredential.user;
             })
-            .catch((err) => {
-            });
+            .catch(() => {});
         await SessionManager.logout();
-        return !!user
+        return !!user;
     }
 }
 
-export default RegisterManager
+export default RegisterManager;

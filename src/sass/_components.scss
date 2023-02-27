@@ -4,23 +4,23 @@
 
 /* Line Styling */
 .line {
-	background-color: $line-background;
-	height: 1px;
-	width: 100%;
+    background-color: $line-background;
+    height: 1px;
+    width: 100%;
 }
 
 /* Page Animation Styling */
 .page-transition {
-	animation-name: fadeIn;
-	animation-duration: 350ms;
-	animation-timing-function: linear;
+    animation-name: fadeIn;
+    animation-duration: 350ms;
+    animation-timing-function: linear;
 }
 
 /* Dropdown Styling */
 .dropdown {
-	font-family: $dropdown-font;
-	font-weight: 500;
-    
+    font-family: $dropdown-font;
+    font-weight: 500;
+
     .dropdown-title {
         font-size: 17px;
     }
@@ -33,43 +33,43 @@
 
 /* Tabs styling */
 .tabs {
-	padding-bottom: 10px;
-	cursor: pointer;
+    padding-bottom: 10px;
+    cursor: pointer;
 }
 
 /* Nav Tabs Styling */
 .nav-tabs {
-	.nav-link {
-		color: $black;
-		border: none;
-		margin-bottom: -0.5px;
+    .nav-link {
+        color: $black;
+        border: none;
+        margin-bottom: -0.5px;
 
-		&:hover {
-			border-bottom: 1.5px solid #2196F3;
-		}
+        &:hover {
+            border-bottom: 1.5px solid #2196f3;
+        }
 
         &.active {
             border-bottom: 1.5px solid $black;
         }
-	}
+    }
 }
 
 /* Tab Pane Styling */
 .tab-pane.active {
-	animation-name: fadeIn;
-	animation-duration: 300ms;
-	animation-timing-function: linear;
+    animation-name: fadeIn;
+    animation-duration: 300ms;
+    animation-timing-function: linear;
 }
 
 /* Form Styling */
 .filter-form {
-	div.form-check {
-		margin-top: 8px;
-	}
+    div.form-check {
+        margin-top: 8px;
+    }
 }
 
 .form-check-input {
-	box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 /* Card Styling*/
@@ -86,50 +86,50 @@
 
     &.clickable-card {
         &:hover {
-            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
             background-color: $card-hover-background;
         }
     }
 
-	&.grey-card{
-		background-color: rgb(239, 239, 239);
-		border: none;
-	}
+    &.grey-card {
+        background-color: rgb(239, 239, 239);
+        border: none;
+    }
 }
 
 /* Star Styling*/
 
 .bi-star-fill {
-	color: $star-empty;
+    color: $star-empty;
 
-    &.active{
+    &.active {
         color: $star-filled;
     }
 }
 .small-rating {
-	font-size: 25px !important;
-	li {
-		margin-right: 2px;
-	}
+    font-size: 25px !important;
+    li {
+        margin-right: 2px;
+    }
 }
 
 /* Hawker Page Text Styling*/
 .hawker-detail {
-	p {
-		font-size: 17px;
-	}
+    p {
+        font-size: 17px;
+    }
 }
 
 /* Toast Animation Styling */
 .toast.show {
-	visibility: visible;
-	-webkit-animation: toastIn 0.3s, toastOut 0.3s 1.7s;
-	animation: toastIn 0.3s, toastOut 0.3s 1.7s;
+    visibility: visible;
+    -webkit-animation: toastIn 0.3s, toastOut 0.3s 1.7s;
+    animation: toastIn 0.3s, toastOut 0.3s 1.7s;
 }
 
 /* Updated Date Animation Styling */
 .updated-date {
-	animation-name: fadeIn;
-	animation-duration: 200ms;
-	animation-timing-function: linear;
+    animation-name: fadeIn;
+    animation-duration: 200ms;
+    animation-timing-function: linear;
 }

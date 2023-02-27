@@ -1,31 +1,31 @@
-import React, {Component} from 'react';
-import {Navbar, Nav, NavItem, NavbarBrand} from 'reactstrap';
-import {NavLink} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Navbar, Nav, NavItem, NavbarBrand } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 import Profile from '../ProfileUI/Profile';
 import SearchBar from '../SearchUI/SearchBar';
-import { withRouter } from "../Utility/withRouter";
+import { withRouter } from '../Utility/withRouter';
 
 class Header extends Component {
     render() {
-        return(
-            <Navbar className="fixed-top bg-light shadow-sm">
-                <NavbarBrand tag={NavLink} className="d-none d-sm-block ms-2 me-5" to="/home">
-                    {this.props.location.pathname !== '/' && <img src="/assets/images/logo.png" alt="logo" height="45"/>}
+        return (
+            <Navbar className='fixed-top bg-light shadow-sm'>
+                <NavbarBrand tag={NavLink} className='d-none d-sm-block ms-2 me-5' to='/home'>
+                    {this.props.location.pathname !== '/' && (
+                        <img src='/assets/images/logo.png' alt='logo' height='45' />
+                    )}
                 </NavbarBrand>
-                
+
                 <Nav navbar className='flex-grow-1 mx-2'>
-                    <NavItem>
-                        {this.props.location.pathname !== '/' && <SearchBar/>}
-                    </NavItem>
+                    <NavItem>{this.props.location.pathname !== '/' && <SearchBar />}</NavItem>
                 </Nav>
-                
-                <Nav navbar className="ms-1">
+
+                <Nav navbar className='ms-1'>
                     <NavItem>
-                        <Profile/>
+                        <Profile />
                     </NavItem>
                 </Nav>
             </Navbar>
-        )
+        );
     }
 }
 

@@ -1,33 +1,32 @@
-import { auth } from '../firebase'
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth } from '../firebase';
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 class SessionManager {
-    constructor(){
+    constructor() {
         throw Error('A static class cannot be instantiated.');
     }
 
     // Login Fn
     static async login(username, password) {
-        username = username + "@seehawk.com"
+        username = username + '@seehawk.com';
         var user = null;
         await signInWithEmailAndPassword(auth, username, password)
             .then((userCredential) => {
-                user = userCredential.user
+                user = userCredential.user;
             })
-            .catch((error) => {
-            });
-        
+            .catch(() => {});
+
         return !!user;
     }
 
     // Logout Fn
     static async logout() {
-        await signOut(auth)
+        await signOut(auth);
     }
 
-    static authListener(callback){        
-        onAuthStateChanged(auth, (user) => callback(user))
+    static authListener(callback) {
+        onAuthStateChanged(auth, (user) => callback(user));
     }
 }
 
-export default SessionManager
+export default SessionManager;
