@@ -1,5 +1,6 @@
-import { db } from '../firebase.js';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+//import { db } from '../firebase.js';
+//import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { DataManager } from './DataManager.js';
 
 export class ReviewManager {
     constructor() {
@@ -7,31 +8,11 @@ export class ReviewManager {
     }
 
     static async getReview(hawkerCentreId) {
-        const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId);
-        const hawkerCentre = await getDoc(hawkerCentreRef);
-        if (hawkerCentre.exists()) {
-            return hawkerCentre.data().reviewList;
-        } else {
-            console.log('No such document!');
-            return false;
-        }
+        return await DataManager.getReview(hawkerCentreId);
     }
 
     static async addReview(hawkerCentreId, accountID, reviewStar, reviewText) {
-        let retrievedReviewList = await ReviewManager.getReview(hawkerCentreId);
-        console.log(retrievedReviewList);
-        retrievedReviewList[accountID] = { reviewStar: reviewStar, reviewText: reviewText };
-        const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId);
-
-        try {
-            await updateDoc(hawkerCentreRef, {
-                reviewList: retrievedReviewList
-            });
-            return true;
-        } catch (error) {
-            console.log('Error adding review');
-            return false;
-        }
+       return await DataManager.addReview(hawkerCentreId, accountID, reviewStar, reviewText);
     }
 
     static calculateAverage(reviewList) {

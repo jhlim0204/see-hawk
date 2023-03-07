@@ -1,6 +1,7 @@
-import { db } from '../firebase.js';
-import { getDoc, doc, setDoc, arrayRemove, arrayUnion, updateDoc } from 'firebase/firestore';
-import { HawkerCentreManager } from './HawkerCentreManager.js';
+//import { db } from '../firebase.js';
+//import { getDoc, doc, setDoc, arrayRemove, arrayUnion, updateDoc } from 'firebase/firestore';
+//import { HawkerCentreManager } from './HawkerCentreManager.js';
+import { DataManager } from './DataManager.js';
 
 export class FavouriteManager {
     constructor() {
@@ -8,6 +9,7 @@ export class FavouriteManager {
     }
 
     static async getFavourite(accountName) {
+        /*
         const docRef = doc(db, 'Account', accountName);
         const favouriteList = (await getDoc(docRef)).data().favList;
 
@@ -27,61 +29,21 @@ export class FavouriteManager {
         }
 
         return returnList;
+        */
+       return await DataManager.getFavourite(accountName);
     }
 
     static async isFavourite(accountName, hawkerID) {
-        if (!accountName) {
-            return false;
-        }
-
-        const docRef = doc(db, 'Account', accountName);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-            const favouriteList = docSnap.data().favList;
-            return favouriteList.includes(hawkerID);
-        } else {
-            return false;
-        }
+       return await DataManager.isFavourite(accountName, hawkerID);
     }
 
     static async addFavourite(accountName, hawkerID) {
-        const docRef = doc(db, 'Account', accountName);
-        const account = await getDoc(docRef);
-
-        if (account.exists()) {
-            await updateDoc(docRef, {
-                favList: arrayUnion(hawkerID)
-            })
-                .then(() => {
-                    return true;
-                })
-                .catch(() => {
-                    return false;
-                });
-        } else {
-            await setDoc(docRef, {
-                favList: arrayUnion(hawkerID)
-            })
-                .then(() => {
-                    return true;
-                })
-                .catch(() => {
-                    return false;
-                });
-        }
+       return await DataManager.addFavourite(accountName, hawkerID);
     }
 
     static async deleteFavourite(accountName, hawkerID) {
-        const docRef = doc(db, 'Account', accountName);
-        await updateDoc(docRef, {
-            favList: arrayRemove(hawkerID)
-        })
-            .then(() => {
-                return true;
-            })
-            .catch(() => {
-                return false;
-            });
+        return await DataManager.deleteFavourite(accountName, hawkerID);
     }
+    
+   
 }
