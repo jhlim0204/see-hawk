@@ -1,15 +1,29 @@
 export class FilterManager {
+    /**
+     * Constructor for FilterManager
+     * @throws Will throw effor if this static class is instantiated
+     */
     constructor() {
         throw Error('A static class cannot be instantiated.');
     }
-
+    /**
+     * Method to filter hawkerCentreList depending on criteria
+     * @param {hawkerCentreList} - hawkerCentreList
+     * @param {criteria} - criteria
+     * @returns {hawkerCentre[]} - returns filtered hawkerCentres
+     */
     static filter(hawkerCentreList, criteria) {
         let returnList = hawkerCentreList;
         returnList = FilterManager.filterStar(returnList, criteria.star);
         returnList = FilterManager.filterRegion(returnList, criteria.region);
         return returnList;
     }
-
+    /**
+     * Method to filter hawkerCentre list based on reviewStar
+     * @param {hawkerCentreList} - hawkerCentreList
+     * @param {Number} - minStar
+     * @returns {hawkerCentre[]} - returns filtered hawkerCentres
+     */
     static filterStar(hawkerCentreList, minStar) {
         let returnList = hawkerCentreList.filter((hawkerCentre) => {
             return (
@@ -20,6 +34,12 @@ export class FilterManager {
         return returnList;
     }
 
+    /**
+     * Method to filter hawkerCentre list based on region
+     * @param {hawkerCentreList} - hawkerCentreList
+     * @param {region} - minStar
+     * @returns {hawkerCenter[]} - returns filtered hawkerCentres
+     */
     static filterRegion(hawkerCentreList, region) {
         const regionSet = new Set();
         for (const key in region) {
@@ -39,6 +59,16 @@ export class FilterManager {
         return returnList;
     }
 
+    /**
+     * Method to convert adress to region using postal code
+     * W: 60 <= postalCode <= 71
+     * N: 72 <= postalCode <= 76
+     * E: 46 <= postalCode <= 52
+     * NE: 53 <= postalCode <= 55 or 79 <= postalCode <= 82 except for 81
+     * C: 1 <= postalCode <= 41 or 56 <= postalCode <= 82 except for 59
+     * @param {String} - address
+     * @returns {String} - returns W for west,N for north, E for east, NE for northeast, C for central. 
+     */
     static convertAddressToRegion(address) {
         let postalCode = (address.match(/\d{6}/) || [false])[0];
         if (postalCode) {
