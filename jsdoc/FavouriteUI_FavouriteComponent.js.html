@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: FavouriteUI/FavouriteComponent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: FavouriteUI/FavouriteComponent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import {
+    Card,
+    CardImg,
+    CardBody,
+    CardTitle,
+    CardText,
+    Col,
+    Row,
+    Button,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter
+} from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { FavouriteManager } from '../../control/FavouriteManager';
+import { UserContext } from '../UserContext';
+
+/**
+ * Class to create a favourited hawker centre component
+ */
+class FavouriteComponent extends Component {
+    static contextType = UserContext;
+    /**
+     * Props - property functionality in React to pass data between functions/classes
+     */
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isModalOpen: false,
+            isLoading: false
+        };
+    }
+
+    /**
+     * This method removes a hawker centre from the favourites list
+     */
+    removeFavourite = async () => {
+        this.setState({ isLoading: true });
+        await FavouriteManager.deleteFavourite(this.context, String(this.props.id));
+        this.setState({ isLoading: false });
+        this.toggleModal();
+        await this.props.updateList();
+    };
+
+    /**
+     * Method that opens and closes the modal window (React functionality)
+     */
+    toggleModal = () => {
+        this.setState({ isModalOpen: !this.state.isModalOpen });
+    };
+
+    /**
+     * Method to render html components in React
+     */
+    render() {
+        return (
+            &lt;>
+                &lt;Card className='my-3 text-start border-0 shadow-sm clickable-card'>
+                    &lt;Row>
+                        &lt;Col xs='3'>
+                            &lt;Link
+                                to={'/view/' + this.props.id}
+                                style={{ color: 'inherit', textDecoration: 'inherit' }}
+                            >
+                                &lt;CardImg
+                                    alt='Hawker Centre'
+                                    src={this.props.photoURL}
+                                    className='rounded-start card-left img-fluid'
+                                    style={{
+                                        height: 165,
+                                        width: 270
+                                    }}
+                                />
+                            &lt;/Link>
+                        &lt;/Col>
+                        &lt;Col xs='8' className='ps-0'>
+                            &lt;Link
+                                to={'/view/' + this.props.id}
+                                style={{ color: 'inherit', textDecoration: 'inherit' }}
+                            >
+                                &lt;CardBody>
+                                    &lt;CardTitle tag='h3' className='mb-3'>
+                                        {this.props.name}
+                                    &lt;/CardTitle>
+                                    &lt;CardText>
+                                        &lt;span className='d-block mb-1'>
+                                            &lt;b>Address:&lt;/b> {this.props.address}
+                                        &lt;/span>
+                                        &lt;span>
+                                            &lt;b>Number of stalls:&lt;/b> {this.props.noOfStall}
+                                        &lt;/span>
+                                    &lt;/CardText>
+                                &lt;/CardBody>
+                            &lt;/Link>
+                        &lt;/Col>
+                        &lt;Col xs='1'>
+                            &lt;Button
+                                className='w-100 h-100 border-0 card-right'
+                                color='danger'
+                                onClick={this.toggleModal}
+                                outline
+                            >
+                                &lt;i className='bi bi-trash3' />
+                            &lt;/Button>
+                        &lt;/Col>
+                    &lt;/Row>
+                &lt;/Card>
+                &lt;Modal toggle={this.toggleModal} isOpen={this.state.isModalOpen}>
+                    &lt;ModalHeader toggle={this.toggleModal}>Remove from Favorite List&lt;/ModalHeader>
+                    &lt;ModalBody>Are you sure you want to remove this hawker centre?&lt;/ModalBody>
+                    &lt;ModalFooter>
+                        &lt;Button
+                            onClick={this.removeFavourite}
+                            disabled={this.state.isLoading}
+                            color='primary'
+                        >
+                            Yes
+                        &lt;/Button>
+                        &lt;Button onClick={this.toggleModal}>Cancel&lt;/Button>
+                    &lt;/ModalFooter>
+                &lt;/Modal>
+            &lt;/>
+        );
+    }
+}
+
+export default FavouriteComponent;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CarparkDetail.html">CarparkDetail</a></li><li><a href="CarparkMarker.html">CarparkMarker</a></li><li><a href="CarparkPage.html">CarparkPage</a></li><li><a href="FavouriteComponent.html">FavouriteComponent</a></li><li><a href="FavouritePage.html">FavouritePage</a></li><li><a href="FavouriteToggle.html">FavouriteToggle</a></li><li><a href="GiveReview.html">GiveReview</a></li><li><a href="HawkerMarker.html">HawkerMarker</a></li><li><a href="HawkerPage.html">HawkerPage</a></li><li><a href="Header.html">Header</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="ReviewDetail.html">ReviewDetail</a></li><li><a href="ReviewPage.html">ReviewPage</a></li><li><a href="ViewOnMap.html">ViewOnMap</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Mar 22 2023 14:11:22 GMT+0800 (Singapore Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

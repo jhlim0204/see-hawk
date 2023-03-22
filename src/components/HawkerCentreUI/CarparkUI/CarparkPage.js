@@ -5,7 +5,13 @@ import ViewOnMap from '../ViewOnMapUI/ViewOnMap';
 import Lottie from 'lottie-react';
 import RunningLoadingAnimation from '../../Animation/runningLoading.json';
 
+/**
+ * Class to create the carpark page
+ */
 class CarparkPage extends Component {
+    /**
+     * Props - property functionality in React to pass data between functions/classes
+     */
     constructor(props) {
         super(props);
         this.state = {
@@ -16,6 +22,9 @@ class CarparkPage extends Component {
         };
     }
 
+    /**
+     * Method to fetch carparks near to selected hawker centre
+     */
     fetchNearbyCarpark = async () => {
         const carparkList = await CarparkManager.fetchNearbyCarpark(this.props.lat, this.props.lng);
         const dateString = new Date(Date.now())
@@ -29,6 +38,9 @@ class CarparkPage extends Component {
         });
     };
 
+    /**
+     * Method to render html components in React
+     */
     render() {
         if (this.state.isLoading) {
             return (
@@ -78,6 +90,9 @@ class CarparkPage extends Component {
         }
     }
 
+    /**
+     * This method is run if the component is mounted (React functionality)
+     */
     componentDidMount() {
         this.fetchNearbyCarpark();
         setInterval(this.fetchNearbyCarpark, 60001);

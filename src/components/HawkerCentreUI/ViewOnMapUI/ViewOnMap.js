@@ -4,7 +4,13 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import CarparkMarker from './CarparkMarker';
 import HawkerMarker from './HawkerMarker';
 
+/**
+ * Class to create a map component to view carpark and hawker centre locations
+ */
 class ViewOnMap extends Component {
+    /**
+     * Props - property functionality in React to pass data between functions/classes
+     */
     constructor(props) {
         super(props);
 
@@ -19,14 +25,25 @@ class ViewOnMap extends Component {
         };
     }
 
+    /**
+     * Method that opens and closes the modal window (React functionality)
+     */
     toggleModal = () => {
         this.setState({ isModalOpen: !this.state.isModalOpen });
     };
 
+    /**
+     * Method to display the window containing more information
+     * @param {void}
+     * @return {void}
+     */
     openInfoWindow = () => {
         this.setState({ infoWindowOpen: !this.state.infoWindowOpen });
     };
 
+    /**
+     * Method to render html components in React
+     */
     render() {
         return (
             <>

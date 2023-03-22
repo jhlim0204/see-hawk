@@ -1,7 +1,13 @@
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import React, { Component } from 'react';
 
+/**
+ * Class to create component that marks carpark on map
+ */
 class CarparkMarker extends Component {
+    /**
+     * Props - property functionality in React to pass data between functions/classes
+     */
     constructor(props) {
         super(props);
 
@@ -10,10 +16,18 @@ class CarparkMarker extends Component {
         };
     }
 
+    /**
+     * Method to display the window containing more carpark information
+     * @param {void}
+     * @return {void}
+     */
     openInfoWindow = () => {
         this.setState({ infoWindowOpen: !this.state.infoWindowOpen });
     };
 
+    /**
+     * Method to render html components in React
+     */
     render() {
         return (
             <>

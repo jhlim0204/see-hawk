@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import SearchBar from '../SearchUI/SearchBar';
 import { Col, Row } from 'reactstrap';
 
+/**
+ * Class to create component for the home page
+ */
 class HomePage extends Component {
+    /**
+     * Method to render html components in React
+     */
     render() {
         return (
             <Row>
@@ -20,6 +26,9 @@ class HomePage extends Component {
         );
     }
 
+    /**
+     * This method is run if the component is mounted (React functionality)
+     */
     componentDidMount() {
         document.title = 'Home - SeeHawk';
     }

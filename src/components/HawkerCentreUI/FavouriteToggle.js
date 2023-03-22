@@ -4,9 +4,15 @@ import { UserContext } from '../UserContext';
 import { withRouter } from '../Utility/withRouter';
 import { FavouriteManager } from '../../control/FavouriteManager';
 
+/**
+ * Class to create component to set and unset hawker centre as favourite
+ */
 class FavouriteToggle extends Component {
     static contextType = UserContext;
 
+    /**
+     * Props - property functionality in React to pass data between functions/classes
+     */
     constructor(props) {
         super(props);
 
@@ -20,14 +26,29 @@ class FavouriteToggle extends Component {
         };
     }
 
+    /**
+     * Method to close notification for successfully saved hawker centre
+     * @param {void}
+     * @return {void}
+     */
     closeSavedNotification = () => {
         this.setState({ isSavedNotificationOpen: false });
     };
 
+    /**
+     * Method to close notification for successfully unsaved hawker centre
+     * @param {void}
+     * @return {void}
+     */
     closeUnsavedNotification = () => {
         this.setState({ isUnsavedNotificationOpen: false });
     };
 
+    /**
+     * Method to display notification for successfully saved/unsaved hawker centre
+     * @param {void}
+     * @return {void}
+     */
     toggleNotification = async () => {
         if (this.state.isSaved) {
             this.setDisabled();
@@ -50,12 +71,20 @@ class FavouriteToggle extends Component {
         }
     };
 
+    /**
+     * Method that displays informative text when user hovers over element (React functionality)
+     */
     toggleTooltip = () => {
         if (!this.context) {
             this.setState({ isTooltipOpen: !this.state.isTooltipOpen });
         }
     };
 
+    /**
+     * Method to set notification window as disabled
+     * @param {void}
+     * @return {void}
+     */
     setDisabled = () => {
         this.setState({ disabled: true }, () => {
             window.setTimeout(() => {
@@ -64,11 +93,19 @@ class FavouriteToggle extends Component {
         });
     };
 
+    /**
+     * Method to check if hawker centre is already favourite
+     * @param {void}
+     * @return {void}
+     */
     checkFavourite = async () => {
         const isSaved = await FavouriteManager.isFavourite(this.context, this.state.hawkerID);
         this.setState({ isSaved: isSaved });
     };
 
+    /**
+     * Method to render html components in React
+     */
     render() {
         return (
             <>
@@ -104,7 +141,7 @@ class FavouriteToggle extends Component {
                             <button
                                 className='btn-close btn-close-white me-2 m-auto'
                                 onClick={this.closeSavedNotification}
-                             />
+                            />
                         </div>
                     </Toast>
 
@@ -119,7 +156,7 @@ class FavouriteToggle extends Component {
                             <button
                                 className='btn-close btn-close-white me-2 m-auto'
                                 onClick={this.closeUnsavedNotification}
-                             />
+                            />
                         </div>
                     </Toast>
                 </div>
@@ -127,6 +164,9 @@ class FavouriteToggle extends Component {
         );
     }
 
+    /**
+     * This method is run if the component is mounted (React functionality)
+     */
     componentDidMount() {
         this.checkFavourite();
     }

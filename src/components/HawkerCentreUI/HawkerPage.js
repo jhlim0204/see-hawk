@@ -8,7 +8,13 @@ import { withRouter } from '../Utility/withRouter';
 import { HawkerCentreManager } from '../../control/HawkerCentreManager';
 import HawkerPagePlaceholder from '../PlaceholderUI/HawkerPagePlaceholder';
 
+/**
+ * Class to create component for hawker centre page
+ */
 class HawkerPage extends Component {
+    /**
+     * Props - property functionality in React to pass data between functions/classes
+     */
     constructor(props) {
         super(props);
 
@@ -36,12 +42,22 @@ class HawkerPage extends Component {
         };
     }
 
+    /**
+     * Method to toggle the review or carpark tab
+     * @param {string} tab 
+     * @return {void}
+     */
     toggleTab = (tab) => {
         if (this.state.currentActiveTab !== tab) {
             this.setState({ currentActiveTab: tab });
         }
     };
 
+    /**
+     * Method to get hawker centre detail
+     * @param {void}
+     * @return {void}
+     */
     async getHawkerCenterDetail() {
         this.setState({ isLoading: true });
         let hawkerData = await HawkerCentreManager.retrieveHawkerCentreDetails(
@@ -57,6 +73,9 @@ class HawkerPage extends Component {
         }
     }
 
+    /**
+     * Method to render html components in React
+     */
     render() {
         let hawkerData = this.state.hawkerData;
 
@@ -185,6 +204,9 @@ class HawkerPage extends Component {
         }
     }
 
+    /**
+     * This method is run if the component is mounted (React functionality)
+     */
     componentDidMount() {
         this.getHawkerCenterDetail();
         document.title = 'Hawker Centre - SeeHawk';

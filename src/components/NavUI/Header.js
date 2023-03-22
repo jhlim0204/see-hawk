@@ -5,7 +5,13 @@ import Profile from '../ProfileUI/Profile';
 import SearchBar from '../SearchUI/SearchBar';
 import { withRouter } from '../Utility/withRouter';
 
+/**
+ * Class to create header component
+ */
 class Header extends Component {
+    /**
+     * Method to render html components in React
+     */
     render() {
         return (
             <Navbar className='fixed-top bg-light shadow-sm'>

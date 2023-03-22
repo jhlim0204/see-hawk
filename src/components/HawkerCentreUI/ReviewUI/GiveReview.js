@@ -6,9 +6,15 @@ import ReviewSubmittedAnimation from '../../Animation/reviewSubmitted.json';
 import { ReviewManager } from '../../../control/ReviewManager';
 import { UserContext } from '../../UserContext';
 
+/**
+ * Class to create component for giving textual review
+ */
 class GiveReview extends Component {
     static contextType = UserContext;
 
+    /**
+     * Props - property functionality in React to pass data between functions/classes
+     */
     constructor(props) {
         super(props);
 
@@ -24,6 +30,9 @@ class GiveReview extends Component {
         };
     }
 
+    /**
+     * Method that opens and closes the modal window (React functionality)
+     */
     toggleModal = () => {
         if (this.state.isModalOpen === true) {
             this.setState({
@@ -36,26 +45,47 @@ class GiveReview extends Component {
         }
     };
 
+    /**
+     * Method that displays informative text when user hovers over review element (React functionality)
+     */
     toggleReviewTooltip = () => {
         if (!this.context) {
             this.setState({ isReviewTooltipOpen: !this.state.isReviewTooltipOpen });
         }
     };
 
+    /**
+     * Method that displays informative text when user hovers over submit element (React functionality)
+     */
     toggleSubmitTooltip = () => {
         if (this.state.reviewStar === 0) {
             this.setState({ isSubmitTooltipOpen: !this.state.isSubmitTooltipOpen });
         }
     };
 
+    /**
+     * Method to set the number of review stars for hawker centre
+     * @param {int} reviewStar number of review stars
+     * @return {void}
+     */
     setReviewStar = (reviewStar) => {
         this.setState({ reviewStar: reviewStar });
     };
 
+    /**
+     * Method to handle review input from user
+     * @param {Event} event (React functionality)
+     * @return {void}
+     */
     handleInput = (event) => {
         this.setState({ [event.target.name]: event.target.value });
     };
 
+    /**
+     * Method to handle user submission of review
+     * @param {Event} event (React functionality)
+     * @return {void}
+     */
     handleSubmit = async (event) => {
         event.preventDefault();
         //Calling controller
@@ -81,6 +111,9 @@ class GiveReview extends Component {
         }
     };
 
+    /**
+     * Method to render html components in React
+     */
     render() {
         return (
             <>

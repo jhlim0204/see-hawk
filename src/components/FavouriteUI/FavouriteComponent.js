@@ -17,9 +17,14 @@ import { Link } from 'react-router-dom';
 import { FavouriteManager } from '../../control/FavouriteManager';
 import { UserContext } from '../UserContext';
 
+/**
+ * Class to create a favourited hawker centre component
+ */
 class FavouriteComponent extends Component {
     static contextType = UserContext;
-
+    /**
+     * Props - property functionality in React to pass data between functions/classes
+     */
     constructor(props) {
         super(props);
 
@@ -29,6 +34,9 @@ class FavouriteComponent extends Component {
         };
     }
 
+    /**
+     * This method removes a hawker centre from the favourites list
+     */
     removeFavourite = async () => {
         this.setState({ isLoading: true });
         await FavouriteManager.deleteFavourite(this.context, String(this.props.id));
@@ -37,10 +45,16 @@ class FavouriteComponent extends Component {
         await this.props.updateList();
     };
 
+    /**
+     * Method that opens and closes the modal window (React functionality)
+     */
     toggleModal = () => {
         this.setState({ isModalOpen: !this.state.isModalOpen });
     };
 
+    /**
+     * Method to render html components in React
+     */
     render() {
         return (
             <>
