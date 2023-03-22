@@ -1,0 +1,11 @@
+{
+    "source": {
+        "include": ["src/components/SearchUI",
+        "src/components/ProfileUI",
+        "src/components/ProfileUI/LoginRegisterUI",
+        "src/components/ProfileUI/LogoutUI",
+        "src/components/Utility",
+        "src/components/PlaceholderUI"],
+        "includePattern": ".+\\.js(doc|x)?$"
+    }
+}

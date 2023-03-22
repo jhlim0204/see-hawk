@@ -1,4 +1,32 @@
-/* View Component*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: SearchUI/SearchPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: SearchUI/SearchPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* View Component*/
 import React, { Component } from 'react';
 import { Col, FormGroup, Row, Label, Input, Form } from 'reactstrap';
 import HawkerResult from './HawkerResult';
@@ -71,7 +99,7 @@ and setting the state of isLoading and searchResult accordingly.
         const urlQuery = new URLSearchParams(search);
         const qParam = urlQuery.get('q');
         let resultList = [];
-        if (qParam && qParam.trim() !== '') {
+        if (qParam &amp;&amp; qParam.trim() !== '') {
             resultList = await HawkerCentreManager.searchHawkerCentre(qParam);
         }
 
@@ -120,162 +148,162 @@ Calls handleFilter to update the search results.
     render() {
         if (this.state.isLoading) {
             return (
-                <div className='background page-transition'>
-                    <Row>
-                        <SidebarPlaceholder />
-                        <Col xs={9}>
-                            <HawkerPlaceholder />
-                        </Col>
-                    </Row>
-                </div>
+                &lt;div className='background page-transition'>
+                    &lt;Row>
+                        &lt;SidebarPlaceholder />
+                        &lt;Col xs={9}>
+                            &lt;HawkerPlaceholder />
+                        &lt;/Col>
+                    &lt;/Row>
+                &lt;/div>
             );
         } else {
             return (
-                <div className='background'>
-                    <Row>
-                        <Col xs={3} className='rounded-3 content shadow-sm'>
-                            <h5 className='mb-4'>
-                                <i className='bi bi-funnel' /> FILTERS
-                            </h5>
-                            <h6 className='mb-3'>Star Rating</h6>
-                            <Form className='filter-form'>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                &lt;div className='background'>
+                    &lt;Row>
+                        &lt;Col xs={3} className='rounded-3 content shadow-sm'>
+                            &lt;h5 className='mb-4'>
+                                &lt;i className='bi bi-funnel' /> FILTERS
+                            &lt;/h5>
+                            &lt;h6 className='mb-3'>Star Rating&lt;/h6>
+                            &lt;Form className='filter-form'>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             name='star'
                                             type='radio'
                                             value={5}
                                             onChange={this.handleRating}
                                             checked={this.state.star === 5}
                                         />
-                                        <DisplayStarsSmall activeCount={5} />
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                                        &lt;DisplayStarsSmall activeCount={5} />
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             name='star'
                                             type='radio'
                                             value={4}
                                             onChange={this.handleRating}
                                             checked={this.state.star === 4}
                                         />
-                                        <DisplayStarsSmall activeCount={4} /> & Up
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                                        &lt;DisplayStarsSmall activeCount={4} /> &amp; Up
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             name='star'
                                             type='radio'
                                             value={3}
                                             onChange={this.handleRating}
                                             checked={this.state.star === 3}
                                         />
-                                        <DisplayStarsSmall activeCount={3} /> & Up
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                                        &lt;DisplayStarsSmall activeCount={3} /> &amp; Up
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             name='star'
                                             type='radio'
                                             value={2}
                                             onChange={this.handleRating}
                                             checked={this.state.star === 2}
                                         />
-                                        <DisplayStarsSmall activeCount={2} /> & Up
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                                        &lt;DisplayStarsSmall activeCount={2} /> &amp; Up
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             name='star'
                                             type='radio'
                                             value={1}
                                             onChange={this.handleRating}
                                             checked={this.state.star === 1}
                                         />
-                                        <DisplayStarsSmall activeCount={1} /> & Up
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                                        &lt;DisplayStarsSmall activeCount={1} /> &amp; Up
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             name='star'
                                             type='radio'
                                             value={0}
                                             onChange={this.handleRating}
                                             checked={this.state.star === 0}
                                         />
-                                        <DisplayStarsSmall activeCount={0} /> & Up
-                                    </Label>
-                                </FormGroup>
-                            </Form>
-                            <div className='line my-4' />
-                            <h6 className='mb-3'>Located Region</h6>
-                            <Form className='filter-form'>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                                        &lt;DisplayStarsSmall activeCount={0} /> &amp; Up
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                            &lt;/Form>
+                            &lt;div className='line my-4' />
+                            &lt;h6 className='mb-3'>Located Region&lt;/h6>
+                            &lt;Form className='filter-form'>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             type='checkbox'
                                             name='W'
                                             checked={this.state.region.W}
                                             onChange={this.handleRegion}
                                         />
                                         West Region
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             type='checkbox'
                                             name='E'
                                             checked={this.state.region.E}
                                             onChange={this.handleRegion}
                                         />
                                         East Region
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             type='checkbox'
                                             name='N'
                                             checked={this.state.region.N}
                                             onChange={this.handleRegion}
                                         />
                                         North Region
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             type='checkbox'
                                             name='NE'
                                             checked={this.state.region.NE}
                                             onChange={this.handleRegion}
                                         />
                                         North-East Region
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
                                             type='checkbox'
                                             name='C'
                                             checked={this.state.region.C}
                                             onChange={this.handleRegion}
                                         />
                                         Central Region
-                                    </Label>
-                                </FormGroup>
-                            </Form>
-                        </Col>
-                        <Col xs={9}>
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                            &lt;/Form>
+                        &lt;/Col>
+                        &lt;Col xs={9}>
                             {this.state.searchResult.length !== 0 ? (
                                 this.state.searchResult.map((result) => (
-                                    <HawkerResult
+                                    &lt;HawkerResult
                                         key={result.id}
                                         name={result.name}
                                         address={result.address}
@@ -286,24 +314,24 @@ Calls handleFilter to update the search results.
                                     />
                                 ))
                             ) : (
-                                <>
-                                    <div className='mt-5 d-flex justify-content-center'>
-                                        <Lottie
+                                &lt;>
+                                    &lt;div className='mt-5 d-flex justify-content-center'>
+                                        &lt;Lottie
                                             loop={false}
                                             animationData={SearchEmptyAnimation}
                                             style={{ height: 180 }}
                                         />
-                                    </div>
-                                    <div className='mt-2 d-flex justify-content-center'>
-                                        <h4 className='fw-semibold text-center'>
+                                    &lt;/div>
+                                    &lt;div className='mt-2 d-flex justify-content-center'>
+                                        &lt;h4 className='fw-semibold text-center'>
                                             No results found.
-                                        </h4>
-                                    </div>
-                                </>
+                                        &lt;/h4>
+                                    &lt;/div>
+                                &lt;/>
                             )}
-                        </Col>
-                    </Row>
-                </div>
+                        &lt;/Col>
+                    &lt;/Row>
+                &lt;/div>
             );
         }
     }
@@ -315,3 +343,26 @@ Calls handleFilter to update the search results.
 }
 
 export default withRouter(SearchPage);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="HawkerPlaceholder.html">HawkerPlaceholder</a></li><li><a href="HawkerResult.html">HawkerResult</a></li><li><a href="Login.html">Login</a></li><li><a href="Logout.html">Logout</a></li><li><a href="Profile.html">Profile</a></li><li><a href="global.html#Register">Register</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SearchPage_state.html">state</a></li><li><a href="SidebarPlaceholder.html">SidebarPlaceholder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DisplayStarsSmall">DisplayStarsSmall</a></li><li><a href="global.html#HawkerPagePlaceholder">HawkerPagePlaceholder</a></li><li><a href="global.html#LoginRegisterModal">LoginRegisterModal</a></li><li><a href="global.html#ReviewPagePlaceholder">ReviewPagePlaceholder</a></li><li><a href="global.html#withRouter">withRouter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 22 2023 19:46:02 GMT+0800 (Singapore Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

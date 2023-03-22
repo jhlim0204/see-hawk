@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ProfileUI/Profile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ProfileUI/Profile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import LoginRegister from './LoginRegisterUI/LoginRegisterModal';
+import Logout from './LogoutUI/Logout';
+import { UserContext } from '../UserContext';
+import Avatar from 'react-avatar';
+/**
+
+This is a React component that renders a dropdown menu for user profiles. 
+It shows different options for logged-in users and guests. 
+Logged-in users can access their favorite list and log out, while guests are offered a login/registration option. 
+The dropdown toggle button displays the user's avatar or a default guest image if the user is not logged in.
+@class
+@extends Component
+/
+class Profile extends Component {
+
+*/
+class Profile extends Component {
+    static contextType = UserContext;
+
+    constructor(props) {
+        super(props);
+/**
+     * @type {Object}
+     * @property {boolean} dropdownOpen - Determines if dropdown is open or closed.
+     * @property {boolean} isLoginModalOpen - Determines if Login/Register modal is open or closed.
+     * @property {boolean} isLogoutModalOpen - Determines if Logout modal is open or closed.
+     * @property {string} currentActiveTab - Determines the current active tab.
+     */
+        this.state = {
+            dropdownOpen: false,
+            isLoginModalOpen: false,
+            isLogoutModalOpen: false,
+            currentActiveTab: 'login'
+        };
+    }
+/**
+ * Toggles the dropdown state.
+ * 
+ * @method
+ * @returns {void}
+ */
+    toggle = () => {
+        this.setState({ dropdownOpen: !this.state.dropdownOpen });
+    };
+/**
+ * Toggles the Login/Register modal state.
+ * 
+ * @method
+ * @param {string} option - Determines if the modal should be closed or opened.
+ * @returns {void}
+ */
+    toggleLoginModal = (option) => {
+        if (option === 'close') {
+            this.setState({ isLoginModalOpen: false });
+        } else {
+            this.setState({ isLoginModalOpen: !this.state.isLoginModalOpen });
+        }
+    };
+/**
+ * Toggles the Logout modal state.
+ * 
+ * @method
+ * @returns {void}
+ */
+    toggleLogoutModal = () => {
+        this.setState({ isLogoutModalOpen: !this.state.isLogoutModalOpen });
+    };
+
+    render() {
+        return (
+            &lt;Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} direction='down'>
+                &lt;DropdownToggle className='dropdown-title' id='username' color='light' caret>
+                    {this.context ? (
+                        &lt;Avatar
+                            name={this.context}
+                            size='35'
+                            textSizeRatio={2}
+                            round
+                            className='me-2'
+                        />
+                    ) : (
+                        &lt;img
+                            className='profile-pic-small me-2'
+                            src='/assets/images/guest-pic.png'
+                            height='35px'
+                            alt='Guest'
+                        />
+                    )}
+                    {this.context ? this.context : 'Guest'}
+                &lt;/DropdownToggle>
+                &lt;DropdownMenu className='shadow-lg w-100 border-0' end={true}>
+                    {this.context ? (
+                        /* Display option for logged in user*/
+                        &lt;>
+                            &lt;Link to='/favourites' style={{ textDecoration: 'none' }}>
+                                &lt;DropdownItem>
+                                    &lt;i className='bi bi-bookmark me-2' />Favourite List
+                                &lt;/DropdownItem>
+                            &lt;/Link>
+                            &lt;DropdownItem onClick={this.toggleLogoutModal}>
+                                &lt;i className='bi bi-power me-2' />Logout
+                            &lt;/DropdownItem>
+                        &lt;/>
+                    ) : (
+                        /* Display option for guest*/
+                        &lt;>
+                            &lt;DropdownItem toggle={false} onClick={this.toggleLoginModal}>
+                                &lt;i className='bi bi-box-arrow-in-left me-2' />Login / Register
+                            &lt;/DropdownItem>
+                        &lt;/>
+                    )}
+                &lt;/DropdownMenu>
+
+                &lt;LoginRegister
+                    toggle={this.toggleLoginModal}
+                    isOpen={this.state.isLoginModalOpen}
+                />
+                &lt;Logout toggle={this.toggleLogoutModal} isOpen={this.state.isLogoutModalOpen} />
+            &lt;/Dropdown>
+        );
+    }
+}
+
+export default Profile;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="HawkerPlaceholder.html">HawkerPlaceholder</a></li><li><a href="HawkerResult.html">HawkerResult</a></li><li><a href="Login.html">Login</a></li><li><a href="Logout.html">Logout</a></li><li><a href="Profile.html">Profile</a></li><li><a href="global.html#Register">Register</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SearchPage_state.html">state</a></li><li><a href="SidebarPlaceholder.html">SidebarPlaceholder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DisplayStarsSmall">DisplayStarsSmall</a></li><li><a href="global.html#HawkerPagePlaceholder">HawkerPagePlaceholder</a></li><li><a href="global.html#LoginRegisterModal">LoginRegisterModal</a></li><li><a href="global.html#ReviewPagePlaceholder">ReviewPagePlaceholder</a></li><li><a href="global.html#withRouter">withRouter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 22 2023 19:46:02 GMT+0800 (Singapore Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

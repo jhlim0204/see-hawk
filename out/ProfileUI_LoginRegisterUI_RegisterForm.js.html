@@ -1,4 +1,32 @@
-import React, { Component } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ProfileUI/LoginRegisterUI/RegisterForm.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ProfileUI/LoginRegisterUI/RegisterForm.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
 import { Col, Form, Label, Input, FormGroup, Row, Button, FormFeedback } from 'reactstrap';
 import Lottie from 'lottie-react';
 import SuccessTickAnimation from '../../Animation/successTick.json';
@@ -79,7 +107,7 @@ Otherwise, sets the username validation error state and displays an error messag
 */
     handleSubmit = async (event) => {
         event.preventDefault();
-        if (!(this.checkUsername() && this.checkPassword() && this.checkRePassword())) {
+        if (!(this.checkUsername() &amp;&amp; this.checkPassword() &amp;&amp; this.checkRePassword())) {
             return;
         }
         this.setState({ isLoading: true });
@@ -130,7 +158,7 @@ Checks if the password input field is valid and updates the state with an error 
 @returns {boolean} - Returns true if the input is valid, otherwise returns false.
 */
     checkPassword = () => {
-        const invalid = this.state.password.length < 8;
+        const invalid = this.state.password.length &lt; 8;
 
         this.setState({ invalidPassword: invalid });
         return !invalid;
@@ -151,22 +179,22 @@ Checks if the re-entered password input field matches the password input field f
     render() {
         if (this.state.loginSuccess) {
             return (
-                <>
-                    <Lottie animationData={SuccessTickAnimation} style={{ height: 100 }} />
-                    <p className='text-center mt-2 fs-5'>Registered Successfully</p>
-                </>
+                &lt;>
+                    &lt;Lottie animationData={SuccessTickAnimation} style={{ height: 100 }} />
+                    &lt;p className='text-center mt-2 fs-5'>Registered Successfully&lt;/p>
+                &lt;/>
             );
         } else {
             return (
-                <Row className='justify-content-sm-center'>
-                    <Col sm={11}>
-                        <Form onSubmit={this.handleSubmit} className='row'>
-                            <FormGroup className='col-12'>
-                                <Label className='text-start' htmlFor='username'>
+                &lt;Row className='justify-content-sm-center'>
+                    &lt;Col sm={11}>
+                        &lt;Form onSubmit={this.handleSubmit} className='row'>
+                            &lt;FormGroup className='col-12'>
+                                &lt;Label className='text-start' htmlFor='username'>
                                     Username:{' '}
-                                </Label>
-                                <div className='form-control-with-spinner'>
-                                    <Input
+                                &lt;/Label>
+                                &lt;div className='form-control-with-spinner'>
+                                    &lt;Input
                                         type='text'
                                         name='username'
                                         value={this.state.username}
@@ -175,64 +203,87 @@ Checks if the re-entered password input field matches the password input field f
                                         autoComplete='off'
                                         spellCheck='false'
                                     />
-                                    <FormFeedback>{this.state.errMessUser}</FormFeedback>
-                                </div>
-                            </FormGroup>
-                            <div className='col-6 pe-1'>
-                                <FormGroup>
-                                    <Label htmlFor='password'>Password: </Label>
-                                    <Input
+                                    &lt;FormFeedback>{this.state.errMessUser}&lt;/FormFeedback>
+                                &lt;/div>
+                            &lt;/FormGroup>
+                            &lt;div className='col-6 pe-1'>
+                                &lt;FormGroup>
+                                    &lt;Label htmlFor='password'>Password: &lt;/Label>
+                                    &lt;Input
                                         type='password'
                                         name='password'
                                         value={this.state.password}
                                         onChange={this.handleInput}
                                         invalid={this.state.invalidPassword}
                                     />
-                                    <FormFeedback>
+                                    &lt;FormFeedback>
                                         Password must be consist of {'>'}=8 alphanumeric characters!
-                                    </FormFeedback>
-                                </FormGroup>
-                            </div>
-                            <div className='col-6 ps-1'>
-                                <FormGroup>
-                                    <Label htmlFor='rePassword'>Confirm Password: </Label>
-                                    <Input
+                                    &lt;/FormFeedback>
+                                &lt;/FormGroup>
+                            &lt;/div>
+                            &lt;div className='col-6 ps-1'>
+                                &lt;FormGroup>
+                                    &lt;Label htmlFor='rePassword'>Confirm Password: &lt;/Label>
+                                    &lt;Input
                                         type='password'
                                         name='rePassword'
                                         value={this.state.rePassword}
                                         onChange={this.handleInput}
                                         invalid={this.state.invalidRePassword}
                                     />
-                                    <FormFeedback>Passwords do no match!</FormFeedback>
-                                </FormGroup>
-                            </div>
-                            <div className='col'>
-                                <FormGroup className='mt-2 float-end'>
+                                    &lt;FormFeedback>Passwords do no match!&lt;/FormFeedback>
+                                &lt;/FormGroup>
+                            &lt;/div>
+                            &lt;div className='col'>
+                                &lt;FormGroup className='mt-2 float-end'>
                                     {/* add invalid password logic*/}
-                                    <Button
+                                    &lt;Button
                                         className='me-2'
                                         type='submit'
                                         color='primary'
                                         disabled={
                                             this.state.isLoading ||
                                             !(
-                                                this.state.username &&
-                                                this.state.password &&
+                                                this.state.username &amp;&amp;
+                                                this.state.password &amp;&amp;
                                                 this.state.rePassword
                                             )
                                         }
                                     >
                                         Register
-                                    </Button>
-                                    <Button onClick={this.props.toggleModal}>Cancel</Button>
-                                </FormGroup>
-                            </div>
-                        </Form>
-                    </Col>
-                </Row>
+                                    &lt;/Button>
+                                    &lt;Button onClick={this.props.toggleModal}>Cancel&lt;/Button>
+                                &lt;/FormGroup>
+                            &lt;/div>
+                        &lt;/Form>
+                    &lt;/Col>
+                &lt;/Row>
             );
         }
     }
 }
 
 export default Register;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="HawkerPlaceholder.html">HawkerPlaceholder</a></li><li><a href="HawkerResult.html">HawkerResult</a></li><li><a href="Login.html">Login</a></li><li><a href="Logout.html">Logout</a></li><li><a href="Profile.html">Profile</a></li><li><a href="global.html#Register">Register</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SearchPage_state.html">state</a></li><li><a href="SidebarPlaceholder.html">SidebarPlaceholder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DisplayStarsSmall">DisplayStarsSmall</a></li><li><a href="global.html#HawkerPagePlaceholder">HawkerPagePlaceholder</a></li><li><a href="global.html#LoginRegisterModal">LoginRegisterModal</a></li><li><a href="global.html#ReviewPagePlaceholder">ReviewPagePlaceholder</a></li><li><a href="global.html#withRouter">withRouter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 22 2023 19:46:02 GMT+0800 (Singapore Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

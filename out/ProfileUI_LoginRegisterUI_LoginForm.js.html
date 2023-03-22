@@ -1,4 +1,32 @@
-import React, { Component } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ProfileUI/LoginRegisterUI/LoginForm.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ProfileUI/LoginRegisterUI/LoginForm.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
 import { Col, Form, Label, Input, FormGroup, FormFeedback, Row, Button } from 'reactstrap';
 import Lottie from 'lottie-react';
 import SuccessTickAnimation from '../../Animation/successTick.json';
@@ -80,21 +108,21 @@ class Login extends Component {
     render() {
         if (this.state.loginSuccess) {
             return (
-                <>
-                    <Lottie animationData={SuccessTickAnimation} style={{ height: 100 }} />
-                    <p className='text-center mt-2 fs-5'>Logged in Successfully</p>
-                </>
+                &lt;>
+                    &lt;Lottie animationData={SuccessTickAnimation} style={{ height: 100 }} />
+                    &lt;p className='text-center mt-2 fs-5'>Logged in Successfully&lt;/p>
+                &lt;/>
             );
         } else {
             return (
-                <Row className='justify-content-sm-center'>
-                    <Col sm={11}>
-                        <Form id='loginForm' onSubmit={this.handleSubmit}>
-                            <FormGroup>
-                                <Label className='text-start' htmlFor='username'>
+                &lt;Row className='justify-content-sm-center'>
+                    &lt;Col sm={11}>
+                        &lt;Form id='loginForm' onSubmit={this.handleSubmit}>
+                            &lt;FormGroup>
+                                &lt;Label className='text-start' htmlFor='username'>
                                     Username:{' '}
-                                </Label>
-                                <Input
+                                &lt;/Label>
+                                &lt;Input
                                     type='text'
                                     name='username'
                                     value={this.state.username}
@@ -102,42 +130,65 @@ class Login extends Component {
                                     autoComplete='off'
                                     spellCheck='false'
                                 />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor='password'>Password: </Label>
-                                <Input
+                            &lt;/FormGroup>
+                            &lt;FormGroup>
+                                &lt;Label htmlFor='password'>Password: &lt;/Label>
+                                &lt;Input
                                     type='password'
                                     name='password'
                                     value={this.state.password}
                                     invalid={this.state.invalidPassword}
                                     onChange={this.handleInput}
                                 />
-                                <FormFeedback>
-                                    The password that you&apos;ve entered is incorrect.
-                                </FormFeedback>
-                            </FormGroup>
-                            <FormGroup className='float-end mt-2'>
-                                <Button
+                                &lt;FormFeedback>
+                                    The password that you&amp;apos;ve entered is incorrect.
+                                &lt;/FormFeedback>
+                            &lt;/FormGroup>
+                            &lt;FormGroup className='float-end mt-2'>
+                                &lt;Button
                                     className='me-2'
                                     form='loginForm'
                                     type='submit'
                                     color='primary'
                                     disabled={
                                         this.state.isLoading ||
-                                        !(this.state.username && this.state.password)
+                                        !(this.state.username &amp;&amp; this.state.password)
                                     }
                                     onClick={this.handleSubmit}
                                 >
                                     Login
-                                </Button>
-                                <Button onClick={this.props.toggleModal}>Cancel</Button>
-                            </FormGroup>
-                        </Form>
-                    </Col>
-                </Row>
+                                &lt;/Button>
+                                &lt;Button onClick={this.props.toggleModal}>Cancel&lt;/Button>
+                            &lt;/FormGroup>
+                        &lt;/Form>
+                    &lt;/Col>
+                &lt;/Row>
             );
         }
     }
 }
 
 export default Login;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="HawkerPlaceholder.html">HawkerPlaceholder</a></li><li><a href="HawkerResult.html">HawkerResult</a></li><li><a href="Login.html">Login</a></li><li><a href="Logout.html">Logout</a></li><li><a href="Profile.html">Profile</a></li><li><a href="global.html#Register">Register</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SearchPage_state.html">state</a></li><li><a href="SidebarPlaceholder.html">SidebarPlaceholder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DisplayStarsSmall">DisplayStarsSmall</a></li><li><a href="global.html#HawkerPagePlaceholder">HawkerPagePlaceholder</a></li><li><a href="global.html#LoginRegisterModal">LoginRegisterModal</a></li><li><a href="global.html#ReviewPagePlaceholder">ReviewPagePlaceholder</a></li><li><a href="global.html#withRouter">withRouter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 22 2023 19:46:02 GMT+0800 (Singapore Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

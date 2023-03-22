@@ -1,3 +1,17 @@
+
+/**
+ * @function LoginRegisterModal
+ * @description allows the user to log in or register , switch between the tabs by clicking on the corresponding tab button.
+ * @return form components ,one for the login form and one for the registration form.
+ */
+
+
+/**
+
+A component that displays a modal containing a login and register form with tabs.
+@extends Component
+*/
+
 import React, { Component } from 'react';
 import {
     Modal,
@@ -13,14 +27,32 @@ import Login from './LoginForm';
 import Register from './RegisterForm';
 
 class LoginRegister extends Component {
+    /*
+
+Creates a LoginRegister component.
+
+@constructor
+
+@param {object} props - The props that were passed to the component.
+*/
     constructor(props) {
         super(props);
+/**
 
+The state of the component.
+@type {object}
+@property {string} currentActiveTab - The currently active tab.
+*/
         this.state = {
             currentActiveTab: 'login'
         };
     }
+/**
 
+Toggles the current active tab.
+@param {string} tab - The tab to toggle to.
+@returns {void}
+*/
     toggleTab = (tab) => {
         if (this.state.currentActiveTab !== tab) {
             this.setState({ currentActiveTab: tab });

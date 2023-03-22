@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ProfileUI/LoginRegisterUI/LoginRegisterModal.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ProfileUI/LoginRegisterUI/LoginRegisterModal.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @function LoginRegisterModal
+ * @description allows the user to log in or register , switch between the tabs by clicking on the corresponding tab button.
+ * @return form components ,one for the login form and one for the registration form.
+ */
+
+
+/**
+
+A component that displays a modal containing a login and register form with tabs.
+@extends Component
+*/
+
+import React, { Component } from 'react';
+import {
+    Modal,
+    ModalHeader,
+    ModalBody,
+    Nav,
+    NavItem,
+    NavLink,
+    TabContent,
+    TabPane
+} from 'reactstrap';
+import Login from './LoginForm';
+import Register from './RegisterForm';
+
+class LoginRegister extends Component {
+    /*
+
+Creates a LoginRegister component.
+
+@constructor
+
+@param {object} props - The props that were passed to the component.
+*/
+    constructor(props) {
+        super(props);
+/**
+
+The state of the component.
+@type {object}
+@property {string} currentActiveTab - The currently active tab.
+*/
+        this.state = {
+            currentActiveTab: 'login'
+        };
+    }
+/**
+
+Toggles the current active tab.
+@param {string} tab - The tab to toggle to.
+@returns {void}
+*/
+    toggleTab = (tab) => {
+        if (this.state.currentActiveTab !== tab) {
+            this.setState({ currentActiveTab: tab });
+        }
+    };
+
+    render() {
+        return (
+            &lt;Modal toggle={this.props.toggle} isOpen={this.props.isOpen}>
+                &lt;ModalHeader toggle={this.props.toggle} className='mb-0 pt-2 pb-0 border-0'>
+                    &lt;Nav tabs>
+                        &lt;NavItem>
+                            &lt;NavLink
+                                role='button'
+                                className={
+                                    this.state.currentActiveTab === 'login'
+                                        ? 'active fw-bold'
+                                        : 'text-muted'
+                                }
+                                onClick={() => {
+                                    this.toggleTab('login');
+                                }}
+                            >
+                                Log In
+                            &lt;/NavLink>
+                        &lt;/NavItem>
+                        &lt;NavItem>
+                            &lt;NavLink
+                                role='button'
+                                className={
+                                    this.state.currentActiveTab === 'register'
+                                        ? 'active fw-bold'
+                                        : 'text-muted'
+                                }
+                                onClick={() => {
+                                    this.toggleTab('register');
+                                }}
+                            >
+                                Register
+                            &lt;/NavLink>
+                        &lt;/NavItem>
+                    &lt;/Nav>
+                &lt;/ModalHeader>
+                &lt;div className='line' />
+                &lt;ModalBody className='pt-4 pb-2 bg-light'>
+                    &lt;TabContent activeTab={this.state.currentActiveTab}>
+                        &lt;TabPane tabId='login'>
+                            &lt;Login toggleModal={this.props.toggle} />
+                        &lt;/TabPane>
+                        &lt;TabPane tabId='register'>
+                            &lt;Register
+                                toggleModal={this.props.toggle}
+                                switchTab={() => {
+                                    this.toggleTab('login');
+                                }}
+                            />
+                        &lt;/TabPane>
+                    &lt;/TabContent>
+                &lt;/ModalBody>
+            &lt;/Modal>
+        );
+    }
+}
+
+export default LoginRegister;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="HawkerPlaceholder.html">HawkerPlaceholder</a></li><li><a href="HawkerResult.html">HawkerResult</a></li><li><a href="Login.html">Login</a></li><li><a href="Logout.html">Logout</a></li><li><a href="Profile.html">Profile</a></li><li><a href="global.html#Register">Register</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SearchPage.html">SearchPage</a></li><li><a href="SearchPage_state.html">state</a></li><li><a href="SidebarPlaceholder.html">SidebarPlaceholder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DisplayStarsSmall">DisplayStarsSmall</a></li><li><a href="global.html#HawkerPagePlaceholder">HawkerPagePlaceholder</a></li><li><a href="global.html#LoginRegisterModal">LoginRegisterModal</a></li><li><a href="global.html#ReviewPagePlaceholder">ReviewPagePlaceholder</a></li><li><a href="global.html#withRouter">withRouter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 22 2023 19:46:02 GMT+0800 (Singapore Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
