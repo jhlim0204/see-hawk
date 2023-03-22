@@ -1,6 +1,8 @@
 import proj4 from 'proj4';
 
-
+/**
+ * Class for managing API
+ */
 export class APIManager {
     /**
      * Create an APIManager
@@ -10,8 +12,8 @@ export class APIManager {
         throw Error('A static class cannot be instantiated.');
     }
     /**
-     * Method to fetch HawkerCenter list
-     * @return {hawkerCentre[]}
+     * Method to fetch dictionary containing attributes of HawkerCenter
+     * @return {Object[]} hawkerCentreList - fectched hawkerCentreList
      */
     static async fetchhawkerCentre() {
         const responseHawker = await fetch(
@@ -68,8 +70,8 @@ export class APIManager {
     };
     /**
      * Method to clean the address of the carpark
-     * @param {String} - the address to be cleaned
-     * @return {String}  - cleaned address
+     * @param {String}   address - the address to be cleaned
+     * @return {String}  cleaned address - cleaned address
      */
     static cleanAddress(address) {
         address = address.replace(
@@ -79,8 +81,8 @@ export class APIManager {
         return address.replace('Blk', 'Block');
     }
     /**
-     * Method to fetch carpark list from api
-     * @return {carpark}
+     * Method to fetch carpark dictionary from api
+     * @return {Object[]} combinedData - fetched carpark list
      */
     static async fetchCarpark() {
         const responseCarparkInfo = await fetch(

@@ -12,7 +12,9 @@ import { doc,
 import { ReviewManager } from './ReviewManager.js';
 import { APIManager } from './APIManager.js';
     
-
+/**
+ * Class for managing data
+ */
 export class DataManager {
     /**
      * Constructor for DataManager
@@ -23,8 +25,8 @@ export class DataManager {
     }
     /**
      * Method to get the review of hawkercentre by through its ID
-     * @param {Number} - target HawkerCentreID
-     * @return {review[]} -  if target hawker centre exists, reviewList is returned. Else False is returned.
+     * @param {Number} hawkerCentreID- target HawkerCentreID
+     * @return {review[]} reviewList-  if target hawker centre exists, reviewList is returned. Else False is returned.
      */
     static async getReview(hawkerCentreId) {
         const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId);
@@ -38,10 +40,10 @@ export class DataManager {
     }
     /**
      * Method to add review to hawkercentre
-     * @param {Number} - hawkercentreID
-     * @param {Number} - accoundID
-     * @param {Number} - reviewStar
-     * @param {String} - reviewText
+     * @param {Number} hawkercentreID- target hawkercentreID
+     * @param {Number} accoundID- target accoundID
+     * @param {Number} reviewStar- reviewStar
+     * @param {String} reviewText- reviewText
      * @return {Boolean} - return true if review is succesuflly added else false is returned
      */
     static async addReview(hawkerCentreId, accountID, reviewStar, reviewText) {
