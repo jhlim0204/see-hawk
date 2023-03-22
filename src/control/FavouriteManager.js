@@ -2,6 +2,9 @@
 //import { getDoc, doc, setDoc, arrayRemove, arrayUnion, updateDoc } from 'firebase/firestore';
 //import { HawkerCentreManager } from './HawkerCentreManager.js';
 import { DataManager } from './DataManager.js'; 
+/**
+ * Class for managing favourites
+ */
 export class FavouriteManager {
     /**
      * Constructor for FavouriteManager
@@ -13,7 +16,7 @@ export class FavouriteManager {
     /**
      * Method to get favourite from an account
      * Calls DatabaseManager.getFavourite
-     * @param {String} - accountName
+     * @param {string} accountName - accountName
      */
     static async getFavourite(accountName) {
         /*
@@ -42,8 +45,8 @@ export class FavouriteManager {
     /**
      * Method to check if is favourite
      * Calls DataManager.isFavourite
-     * @param {String} - accountName
-     * @param {Number} - hawlkerID
+     * @param {string} accountName - target accountName
+     * @param {number} hawkerID - target hawkerID
      */
     static async isFavourite(accountName, hawkerID) {
        return await DataManager.isFavourite(accountName, hawkerID);
@@ -51,8 +54,8 @@ export class FavouriteManager {
     /**
      * Method to add favourite
      * Calls DataManager.addFavourite
-     * @param {String} - accountName
-     * @param {Number} - hawkerID
+     * @param {string} accountName - target accountName
+     * @param {number} hawkerID - target hawkerID
      */
     static async addFavourite(accountName, hawkerID) {
        return await DataManager.addFavourite(accountName, hawkerID);
@@ -61,8 +64,8 @@ export class FavouriteManager {
     /**
      * Method to delete favourite
      * Calls DataManager.deleteFavourite
-     * @param {String} - accountName
-     * @param {Number} - hawkerID
+     * @param {string} accountName - target accountName
+     * @param {number}hawkerID - target hawkerID
      */
     static async deleteFavourite(accountName, hawkerID) {
         return await DataManager.deleteFavourite(accountName, hawkerID);

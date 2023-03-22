@@ -1,7 +1,9 @@
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import SessionManager from './SessionManager';
-
+/**
+ * Class for registering a new user
+ */
 class RegisterManager {
     /**
      * Constructor for RegisterManager
@@ -13,8 +15,8 @@ class RegisterManager {
     /**
      * Method to register user
      * Calls Firebase method createUserWithEmailAndPassword to create user
-     * @param {String} - username
-     * @param {String} - password
+     * @param {string} username - username
+     * @param {string} password - password
      * @returns 
      */
     // Registration Fn

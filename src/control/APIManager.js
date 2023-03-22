@@ -23,7 +23,7 @@ export class APIManager {
         let hawkerCentreList = jsonHawker.result.records;
         /**
          * Method to map HawkerCentreList in firebase to api
-         * @return {hawkerCenter}
+         * @return {Object[]} - returns hawkerCentre
          */
         hawkerCentreList = hawkerCentreList.map((item) => {
             /* Extract name*/
@@ -70,8 +70,8 @@ export class APIManager {
     };
     /**
      * Method to clean the address of the carpark
-     * @param {String}   address - the address to be cleaned
-     * @return {String}  cleaned address - cleaned address
+     * @param {string}   address - the address to be cleaned
+     * @return {string} 
      */
     static cleanAddress(address) {
         address = address.replace(
@@ -82,7 +82,7 @@ export class APIManager {
     }
     /**
      * Method to fetch carpark dictionary from api
-     * @return {Object[]} combinedData - fetched carpark list
+     * @return {Object[]} 
      */
     static async fetchCarpark() {
         const responseCarparkInfo = await fetch(

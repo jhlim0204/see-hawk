@@ -1,5 +1,7 @@
 import { DataManager } from './DataManager.js';
-
+/**
+ * Class for managing hawkerCentre
+ */
 export class HawkerCentreManager {
     /**
      * Constructor for HawkerCentreManager
@@ -11,7 +13,7 @@ export class HawkerCentreManager {
     /**
      * Method to retrieve HawkerCentreDetails
      * Calls DataManager.retrieveHawkerCentreDetails
-     * @param {Number} - hawkerCentreID
+     * @param {number} hawkerCentreID - hawkerCentreID
      */
     static async retrieveHawkerCentreDetails(hawkerCentreId) {
        return await DataManager.retrieveHawkerCentreDetails(hawkerCentreId);
@@ -19,7 +21,7 @@ export class HawkerCentreManager {
     /**
      * Method to retrieve searchHawkerCentre
      * Calls DataManager.searchawkerCentre
-     * @param {Number} - hawkerCentreID
+     * @param {number} hawkerCentreID - hawkerCentreID
      */
     static async searchHawkerCentre(subString) {
        return await DataManager.searchHawkerCentre(subString);

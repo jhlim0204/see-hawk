@@ -1,6 +1,8 @@
 import { auth } from '../firebase';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-
+/**
+ * Class for managing sessions
+ */
 class SessionManager {
     /**
      * Constructor for SessionManager
@@ -12,8 +14,8 @@ class SessionManager {
     /**
      * Method to login user
      * Calls Firebase signInWithEmailAndPassword method to sign in user
-     * @param {String} - username
-     * @param {String} - password
+     * @param {string} username - username
+     * @param {string} password - password
      */
     // Login Fn
     static async login(username, password) {
@@ -29,7 +31,7 @@ class SessionManager {
     }
     /**
      * Firebase method to logout user
-     * Calls
+     * Calls Firebase signOut to logout user
      */
     // Logout Fn
     static async logout() {

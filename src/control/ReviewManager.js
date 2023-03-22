@@ -13,7 +13,7 @@ export class ReviewManager {
     /**
      * Method to get hawkerCentre review
      * Calls DataManager.getReview
-     * @param {Number} - hawkerCentreId
+     * @param {number} hawkerCentreId - hawkerCentreId
      */
     static async getReview(hawkerCentreId) {
         return await DataManager.getReview(hawkerCentreId);
@@ -21,18 +21,18 @@ export class ReviewManager {
      /**
      * Method to add hawkerCentre review
      * Calls DataManager.addReview
-     * @param {Number} - hawkerCentreId
-     * @param {Number} - accountID
-     * @param {Number} - reviewStar
-     * @param {String} - reviewText
+     * @param {number} hawkerCentreId - hawkerCentreId
+     * @param {number} accountID - accountID
+     * @param {number} reviewStar - reviewStar
+     * @param {string} reviewText - reviewText
      */
     static async addReview(hawkerCentreId, accountID, reviewStar, reviewText) {
        return await DataManager.addReview(hawkerCentreId, accountID, reviewStar, reviewText);
     }
     /**
      * Method to calculate average rating of a hawkerCentre
-     * @param {review[]} - reviewList of hawkerCentre
-     * @returns {Number} - returns calculated average rating if there is any rating, else 'unrated' is returned
+     * @param {Object[]} reviewList - reviewList of hawkerCentre
+     * @returns {number} - returns calculated average rating if there is any rating, else 'unrated' is returned
      */
     static calculateAverage(reviewList) {
         if (Object.keys(reviewList).length === 0) {
@@ -47,8 +47,8 @@ export class ReviewManager {
     }
     /**
      * Method to calculate percentage of reviewStar
-     * @param {review[]} - reviewList of hawkerCentre
-     * @return {Number[]} - return array of calculated percentage of reviewStar
+     * @param {Object[]} reviewList -  reviewList of hawkerCentre
+     * @return {number[]} - return array of calculated percentage of reviewStar
      */
     static calculatePercentage(reviewList) {
         let groupCount = [0, 0, 0, 0, 0];

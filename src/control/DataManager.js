@@ -25,8 +25,8 @@ export class DataManager {
     }
     /**
      * Method to get the review of hawkercentre by through its ID
-     * @param {Number} hawkerCentreID- target HawkerCentreID
-     * @return {review[]} reviewList-  if target hawker centre exists, reviewList is returned. Else False is returned.
+     * @param {number} hawkerCentreID- target HawkerCentreID
+     * @return {Object[]} reviewList-  if target hawker centre exists, reviewList is returned. Else False is returned.
      */
     static async getReview(hawkerCentreId) {
         const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreId);
@@ -40,11 +40,11 @@ export class DataManager {
     }
     /**
      * Method to add review to hawkercentre
-     * @param {Number} hawkercentreID- target hawkercentreID
-     * @param {Number} accoundID- target accoundID
-     * @param {Number} reviewStar- reviewStar
-     * @param {String} reviewText- reviewText
-     * @return {Boolean} - return true if review is succesuflly added else false is returned
+     * @param {number} hawkercentreID- target hawkercentreID
+     * @param {number} accoundID- target accoundID
+     * @param {number} reviewStar- reviewStar
+     * @param {string} reviewText- reviewText
+     * @return {boolean} - return true if review is succesuflly added else false is returned
      */
     static async addReview(hawkerCentreId, accountID, reviewStar, reviewText) {
         let retrievedReviewList = await DataManager.getReview(hawkerCentreId);
@@ -64,8 +64,8 @@ export class DataManager {
     }
     /**
      * Method to get favourite for an account
-     * @param {String} - accountName
-     * @return {favourite[]} -  returnList of favourites
+     * @param {string} accountName- target accountName
+     * @return {Object[]} -  return list of favourites
      */
     static async getFavourite(accountName) {
         const docRef = doc(db, 'Account', accountName);
@@ -90,9 +90,9 @@ export class DataManager {
     }
     /**
      * Method to check if hawkercentre is favourite of account
-     * @param {String} - accountName
-     * @param {Number} - hawkerID
-     * @return {Boolean} - returns true if is favourite, else returns false
+     * @param {string} accountName - target accountName
+     * @param {number} hawkerID- target hawkerID
+     * @return {boolean} - returns true if is favourite, else returns false
      */
     static async isFavourite(accountName, hawkerID) {
         if (!accountName) {
@@ -111,9 +111,9 @@ export class DataManager {
     }
     /**
      * Method to add favourite hawkercentre to account
-     * @param {String} - accountName
-     * @param {Number} - hawkerID
-     * @returns {Boolean} - returns true if favoourite succesfully added, else returns false
+     * @param {string} accountName- target accountName
+     * @param {number} hawkerID- target hawkerID
+     * @returns {boolean} - returns true if favoourite succesfully added, else returns false
      */
     static async addFavourite(accountName, hawkerID) {
         const docRef = doc(db, 'Account', accountName);
@@ -143,9 +143,9 @@ export class DataManager {
     }
     /**
      * Method to deleteFavourite
-     * @param {String} - accountName
-     * @param {Number} - hawkerID
-     * @return {Boolean} - returns true if favourite successfully deleted,else returns false
+     * @param {string} accountName- target accountName
+     * @param {number} hawkerID- target hawkerID
+     * @return {boolean} - returns true if favourite successfully deleted,else returns false
      */
     static async deleteFavourite(accountName, hawkerID) {
         const docRef = doc(db, 'Account', accountName);
@@ -161,8 +161,8 @@ export class DataManager {
     }
     /**
      * Method to retrive HawkerCentre details
-     * @param {Number} - hawkerCentreId
-     * @returns {hawkerCentre[]} - returns hawkercentre to be retrieved, else returns null 
+     * @param {number} hawkerCentreID - target hawkerCentreId
+     * @returns {object[]} - returns list of hawkerCentre to be retrieved, else returns null 
      */
     static async retrieveHawkerCentreDetails(hawkerCentreId) {
         // update firebase if needed
@@ -182,8 +182,8 @@ export class DataManager {
     }
     /**
      * Method to search for Hawker Centre
-     * @param {String} - substring
-     * @return {hawkerCentre[]} - returns list of hawkercentre
+     * @param {string} substring - substring
+     * @return {Object[]} - returns list of hawkercentre
      */
     static async searchHawkerCentre(subString) {
         // update firebase if needed
@@ -225,8 +225,8 @@ export class DataManager {
     }
     /**
      * Method to check if HawkerCentre exists
-     * @param {Number} - hawkerCentreID
-     * @return {Boolean} - returns true if HawkerCentre exists, else returns false
+     * @param {number} hawkerCentreID - target hawkerCentreID
+     * @return {boolean} - returns true if HawkerCentre exists, else returns false
      */
     static async checkIfIDExist(hawkerCentreID) {
         const hawkerCentreRef = doc(db, 'HawkerCentre', hawkerCentreID);
@@ -249,7 +249,7 @@ export class DataManager {
     }
     /**
      * Method to check if database should be updated
-     * @return {Boolean} - returns true if database is lasted updated more than 7 days ago , else returns false
+     * @return {boolean} - returns true if database is lasted updated more than 7 days ago , else returns false
      */
     static async shouldUpdate() {
         let currentTime = Date.now();

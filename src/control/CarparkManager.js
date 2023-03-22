@@ -13,9 +13,9 @@ export class CarparkManager {
     }
     /**
      * Method to fetch nearby Carparks dictionary and sort them according to availbility
-     * @param {Number} latitude - latitude
-     * @param {Number} longitude - longitude
-     * @return {Object[]} carparks - returns fetched list of carpark
+     * @param {number} latitude - latitude
+     * @param {number} longitude - longitude
+     * @return {Object[]}  returns fetched list of carpark
      */
     static async fetchNearbyCarpark(lat, lng) {
         let carparks = await APIManager.fetchCarpark();
