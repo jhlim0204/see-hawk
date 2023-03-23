@@ -161,7 +161,7 @@ class Register extends Component {
                                         invalid={this.state.invalidPassword}
                                     />
                                     <FormFeedback>
-                                        Password must be consist of {'>'}=8 alphanumeric characters!
+                                        Password must be consist of {'>'}=8 characters!
                                     </FormFeedback>
                                 </FormGroup>
                             </div>
