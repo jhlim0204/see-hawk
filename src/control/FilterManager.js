@@ -1,19 +1,20 @@
 /**
- * Class for filtering hawkerCentres
+ * Class for filtering hawker centres
  */
 export class FilterManager {
     /**
      * Constructor for FilterManager
-     * @throws Will throw effor if this static class is instantiated
+     * @throws Will throw error if this static class is instantiated
      */
     constructor() {
         throw Error('A static class cannot be instantiated.');
     }
+
     /**
-     * Method to filter hawkerCentreList depending on criteria
-     * @param {Object[]} hawkerCentreList- hawkerCentreList
-     * @param {criteria} criteria - criteria
-     * @returns {Object[]} - returns filtered hawkerCentres
+     * Method to filter the list of hawker centres depending on criteria
+     * @param {Object[]} hawkerCentreList - The list of hawker centres to be filtered
+     * @param {Object} criteria - The criteria
+     * @returns {Object[]} The filtered hawker centres
      */
     static filter(hawkerCentreList, criteria) {
         let returnList = hawkerCentreList;
@@ -21,11 +22,12 @@ export class FilterManager {
         returnList = FilterManager.filterRegion(returnList, criteria.region);
         return returnList;
     }
+
     /**
-     * Method to filter hawkerCentre list based on reviewStar
-     * @param {Object[]} hawkerCentreList - hawkerCentreList
-     * @param {number} minStar - minStar
-     * @returns {Object[]} - returns filtered hawkerCentres
+     * Method to filter the list of hawker centres based on the numerical rating
+     * @param {Object[]} hawkerCentreList - The list of hawker centres to be filtered
+     * @param {number} minStar - The minimum star allowed
+     * @returns {Object[]} The filtered hawker centres
      */
     static filterStar(hawkerCentreList, minStar) {
         let returnList = hawkerCentreList.filter((hawkerCentre) => {
@@ -38,10 +40,10 @@ export class FilterManager {
     }
 
     /**
-     * Method to filter hawkerCentre list based on region
-     * @param {Object[]} hawkerCentreList - hawkerCentreList
-     * @param {region} region - region
-     * @returns {Object[]} - returns filtered hawkerCentres
+     * Method to filter the list of hawker centres based on region
+     * @param {Object[]} hawkerCentreList - The list of hawker centres to be filtered
+     * @param {region} region - The regions allowed
+     * @returns {Object[]} The filtered hawker centres
      */
     static filterRegion(hawkerCentreList, region) {
         const regionSet = new Set();
@@ -63,14 +65,15 @@ export class FilterManager {
     }
 
     /**
-     * Method to convert adress to region using postal code
+     * Method to convert address to region using first two digit of postal code
      * W: 60 <= postalCode <= 71
      * N: 72 <= postalCode <= 76
      * E: 46 <= postalCode <= 52
      * NE: 53 <= postalCode <= 55 or 79 <= postalCode <= 82 except for 81
-     * C: 1 <= postalCode <= 41 or 56 <= postalCode <= 82 except for 59
-     * @param {string} address - address
-     * @returns {string} - returns W for west,N for north, E for east, NE for northeast, C for central. 
+     * C: 1 <= postalCode <= 45 or 56 <= postalCode <= 59
+     * NA: No match
+     * @param {string} address - The address of the hawker centre
+     * @returns {string} The region code
      */
     static convertAddressToRegion(address) {
         let postalCode = (address.match(/\d{6}/) || [false])[0];

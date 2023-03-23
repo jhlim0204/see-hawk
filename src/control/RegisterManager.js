@@ -1,10 +1,12 @@
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import SessionManager from './SessionManager';
+
 /**
  * Class for registering a new user
  */
 class RegisterManager {
+
     /**
      * Constructor for RegisterManager
      * @throws Will throw an error if this static class is instantiated
@@ -12,14 +14,13 @@ class RegisterManager {
     constructor() {
         throw Error('A static class cannot be instantiated.');
     }
+
     /**
      * Method to register user
-     * Calls Firebase method createUserWithEmailAndPassword to create user
-     * @param {string} username - username
-     * @param {string} password - password
-     * @returns 
+     * @param {string} username - The username
+     * @param {string} password - The password
+     * @return {boolean} Whether the register process is successful
      */
-    // Registration Fn
     static async register(username, password) {
         username = username + '@seehawk.com';
         let user = null;

@@ -1,7 +1,5 @@
-//import { db } from '../firebase.js';
-//import { getDoc, doc, setDoc, arrayRemove, arrayUnion, updateDoc } from 'firebase/firestore';
-//import { HawkerCentreManager } from './HawkerCentreManager.js';
 import { DataManager } from './DataManager.js'; 
+
 /**
  * Class for managing favourites
  */
@@ -13,49 +11,31 @@ export class FavouriteManager {
     constructor() {
         throw Error('A static class cannot be instantiated.');
     }
+
     /**
-     * Method to get favourite from an account
-     * Calls DatabaseManager.getFavourite
-     * @param {string} accountName - accountName
+     * Method to get the list of favourites from an account
+     * @param {string} accountName - The account name
+     * @return {Object[]} The list of favourites for that account
      */
     static async getFavourite(accountName) {
-        /*
-        const docRef = doc(db, 'Account', accountName);
-        const favouriteList = (await getDoc(docRef)).data().favList;
-
-        const returnList = [];
-        for (let favourite of favouriteList) {
-            let tempFavouriteDetail = await HawkerCentreManager.retrieveHawkerCentreDetails(
-                favourite
-            );
-            let favouriteDetail = (({ name, address, photoURL, noOfStall }) => ({
-                name,
-                address,
-                photoURL,
-                noOfStall
-            }))(tempFavouriteDetail);
-            favouriteDetail.id = favourite;
-            returnList.push(favouriteDetail);
-        }
-
-        return returnList;
-        */
        return await DataManager.getFavourite(accountName);
     }
+
     /**
-     * Method to check if is favourite
-     * Calls DataManager.isFavourite
-     * @param {string} accountName - target accountName
-     * @param {number} hawkerID - target hawkerID
+     * Method to check if the hawker centre is the favourite of the account
+     * @param {string} accountName - The account name
+     * @param {string} hawkerID - The ID of the hawker centre
+     * @return {boolean} Whether the hawker centre is the favourite of the account
      */
     static async isFavourite(accountName, hawkerID) {
        return await DataManager.isFavourite(accountName, hawkerID);
     }
+
     /**
      * Method to add favourite
-     * Calls DataManager.addFavourite
-     * @param {string} accountName - target accountName
-     * @param {number} hawkerID - target hawkerID
+     * @param {string} accountName - The account name
+     * @param {string} hawkerID - The ID of the hawker centre
+     * @returns {boolean} Whether the favourite is succesfully added
      */
     static async addFavourite(accountName, hawkerID) {
        return await DataManager.addFavourite(accountName, hawkerID);
@@ -63,13 +43,11 @@ export class FavouriteManager {
 
     /**
      * Method to delete favourite
-     * Calls DataManager.deleteFavourite
-     * @param {string} accountName - target accountName
-     * @param {number}hawkerID - target hawkerID
+     * @param {string} accountName - The account name
+     * @param {string} hawkerID - The ID of the hawker centre
+     * @returns {boolean} Whether the favourite is succesfully removed
      */
     static async deleteFavourite(accountName, hawkerID) {
         return await DataManager.deleteFavourite(accountName, hawkerID);
     }
-    
-   
 }

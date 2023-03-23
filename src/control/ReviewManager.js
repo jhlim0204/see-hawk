@@ -1,38 +1,43 @@
-//import { db } from '../firebase.js';
-//import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { DataManager } from './DataManager.js';
 
+/**
+ * Class for managing reviews
+ */
 export class ReviewManager {
+
     /**
      * Constructor for ReviewManager
-     * @throw Willl throw an error if this static class  is instantiated
+     * @throws Will throw an error if this static class is instantiated
      */
     constructor() {
         throw Error('A static class cannot be instantiated.');
     }
+
     /**
-     * Method to get hawkerCentre review
-     * Calls DataManager.getReview
-     * @param {number} hawkerCentreId - hawkerCentreId
+     * Method to get reviews from hawker centre
+     * @param {string} hawkerCentreID - The ID of the hawker centre
+     * @return {Object[] | boolean} If target hawker centre exists, the list of reviews is returned. Else false is returned.
      */
-    static async getReview(hawkerCentreId) {
-        return await DataManager.getReview(hawkerCentreId);
+    static async getReview(hawkerCentreID) {
+        return await DataManager.getReview(hawkerCentreID);
     }
+
      /**
-     * Method to add hawkerCentre review
-     * Calls DataManager.addReview
-     * @param {number} hawkerCentreId - hawkerCentreId
-     * @param {number} accountID - accountID
-     * @param {number} reviewStar - reviewStar
-     * @param {string} reviewText - reviewText
+     * Method to add review to hawker centre
+     * @param {string} hawkerCentreID - The ID of the hawker centre
+     * @param {string} accountID - The ID of the account
+     * @param {number} reviewStar - The numerical rating of review
+     * @param {string} reviewText - The text rating of review
+     * @return {boolean} Whether the review is succesfully added
      */
-    static async addReview(hawkerCentreId, accountID, reviewStar, reviewText) {
-       return await DataManager.addReview(hawkerCentreId, accountID, reviewStar, reviewText);
+    static async addReview(hawkerCentreID, accountID, reviewStar, reviewText) {
+       return await DataManager.addReview(hawkerCentreID, accountID, reviewStar, reviewText);
     }
+
     /**
-     * Method to calculate average rating of a hawkerCentre
-     * @param {Object[]} reviewList - reviewList of hawkerCentre
-     * @returns {number} - returns calculated average rating if there is any rating, else 'unrated' is returned
+     * Method to calculate average rating of a hawker centre
+     * @param {Object[]} reviewList - The list of review of the hawker centre
+     * @returns {number|string} Calculated average rating if there is any rating, else 'unrated' is returned
      */
     static calculateAverage(reviewList) {
         if (Object.keys(reviewList).length === 0) {
@@ -45,10 +50,11 @@ export class ReviewManager {
         }
         return (sumOfRating / Object.keys(reviewList).length).toFixed(1);
     }
+
     /**
-     * Method to calculate percentage of reviewStar
-     * @param {Object[]} reviewList -  reviewList of hawkerCentre
-     * @return {number[]} - return array of calculated percentage of reviewStar
+     * Method to calculate percentage of review stars
+     * @param {Object[]} reviewList -  The list of review of the hawker centre
+     * @return {number[]} Array of calculated percentage of review stars
      */
     static calculatePercentage(reviewList) {
         let groupCount = [0, 0, 0, 0, 0];

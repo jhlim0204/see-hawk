@@ -1,19 +1,21 @@
 import proj4 from 'proj4';
 
 /**
- * Class for managing API
+ * Class for managing the interaction with API
  */
 export class APIManager {
+    
     /**
-     * Create an APIManager
-     * @throw Will throw an error if this static class is instantiated
+     * Constructor for APIManager
+     * @throws Will throw an error if this static class is instantiated
      */
     constructor() {
         throw Error('A static class cannot be instantiated.');
     }
+
     /**
-     * Method to fetch dictionary containing attributes of HawkerCenter
-     * @return {Object[]} hawkerCentreList - fectched hawkerCentreList
+     * Method to fetch dictionary containing attributes of hawker centres
+     * @return {Object[]} The fetched list of hawker centres
      */
     static async fetchhawkerCentre() {
         const responseHawker = await fetch(
@@ -21,10 +23,7 @@ export class APIManager {
         );
         const jsonHawker = await responseHawker.json();
         let hawkerCentreList = jsonHawker.result.records;
-        /**
-         * Method to map HawkerCentreList in firebase to api
-         * @return {Object[]} - returns hawkerCentre
-         */
+        
         hawkerCentreList = hawkerCentreList.map((item) => {
             /* Extract name*/
             var regExp = /\(([^)]+)\)/;
@@ -54,8 +53,12 @@ export class APIManager {
         });
         return hawkerCentreList;
     }
+
     /**
-     * Method to transform coordinates from longitude to suitable formats for GooglePlaces
+     * Method to transform coordinates from longitude to suitable formats for Google Places
+     * @param {number} x - The x coordinate
+     * @param {number} y - The y coordinate
+     * @return {Object} The transformed coordinates
      */
     static transformCoords = (x, y) => {
         const svy21Coords = [x, y];
@@ -68,10 +71,11 @@ export class APIManager {
         const wgs84Coords = proj4('EPSG:3414', 'EPSG:4326', svy21Coords);
         return wgs84Coords;
     };
+
     /**
      * Method to clean the address of the carpark
-     * @param {string}   address - the address to be cleaned
-     * @return {string} 
+     * @param {string} address - The address to be cleaned
+     * @return {string} The cleaned address
      */
     static cleanAddress(address) {
         address = address.replace(
@@ -80,9 +84,10 @@ export class APIManager {
         );
         return address.replace('Blk', 'Block');
     }
+
     /**
-     * Method to fetch carpark dictionary from api
-     * @return {Object[]} 
+     * Method to fetch carpark details from API
+     * @return {Object[]} The fetched list of carparks
      */
     static async fetchCarpark() {
         const responseCarparkInfo = await fetch(

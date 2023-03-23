@@ -1,23 +1,25 @@
 import { auth } from '../firebase';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+
 /**
  * Class for managing sessions
  */
 class SessionManager {
+
     /**
      * Constructor for SessionManager
-     * @throw Will throw an error if this static class is instantiated
+     * @throws Will throw an error if this static class is instantiated
      */
     constructor() {
         throw Error('A static class cannot be instantiated.');
     }
+
     /**
      * Method to login user
-     * Calls Firebase signInWithEmailAndPassword method to sign in user
-     * @param {string} username - username
-     * @param {string} password - password
+     * @param {string} username - The username
+     * @param {string} password - The password
+     * @return {boolean} Whether the login process is successful
      */
-    // Login Fn
     static async login(username, password) {
         username = username + '@seehawk.com';
         var user = null;
@@ -29,16 +31,17 @@ class SessionManager {
 
         return !!user;
     }
+
     /**
-     * Firebase method to logout user
-     * Calls Firebase signOut to logout user
+     * Method to logout user
      */
-    // Logout Fn
     static async logout() {
         await signOut(auth);
     }
+
     /**
-     * Firebase method to listen to any changes in authentication status of user
+     * Method to listen to any changes in authentication status of user
+     * @param {function} callback - The callback function
      */
     static authListener(callback) {
         onAuthStateChanged(auth, (user) => callback(user));
