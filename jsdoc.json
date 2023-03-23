@@ -1,12 +1,17 @@
 {
-    "source": {
-        "include": ["src/components/SearchUI",
-        "src/components/ProfileUI",
-        "src/components/ProfileUI/LoginRegisterUI",
-        "src/components/ProfileUI/LogoutUI",
-        "src/components/Utility",
-        "src/components/PlaceholderUI",
-        "src/control"],
-        "includePattern": ".+\\.js(doc|x)?$"
-    }
+  "plugins": ["plugins/markdown"],  
+  "source": {
+      "include": ["src"],
+      "includePattern": ".js$",
+      "excludePattern": "(node_modules/|docs)"
+  },
+  "recurseDepth": 10,
+  "templates": {
+      "cleverLinks": true,
+      "monospaceLinks": true
+  },
+  "opts": {
+      "recurse": true,
+      "destination": "./jsdoc"
+  }
 }
