@@ -7,13 +7,15 @@ import { ReviewManager } from '../../../control/ReviewManager';
 import { UserContext } from '../../UserContext';
 
 /**
- * Class to create component for giving textual review.
+ * Class component representing the button to give review.
+ * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
+ * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  */
 class GiveReview extends Component {
     static contextType = UserContext;
 
     /**
-     * Create a textual review component.
+     * Create a GiveReview component.
      * @param {Object} props - The props object that is passed to the component. 
      */
     constructor(props) {
@@ -47,7 +49,7 @@ class GiveReview extends Component {
     };
 
     /**
-     * Toggles the log in required tooltip state.
+     * Toggles the state for the 'log in required' tooltip.
      */
     toggleReviewTooltip = () => {
         if (!this.context) {
@@ -56,7 +58,7 @@ class GiveReview extends Component {
     };
 
     /**
-     * Toggles the star rating required tooltip state.
+     * Toggles the state for the 'star rating required' tooltip .
      */
     toggleSubmitTooltip = () => {
         if (this.state.reviewStar === 0) {

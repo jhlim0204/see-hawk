@@ -4,6 +4,8 @@ import { withRouter } from '../Utility/withRouter';
 
 /**
  * A class component representing the search bar.
+ * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
+ * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  */
 class SearchBar extends Component {
     /**

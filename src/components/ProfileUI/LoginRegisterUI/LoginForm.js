@@ -7,6 +7,8 @@ import SessionManager from '../../../control/SessionManager';
 /**
  * A class component representing login form allowing users to input their username and password 
  * and submit them to log in.
+ * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
+ * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  */
 class Login extends Component {
     /**

@@ -6,7 +6,7 @@ import SearchBar from '../SearchUI/SearchBar';
 import { withRouter } from '../Utility/withRouter';
 
 /**
- * Class to create header component.
+ * Class component representing the navigation bar.
  */
 class Header extends Component {
     /**

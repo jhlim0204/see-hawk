@@ -6,7 +6,9 @@ import Lottie from 'lottie-react';
 import RunningLoadingAnimation from '../../Animation/runningLoading.json';
 
 /**
- * Class to create the carpark page.
+ * Class component representing the carpark page.
+ * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
+ * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  */
 class CarparkPage extends Component {
     /**

@@ -4,7 +4,7 @@ import DisplayStarsSmall from '../../Utility/DisplayStarsSmall';
 import Avatar from 'react-avatar';
 
 /**
- * Class to create component containing details of review.
+ * Class component representing the card contining the details of review.
  */
 class ReviewDetail extends Component {
     /**

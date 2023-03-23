@@ -5,7 +5,9 @@ import { withRouter } from '../Utility/withRouter';
 import { FavouriteManager } from '../../control/FavouriteManager';
 
 /**
- * Class to create component to set and unset hawker centre as favourite.
+ * Class component representing the button to set or unset hawker centre as favourite.
+ * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
+ * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  */
 class FavouriteToggle extends Component {
     static contextType = UserContext;
@@ -67,7 +69,7 @@ class FavouriteToggle extends Component {
     };
 
     /**
-     * Toggles the log in required tooltip state. 
+     * Toggles the state for the 'log in required' tooltip. 
      */
     toggleTooltip = () => {
         if (!this.context) {
@@ -76,7 +78,7 @@ class FavouriteToggle extends Component {
     };
 
     /**
-     * Method to set notification window as disabled.
+     * Method to set the button as disabled.
      */
     setDisabled = () => {
         this.setState({ disabled: true }, () => {

@@ -9,7 +9,9 @@ import ReviewPagePlaceholder from '../../PlaceholderUI/ReviewPagePlaceholder';
 import { UserContext } from '../../UserContext';
 
 /**
- * Class to create component for the review page.
+ * Class component representing the review page.
+ * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
+ * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  */
 class ReviewPage extends Component {
     static contextType = UserContext;
@@ -48,7 +50,7 @@ class ReviewPage extends Component {
     };
 
     /**
-     * Method to update the parent element.
+     * Method to be passed to the children to allow updating on parent element.
      */
     updateParent = () => {
         this.retrieveReview();

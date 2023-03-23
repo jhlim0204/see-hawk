@@ -9,7 +9,9 @@ import { HawkerCentreManager } from '../../control/HawkerCentreManager';
 import HawkerPagePlaceholder from '../PlaceholderUI/HawkerPagePlaceholder';
 
 /**
- * Class to create component for hawker centre page.
+ * Class component representing the hawker centre page.
+ * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
+ * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  */
 class HawkerPage extends Component {
     /**
@@ -45,7 +47,7 @@ class HawkerPage extends Component {
 
     /**
      * Method to toggle the review or carpark tab.
-     * @param {string} tab - The string containing either "Reviews" or "Nearby Carparks".
+     * @param {string} tab - The string containing either "review" or "carpark".
      */
     toggleTab = (tab) => {
         if (this.state.currentActiveTab !== tab) {

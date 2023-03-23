@@ -3,7 +3,7 @@ import SearchBar from '../SearchUI/SearchBar';
 import { Col, Row } from 'reactstrap';
 
 /**
- * Class to create component for the home page.
+ * Class component representing the home page.
  */
 class HomePage extends Component {
     /**

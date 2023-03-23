@@ -5,7 +5,9 @@ import CarparkMarker from './CarparkMarker';
 import HawkerMarker from './HawkerMarker';
 
 /**
- * Class to create a map component to view carpark and hawker centre locations.
+ * Class component representing a modal containing the map to view carparks or hawker centre locations.
+ * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
+ * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  */
 class ViewOnMap extends Component {
     /**
