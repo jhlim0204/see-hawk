@@ -4,11 +4,11 @@ import DisplayStarsSmall from '../../Utility/DisplayStarsSmall';
 import Avatar from 'react-avatar';
 
 /**
- * Class to create component containing details of review
+ * Class to create component containing details of review.
  */
 class ReviewDetail extends Component {
     /**
-     * Method to render html components in React
+     * ReactJS method to render the component. 
      */
     render() {
         return (

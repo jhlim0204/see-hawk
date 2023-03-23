@@ -3,11 +3,11 @@ import SearchBar from '../SearchUI/SearchBar';
 import { Col, Row } from 'reactstrap';
 
 /**
- * Class to create component for the home page
+ * Class to create component for the home page.
  */
 class HomePage extends Component {
     /**
-     * Method to render html components in React
+     * ReactJS method to render the component. 
      */
     render() {
         return (
@@ -27,7 +27,7 @@ class HomePage extends Component {
     }
 
     /**
-     * This method is run if the component is mounted (React functionality)
+     * ReactJS method that will be called when the component has mounted.
      */
     componentDidMount() {
         document.title = 'Home - SeeHawk';

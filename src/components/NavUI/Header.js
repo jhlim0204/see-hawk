@@ -6,11 +6,11 @@ import SearchBar from '../SearchUI/SearchBar';
 import { withRouter } from '../Utility/withRouter';
 
 /**
- * Class to create header component
+ * Class to create header component.
  */
 class Header extends Component {
     /**
-     * Method to render html components in React
+     * ReactJS method to render the component. 
      */
     render() {
         return (

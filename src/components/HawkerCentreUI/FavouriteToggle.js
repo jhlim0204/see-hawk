@@ -5,13 +5,14 @@ import { withRouter } from '../Utility/withRouter';
 import { FavouriteManager } from '../../control/FavouriteManager';
 
 /**
- * Class to create component to set and unset hawker centre as favourite
+ * Class to create component to set and unset hawker centre as favourite.
  */
 class FavouriteToggle extends Component {
     static contextType = UserContext;
 
     /**
-     * Props - property functionality in React to pass data between functions/classes
+     * Create a favourite toggle component.
+     * @param {Object} props - The props object that is passed to the component. 
      */
     constructor(props) {
         super(props);
@@ -27,27 +28,21 @@ class FavouriteToggle extends Component {
     }
 
     /**
-     * Method to close notification for successfully saved hawker centre
-     * @param {void}
-     * @return {void}
+     * Method to close notification for successfully saved hawker centre.
      */
     closeSavedNotification = () => {
         this.setState({ isSavedNotificationOpen: false });
     };
 
     /**
-     * Method to close notification for successfully unsaved hawker centre
-     * @param {void}
-     * @return {void}
+     * Method to close notification for successfully unsaved hawker centre.
      */
     closeUnsavedNotification = () => {
         this.setState({ isUnsavedNotificationOpen: false });
     };
 
     /**
-     * Method to display notification for successfully saved/unsaved hawker centre
-     * @param {void}
-     * @return {void}
+     * Method to display notification for successfully saved/unsaved hawker centre.
      */
     toggleNotification = async () => {
         if (this.state.isSaved) {
@@ -72,7 +67,7 @@ class FavouriteToggle extends Component {
     };
 
     /**
-     * Method that displays informative text when user hovers over element (React functionality)
+     * Toggles the log in required tooltip state. 
      */
     toggleTooltip = () => {
         if (!this.context) {
@@ -81,9 +76,7 @@ class FavouriteToggle extends Component {
     };
 
     /**
-     * Method to set notification window as disabled
-     * @param {void}
-     * @return {void}
+     * Method to set notification window as disabled.
      */
     setDisabled = () => {
         this.setState({ disabled: true }, () => {
@@ -94,9 +87,7 @@ class FavouriteToggle extends Component {
     };
 
     /**
-     * Method to check if hawker centre is already favourite
-     * @param {void}
-     * @return {void}
+     * Method to check if hawker centre is already favourite.
      */
     checkFavourite = async () => {
         const isSaved = await FavouriteManager.isFavourite(this.context, this.state.hawkerID);
@@ -104,7 +95,7 @@ class FavouriteToggle extends Component {
     };
 
     /**
-     * Method to render html components in React
+     * ReactJS method to render the component. 
      */
     render() {
         return (
@@ -165,7 +156,7 @@ class FavouriteToggle extends Component {
     }
 
     /**
-     * This method is run if the component is mounted (React functionality)
+     * ReactJS method that will be called when the component has mounted. 
      */
     componentDidMount() {
         this.checkFavourite();

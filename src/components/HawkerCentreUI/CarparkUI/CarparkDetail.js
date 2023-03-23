@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, CardText, Progress } from 'reactstrap';
 
 /**
- * Class to create a component containing the details for the carpark
+ * Class to create a component containing the details for the carpark.
  */
 class CarparkDetail extends Component {
     /**
-     * Method to render html components in React
+     * ReactJS method that will be called when the component has mounted.
      */
     render() {
         const percentage = (this.props.availableSlots / this.props.totalSlots) * 100;

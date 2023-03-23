@@ -7,13 +7,14 @@ import { ReviewManager } from '../../../control/ReviewManager';
 import { UserContext } from '../../UserContext';
 
 /**
- * Class to create component for giving textual review
+ * Class to create component for giving textual review.
  */
 class GiveReview extends Component {
     static contextType = UserContext;
 
     /**
-     * Props - property functionality in React to pass data between functions/classes
+     * Create a textual review component.
+     * @param {Object} props - The props object that is passed to the component. 
      */
     constructor(props) {
         super(props);
@@ -31,7 +32,7 @@ class GiveReview extends Component {
     }
 
     /**
-     * Method that opens and closes the modal window (React functionality)
+     * Toggles the review submission modal state.
      */
     toggleModal = () => {
         if (this.state.isModalOpen === true) {
@@ -46,7 +47,7 @@ class GiveReview extends Component {
     };
 
     /**
-     * Method that displays informative text when user hovers over review element (React functionality)
+     * Toggles the log in required tooltip state.
      */
     toggleReviewTooltip = () => {
         if (!this.context) {
@@ -55,7 +56,7 @@ class GiveReview extends Component {
     };
 
     /**
-     * Method that displays informative text when user hovers over submit element (React functionality)
+     * Toggles the star rating required tooltip state.
      */
     toggleSubmitTooltip = () => {
         if (this.state.reviewStar === 0) {
@@ -64,27 +65,24 @@ class GiveReview extends Component {
     };
 
     /**
-     * Method to set the number of review stars for hawker centre
-     * @param {int} reviewStar number of review stars
-     * @return {void}
+     * Method to set the number of review stars for hawker centre.
+     * @param {int} reviewStar - The number of review stars.
      */
     setReviewStar = (reviewStar) => {
         this.setState({ reviewStar: reviewStar });
     };
 
     /**
-     * Method to handle review input from user
-     * @param {Event} event (React functionality)
-     * @return {void}
+     * Method to handle review input from user.
+     * @param {Event} event - Event object from HTML DOM.
      */
     handleInput = (event) => {
         this.setState({ [event.target.name]: event.target.value });
     };
 
     /**
-     * Method to handle user submission of review
-     * @param {Event} event (React functionality)
-     * @return {void}
+     * Method to handle user submission of review.
+     * @param {Event} event - Event object from HTML DOM.
      */
     handleSubmit = async (event) => {
         event.preventDefault();
@@ -112,7 +110,7 @@ class GiveReview extends Component {
     };
 
     /**
-     * Method to render html components in React
+     * ReactJS method to render the component. 
      */
     render() {
         return (

@@ -6,11 +6,12 @@ import Lottie from 'lottie-react';
 import RunningLoadingAnimation from '../../Animation/runningLoading.json';
 
 /**
- * Class to create the carpark page
+ * Class to create the carpark page.
  */
 class CarparkPage extends Component {
     /**
-     * Props - property functionality in React to pass data between functions/classes
+     * Create a carpark page component.
+     * @param {Object} props - The props object that is passed to the component. 
      */
     constructor(props) {
         super(props);
@@ -23,7 +24,7 @@ class CarparkPage extends Component {
     }
 
     /**
-     * Method to fetch carparks near to selected hawker centre
+     * Method to fetch carparks near to selected hawker centre.
      */
     fetchNearbyCarpark = async () => {
         const carparkList = await CarparkManager.fetchNearbyCarpark(this.props.lat, this.props.lng);
@@ -39,7 +40,7 @@ class CarparkPage extends Component {
     };
 
     /**
-     * Method to render html components in React
+     * ReactJS method to render the component. 
      */
     render() {
         if (this.state.isLoading) {
@@ -91,7 +92,7 @@ class CarparkPage extends Component {
     }
 
     /**
-     * This method is run if the component is mounted (React functionality)
+     * ReactJS method that will be called when the component has mounted.
      */
     componentDidMount() {
         this.fetchNearbyCarpark();

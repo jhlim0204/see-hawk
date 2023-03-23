@@ -5,12 +5,13 @@ import { UserContext } from '../UserContext';
 import HawkerPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
 
 /**
- * Class to create the page for the list of favourited hawker centres
+ * Class to create the page for the list of favourited hawker centres.
  */
 class FavouritePage extends Component {
     static contextType = UserContext;
     /**
-     * Props - property functionality in React to pass data between functions/classes
+     * Create a component for the list of favourited hawker centres.
+     * @param {Object} props - The props object that is passed to the component. 
      */
     constructor(props) {
         super(props);
@@ -22,7 +23,7 @@ class FavouritePage extends Component {
     }
 
     /**
-     * This method updates the list of favourite hawker centres
+     * This method updates the list of favourite hawker centres.
      */
     updateList = async () => {
         this.setState({ isLoading: true });
@@ -31,7 +32,7 @@ class FavouritePage extends Component {
     };
 
     /**
-     * Method to render html components in React
+     * ReactJS method to render the component. 
      */
     render() {
         if (this.state.isLoading) {
@@ -79,7 +80,7 @@ class FavouritePage extends Component {
     }
 
     /**
-     * This method is run if the component is mounted (React functionality)
+     * ReactJS method that will be called when the component has mounted.
      */
     componentDidMount() {
         this.updateList();

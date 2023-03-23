@@ -9,11 +9,12 @@ import { HawkerCentreManager } from '../../control/HawkerCentreManager';
 import HawkerPagePlaceholder from '../PlaceholderUI/HawkerPagePlaceholder';
 
 /**
- * Class to create component for hawker centre page
+ * Class to create component for hawker centre page.
  */
 class HawkerPage extends Component {
     /**
-     * Props - property functionality in React to pass data between functions/classes
+     * Create a hawker page component.
+     * @param {Object} props - The props object that is passed to the component. 
      */
     constructor(props) {
         super(props);
@@ -43,9 +44,8 @@ class HawkerPage extends Component {
     }
 
     /**
-     * Method to toggle the review or carpark tab
-     * @param {string} tab 
-     * @return {void}
+     * Method to toggle the review or carpark tab.
+     * @param {string} tab - The string containing either "Reviews" or "Nearby Carparks".
      */
     toggleTab = (tab) => {
         if (this.state.currentActiveTab !== tab) {
@@ -54,9 +54,7 @@ class HawkerPage extends Component {
     };
 
     /**
-     * Method to get hawker centre detail
-     * @param {void}
-     * @return {void}
+     * Method to get hawker centre detail.
      */
     async getHawkerCenterDetail() {
         this.setState({ isLoading: true });
@@ -74,7 +72,7 @@ class HawkerPage extends Component {
     }
 
     /**
-     * Method to render html components in React
+     * ReactJS method to render the component. 
      */
     render() {
         let hawkerData = this.state.hawkerData;
@@ -205,7 +203,7 @@ class HawkerPage extends Component {
     }
 
     /**
-     * This method is run if the component is mounted (React functionality)
+     * ReactJS method that will be called when the component has mounted.
      */
     componentDidMount() {
         this.getHawkerCenterDetail();

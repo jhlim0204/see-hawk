@@ -18,12 +18,13 @@ import { FavouriteManager } from '../../control/FavouriteManager';
 import { UserContext } from '../UserContext';
 
 /**
- * Class to create a favourited hawker centre component
+ * Class to create a favourited hawker centre component.
  */
 class FavouriteComponent extends Component {
     static contextType = UserContext;
     /**
-     * Props - property functionality in React to pass data between functions/classes
+     * Create a favourited hawker centre component.
+     * @param {Object} props - The props object that is passed to the component. 
      */
     constructor(props) {
         super(props);
@@ -35,7 +36,7 @@ class FavouriteComponent extends Component {
     }
 
     /**
-     * This method removes a hawker centre from the favourites list
+     * This method removes a hawker centre from the favourites list.
      */
     removeFavourite = async () => {
         this.setState({ isLoading: true });
@@ -46,14 +47,14 @@ class FavouriteComponent extends Component {
     };
 
     /**
-     * Method that opens and closes the modal window (React functionality)
+     * Toggles the remove from favourite list modal state.
      */
     toggleModal = () => {
         this.setState({ isModalOpen: !this.state.isModalOpen });
     };
 
     /**
-     * Method to render html components in React
+     * ReactJS method to render the component. 
      */
     render() {
         return (
