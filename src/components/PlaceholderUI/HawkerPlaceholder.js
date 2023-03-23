@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardBody, CardTitle, CardText, Col, Row } from 'reactstrap';
+
 /**
- * Renders a placeholder card for a hawker.
- * @extends Component
+ * A class component representing the placeholder card for a hawker centre
  */
-class HawkerPlaceholder extends Component {
+class HawkerPlaceholder extends Component {    
+    /**
+    * ReactJS method to render the component.
+    */
     render() {
         return (
             <Card className='my-2 text-start border-0 shadow-sm'>

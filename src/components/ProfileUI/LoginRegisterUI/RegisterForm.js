@@ -5,45 +5,18 @@ import SuccessTickAnimation from '../../Animation/successTick.json';
 import RegisterManager from '../../../control/RegisterManager';
 
 /**
-
-The Register component displays a form for the user to input their username and password to register.
-
-It also includes input validation and submission handling logic, as well as displaying a success message upon successful registration.
-
-@component
-*/
-
-
+ * A class component representing the form for the user to input their username and password to register.
+ * It also includes input validation and submission handling logic, as well as displaying 
+ * a success message upon successful registration.
+ */
 class Register extends Component {
     /**
-
-Constructs a new Register component instance with initial state values for the form inputs, input validation, and loading status.
-
-@constructor
-
-@param {Object} props - The props object that is passed to the component.
-
-@param {Function} props.switchTab - A function to switch tabs within the parent component.
-
-@param {Function} props.toggleModal - A function to toggle the modal component within the parent component.
-*/
+    * Create a Register component.
+    * @param {Object} props - The props object that is passed to the component.
+    */
     constructor(props) {
         super(props);
 
-/**
-
-Represents the state of a component for user registration and login, including username, password, re-entered password, validity of the input, error messages, loading status, and login success status.
-@typedef {Object} Register
-@property {string} username - The username entered by the user.
-@property {string} password - The password entered by the user.
-@property {string} rePassword - The re-entered password entered by the user.
-@property {boolean} invalidUsername - Whether the username entered by the user is invalid.
-@property {boolean} invalidPassword - Whether the password entered by the user is invalid.
-@property {boolean} invalidRePassword - Whether the re-entered password entered by the user is invalid.
-@property {string} errMessUser - The error message displayed to the user when there is an issue with the entered username or password.
-@property {boolean} isLoading - Whether the registration or login process is currently loading.
-@property {boolean} loginSuccess - Whether the user has successfully logged in.
-*/
         this.state = {
             username: '',
             password: '',
@@ -56,27 +29,24 @@ Represents the state of a component for user registration and login, including u
             loginSuccess: false
         };
     }
-/**
 
-Updates the state with the new input value and resets the input validation error messages.
-@param {Object} event - The event object for the input change event.
-*/
+    /**
+    * Updates the state with the new input value and resets the input validation error messages.
+    * @param {Event} event - The event object for the input change event.
+    */
     handleInput = (event) => {
         this.setState({ invalidUsername: false, invalidPassword: false, invalidRePassword: false });
         this.setState({
             [event.target.name]: event.target.value
         });
     };
-/**
 
-Submits the form data after validating the input fields, and sets the loading state while waiting for a response from the server.
-
-If the registration is successful, sets the login success state and switches to the login tab after a delay.
-
-Otherwise, sets the username validation error state and displays an error message.
-
-@param {Object} event - The event object for the form submission event.
-*/
+    /**
+    * Submits the form data after validating the input fields, and sets the loading state while waiting for a response from the server.
+    * If the registration is successful, sets the login success state and switches to the login tab after a delay.
+    * Otherwise, sets the username validation error state and displays an error message.
+    * @param {Event} event - The event object for the form submission event.
+    */
     handleSubmit = async (event) => {
         event.preventDefault();
         if (!(this.checkUsername() && this.checkPassword() && this.checkRePassword())) {
@@ -106,12 +76,11 @@ Otherwise, sets the username validation error state and displays an error messag
             });
         }
     };
-/**
 
-Checks if the username input field is valid and updates the state with an error message if it is invalid.
-
-@returns {boolean} - Returns true if the input is valid, otherwise returns false.
-*/
+    /**
+    * Checks if the username input field is valid and updates the state with an error message if it is invalid.
+    * @returns {boolean} - Returns true if the input is valid, otherwise returns false.
+    */
     checkUsername = () => {
         const invalid = this.state.username.length > 13;
 
@@ -123,24 +92,22 @@ Checks if the username input field is valid and updates the state with an error 
         }
         return !invalid;
     };
-/**
 
-Checks if the password input field is valid and updates the state with an error message if it is invalid.
-
-@returns {boolean} - Returns true if the input is valid, otherwise returns false.
-*/
+    /**
+    * Checks if the password input field is valid and updates the state with an error message if it is invalid.
+    * @returns {boolean} - Returns true if the input is valid, otherwise returns false.
+    */
     checkPassword = () => {
         const invalid = this.state.password.length < 8;
 
         this.setState({ invalidPassword: invalid });
         return !invalid;
     };
-/**
 
-Checks if the re-entered password input field matches the password input field field is valid and updates the state with an error message if it is invalid.
-
-@returns {boolean} - Returns true if the input is valid, otherwise returns false.
-*/
+    /**
+    * Checks if the re-entered password input field matches the password input field field is valid and updates the state with an error message if it is invalid.
+    * @returns {boolean} - Returns true if the input is valid, otherwise returns false.
+    */
     checkRePassword = () => {
         const invalid = this.state.rePassword !== this.state.password;
 
@@ -148,6 +115,9 @@ Checks if the re-entered password input field matches the password input field f
         return !invalid;
     };
 
+    /**
+    * ReactJS method to render the component.
+    */
     render() {
         if (this.state.loginSuccess) {
             return (

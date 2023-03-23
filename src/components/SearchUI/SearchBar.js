@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Form, Input, InputGroup, InputGroupText } from 'reactstrap';
 import { withRouter } from '../Utility/withRouter';
 
-
 /**
- * Initializes the state of the component with the value of the search query parameter
- * extracted from the URL or an empty string.
- * @constructor
- * @param {Object} props - The props object that is passed to the component.
+ * A class component representing the search bar.
  */
-
 class SearchBar extends Component {
+    /**
+    * Initializes the state of the component with the value of the search query parameter
+    * extracted from the URL or an empty string.
+    * @param {Object} props - The props object that is passed to the component.
+    */
     constructor(props) {
         super(props);
 
@@ -22,25 +22,28 @@ class SearchBar extends Component {
             q: qParam
         };
     }
-/**
- * Selects the text in the input field when it receives focus.
- * @param {Object} event - The event object that triggered the method.
- */
+
+    /**
+     * Selects the text in the input field when it receives focus.
+     * @param {Event} event - The event object that triggered the method.
+     */
     handleFocus = (event) => {
         event.target.select();
     };
-/**
- * Updates the state with the name and value of the input field.
- * @param {Object} event - The event object that triggered the method.
- */
+
+    /**
+     * Updates the state with the name and value of the input field.
+     * @param {Event} event - The event object that triggered the method.
+     */
     handleInput = (event) => {
         this.setState({ [event.target.name]: event.target.value });
     };
-/**
- * Submits the form and navigates to the search results page with the search query parameter.
- * Reloads the page to update the search results.
- * @param {Object} event - The event object that triggered the method.
- */
+
+    /**
+     * Submits the form and navigates to the search results page with the search query parameter.
+     * Reloads the page to update the search results.
+     * @param {Event} event - The event object that triggered the method.
+     */
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.state.q && this.state.q.trim()) {
@@ -48,9 +51,10 @@ class SearchBar extends Component {
             window.location.reload();
         }
     };
-/**
- * Renders the search bar with input field and search icon.
- */
+
+    /**
+    * ReactJS method to render the component.
+    */
     render() {
         return (
             <Form

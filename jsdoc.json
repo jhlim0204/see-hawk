@@ -5,7 +5,8 @@
         "src/components/ProfileUI/LoginRegisterUI",
         "src/components/ProfileUI/LogoutUI",
         "src/components/Utility",
-        "src/components/PlaceholderUI"],
+        "src/components/PlaceholderUI",
+        "src/control"],
         "includePattern": ".+\\.js(doc|x)?$"
     }
 }

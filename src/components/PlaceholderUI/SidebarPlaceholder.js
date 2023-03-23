@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { Col } from 'reactstrap';
-/**
 
-React component for a placeholder sidebar with filters.
-@class
-@extends Component
-/
-class SidebarPlaceholder extends Component {
-/*
-Render method of the component.
-*/
-class SidebarPlaceholder extends Component {
+/**
+ * A class component representing the placeholder sidebar for the search page
+ */
+class SidebarPlaceholder extends Component {   
+    /**
+    * ReactJS method to render the component.
+    */
     render() {
         return (
             <Col xs={3} className='rounded-3 content shadow-sm placeholder-glow'>

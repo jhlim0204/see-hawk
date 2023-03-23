@@ -15,35 +15,16 @@ import HawkerPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
 import { HawkerCentreManager } from '../../control/HawkerCentreManager';
 import { FilterManager } from '../../control/FilterManager';
 
-
-
-
+/**
+ * A class component representing the search page.
+ */
 class SearchPage extends Component {
-
     /**
-
-Initializes the state of the component with isLoading, oriSearchResult, searchResult, star, and region.
-@param {*} props the properties passed down from the parent component
-*/
+    * Initializes the state of the component with isLoading, oriSearchResult, searchResult, star, and region.
+    * @param {Object} props - The props object that is passed to the component.
+    */
     constructor(props) {
         super(props);
-
-
-/**
-
-Represents the state of a component that contains properties related to search results, loading status, star count, and region filtering.
-@constructor
-@param {boolean} isLoading - A boolean value indicating whether the search results are currently being loaded.
-@param {Array} oriSearchResult - An array of original search results.
-@param {Array} searchResult - An array of filtered search results.
-@param {number} star - A numeric value representing the number of stars for a given search result.
-@param {Object} region - An object containing boolean properties representing the region filter for search results.
-@param {boolean} region.W - A boolean value indicating whether search results are filtered by the western region.
-@param {boolean} region.E - A boolean value indicating whether search results are filtered by the eastern region.
-@param {boolean} region.N - A boolean value indicating whether search results are filtered by the northern region.
-@param {boolean} region.NE - A boolean value indicating whether search results are filtered by the northeastern region.
-@param {boolean} region.C - A boolean value indicating whether search results are filtered by the central region.
-*/
 
         this.state = {
             isLoading: true,
@@ -59,11 +40,11 @@ Represents the state of a component that contains properties related to search r
             }
         };
     }
-/**
 
-Handles the search function by calling the searchHawkerCentre function of the HawkerCentreManager controller
-and setting the state of isLoading and searchResult accordingly.
-*/
+    /**
+    * Handles the search function by calling the searchHawkerCentre function of the HawkerCentreManager controller
+    * and setting the state of isLoading and searchResult accordingly.
+    */
     handleSearch = async () => {
         this.setState({ isLoading: true });
 
@@ -77,12 +58,12 @@ and setting the state of isLoading and searchResult accordingly.
 
         this.setState({ searchResult: resultList, oriSearchResult: resultList, isLoading: false });
     };
-/**
 
-Handles filtering the search results based on star rating and location.
-Filters the oriSearchResult by passing it to the FilterManager's filter function and updating the state
-of searchResult with the resulting array.
-*/
+    /**
+    * Handles filtering the search results based on star rating and location.
+    * Filters the oriSearchResult by passing it to the FilterManager's filter function and updating the state
+    * of searchResult with the resulting array.
+    */
     handleFilter = () => {
         /* ori search result*/
         this.setState({
@@ -92,23 +73,23 @@ of searchResult with the resulting array.
             })
         });
     };
-/**
 
-Handles updating the state of star based on the selected star rating.
-Calls handleFilter to update the search results.
-@param {*} event the event object passed in from the onChange handler
-*/
+    /**
+    * Handles updating the state of star based on the selected star rating.
+    * Calls handleFilter to update the search results.
+    * @param {Event} event the event object passed in from the onChange handler
+    */
     handleRating = (event) => {
         this.setState({ star: parseInt(event.target.value) }, () => {
             this.handleFilter();
         });
     };
-/**
 
-Handles updating the state of the location checkboxes based on which checkboxes were clicked.
-Calls handleFilter to update the search results.
-@param {*} event the event object passed in from the onChange handler
-*/
+    /**
+    * Handles updating the state of the location checkboxes based on which checkboxes were clicked.
+    * Calls handleFilter to update the search results.
+    * @param {Event} event the event object passed in from the onChange handler
+    */
     handleRegion = (event) => {
         let regionCopy = { ...this.state.region };
         regionCopy[event.target.name] = !regionCopy[event.target.name];
@@ -117,6 +98,9 @@ Calls handleFilter to update the search results.
         });
     };
 
+    /**
+    * ReactJS method to render the component.
+    */
     render() {
         if (this.state.isLoading) {
             return (
@@ -308,6 +292,9 @@ Calls handleFilter to update the search results.
         }
     }
 
+    /**
+    * ReactJS method that will be called when the component has mounted.
+    */
     componentDidMount() {
         this.handleSearch();
         document.title = 'Search Results - SeeHawk';
