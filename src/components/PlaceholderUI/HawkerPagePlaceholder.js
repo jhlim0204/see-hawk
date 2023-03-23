@@ -1,6 +1,11 @@
 import Lottie from 'lottie-react';
 import RunningLoadingAnimation from '../Animation/runningLoading.json';
-
+/**
+ * @function
+ * HawkerPagePlaceholder
+ * @description Place loading animation for transition
+ * @return Animation for transition when loading
+ */
 export default function HawkerPagePlaceholder() {
     return (
         <>

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardBody, CardTitle, CardText, Col, Row } from 'reactstrap';
 import StarsRating from 'react-star-rate';
 import { Link } from 'react-router-dom';
-
+/**
+ * A component representing a hawker result card that displays information about a hawker center, including its name, photo, address, and rating.
+ */
 class HawkerResult extends Component {
     render() {
         return (

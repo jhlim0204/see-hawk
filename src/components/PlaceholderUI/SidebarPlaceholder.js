@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { Col } from 'reactstrap';
+/**
 
+React component for a placeholder sidebar with filters.
+@class
+@extends Component
+/
+class SidebarPlaceholder extends Component {
+/*
+Render method of the component.
+*/
 class SidebarPlaceholder extends Component {
     render() {
         return (

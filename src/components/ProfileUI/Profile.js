@@ -5,13 +5,30 @@ import LoginRegister from './LoginRegisterUI/LoginRegisterModal';
 import Logout from './LogoutUI/Logout';
 import { UserContext } from '../UserContext';
 import Avatar from 'react-avatar';
+/**
 
+This is a React component that renders a dropdown menu for user profiles. 
+It shows different options for logged-in users and guests. 
+Logged-in users can access their favorite list and log out, while guests are offered a login/registration option. 
+The dropdown toggle button displays the user's avatar or a default guest image if the user is not logged in.
+@class
+@extends Component
+/
+class Profile extends Component {
+
+*/
 class Profile extends Component {
     static contextType = UserContext;
 
     constructor(props) {
         super(props);
-
+/**
+     * @type {Object}
+     * @property {boolean} dropdownOpen - Determines if dropdown is open or closed.
+     * @property {boolean} isLoginModalOpen - Determines if Login/Register modal is open or closed.
+     * @property {boolean} isLogoutModalOpen - Determines if Logout modal is open or closed.
+     * @property {string} currentActiveTab - Determines the current active tab.
+     */
         this.state = {
             dropdownOpen: false,
             isLoginModalOpen: false,
@@ -19,11 +36,22 @@ class Profile extends Component {
             currentActiveTab: 'login'
         };
     }
-
+/**
+ * Toggles the dropdown state.
+ * 
+ * @method
+ * @returns {void}
+ */
     toggle = () => {
         this.setState({ dropdownOpen: !this.state.dropdownOpen });
     };
-
+/**
+ * Toggles the Login/Register modal state.
+ * 
+ * @method
+ * @param {string} option - Determines if the modal should be closed or opened.
+ * @returns {void}
+ */
     toggleLoginModal = (option) => {
         if (option === 'close') {
             this.setState({ isLoginModalOpen: false });
@@ -31,7 +59,12 @@ class Profile extends Component {
             this.setState({ isLoginModalOpen: !this.state.isLoginModalOpen });
         }
     };
-
+/**
+ * Toggles the Logout modal state.
+ * 
+ * @method
+ * @returns {void}
+ */
     toggleLogoutModal = () => {
         this.setState({ isLogoutModalOpen: !this.state.isLogoutModalOpen });
     };

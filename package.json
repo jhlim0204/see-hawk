@@ -35,7 +35,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
     "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx,json}",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json,scss} --config ./.prettierrc"
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json,scss} --config ./.prettierrc",
+    "jsdoc": "jsdoc -c jsdoc.json"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +59,8 @@
   "devDependencies": {
     "eslint": "^8.35.0",
     "eslint-plugin-react": "^7.32.2",
-    "prettier": "2.8.4"
+    "prettier": "2.8.4",
+    "jsdoc": "^3.6.7"
   }
 }
+

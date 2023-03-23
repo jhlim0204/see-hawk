@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import SessionManager from '../../../control/SessionManager';
+/**
 
+A React component that displays a modal to confirm logout and logs out the user on confirmation.
+@component
+*/
 class Logout extends Component {
+    /**
+* Create a Logout component.
+* @constructor
+* @param {Object} props - The component properties.
+*/
     constructor(props) {
         super(props);
-
+/**
+     * The component's state.
+     * @type {Object}
+     * @property {boolean} isLoading - Indicates if a logout request is in progress.
+     */
         this.state = {
             isLoading: false
         };
     }
-
+/**
+ * Logs the user out and closes the modal on confirmation.
+ * @async
+ * @param {Event} event - The click event.
+ */
     logout = async (event) => {
         event.preventDefault();
         this.setState({ isLoading: true });
