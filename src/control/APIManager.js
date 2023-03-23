@@ -1,17 +1,30 @@
 import proj4 from 'proj4';
 
+/**
+ * Class for managing API
+ */
 export class APIManager {
+    /**
+     * Create an APIManager
+     * @throw Will throw an error if this static class is instantiated
+     */
     constructor() {
         throw Error('A static class cannot be instantiated.');
     }
-
+    /**
+     * Method to fetch dictionary containing attributes of HawkerCenter
+     * @return {Object[]} hawkerCentreList - fectched hawkerCentreList
+     */
     static async fetchhawkerCentre() {
         const responseHawker = await fetch(
             'https://data.gov.sg/api/action/datastore_search?resource_id=b80cb643-a732-480d-86b5-e03957bc82aa&limit=500'
         );
         const jsonHawker = await responseHawker.json();
         let hawkerCentreList = jsonHawker.result.records;
-
+        /**
+         * Method to map HawkerCentreList in firebase to api
+         * @return {Object[]} - returns hawkerCentre
+         */
         hawkerCentreList = hawkerCentreList.map((item) => {
             /* Extract name*/
             var regExp = /\(([^)]+)\)/;
@@ -41,7 +54,9 @@ export class APIManager {
         });
         return hawkerCentreList;
     }
-
+    /**
+     * Method to transform coordinates from longitude to suitable formats for GooglePlaces
+     */
     static transformCoords = (x, y) => {
         const svy21Coords = [x, y];
         // Define the EPSG:3414 and EPSG:4326 projections
@@ -53,7 +68,11 @@ export class APIManager {
         const wgs84Coords = proj4('EPSG:3414', 'EPSG:4326', svy21Coords);
         return wgs84Coords;
     };
-
+    /**
+     * Method to clean the address of the carpark
+     * @param {string}   address - the address to be cleaned
+     * @return {string} 
+     */
     static cleanAddress(address) {
         address = address.replace(
             /\b[a-zA-Z]+\b/g,
@@ -61,7 +80,10 @@ export class APIManager {
         );
         return address.replace('Blk', 'Block');
     }
-
+    /**
+     * Method to fetch carpark dictionary from api
+     * @return {Object[]} 
+     */
     static async fetchCarpark() {
         const responseCarparkInfo = await fetch(
             'https://data.gov.sg/api/action/datastore_search?resource_id=139a3035-e624-4f56-b63f-89ae28d4ae4c&limit=5000'

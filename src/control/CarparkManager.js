@@ -1,11 +1,22 @@
 import { APIManager } from './APIManager';
 import haversine from 'haversine-distance';
-
+/**
+ * Class for managing carpark
+ */
 export class CarparkManager {
+    /**
+     * Constructor for CarparkManager
+     * @throw Will throw an error if this static class is instantiated
+     */
     constructor() {
         throw Error('A static class cannot be instantiated.');
     }
-
+    /**
+     * Method to fetch nearby Carparks dictionary and sort them according to availbility
+     * @param {number} latitude - latitude
+     * @param {number} longitude - longitude
+     * @return {Object[]}  returns fetched list of carpark
+     */
     static async fetchNearbyCarpark(lat, lng) {
         let carparks = await APIManager.fetchCarpark();
         carparks = carparks.filter((carpark) => {
