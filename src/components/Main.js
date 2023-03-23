@@ -12,7 +12,14 @@ import { UserContext } from './UserContext';
 /* Controller */
 import SessionManager from '../control/SessionManager';
 
-class Main extends Component {
+/**
+ * A main class component representing the whole application.
+ */
+class Main extends Component {    
+    /**
+    * Initializes the state of the main component.
+    * @param {Object} props - The props object that is passed to the component.
+    */
     constructor(props) {
         super(props);
         this.state = {
@@ -20,6 +27,10 @@ class Main extends Component {
         };
     }
 
+    /**
+    * The method to update the user status.
+     * @param {Object} user - The dicitionary containing relevant information about a user.
+     */
     updateUserStatus = (user) => {
         if (user) {
             this.setState({ username: user.email.substring(0, user.email.length - 12) });
@@ -28,6 +39,9 @@ class Main extends Component {
         }
     };
 
+    /**
+    * ReactJS method to render the component.
+    */
     render() {
         return (
             <UserContext.Provider value={this.state.username}>
@@ -54,6 +68,9 @@ class Main extends Component {
         );
     }
 
+    /**
+    * ReactJS method that will be called when the component has mounted.
+    */
     componentDidMount() {
         SessionManager.authListener(this.updateUserStatus);
     }
