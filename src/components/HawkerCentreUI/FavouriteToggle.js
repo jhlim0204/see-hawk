@@ -4,9 +4,16 @@ import { UserContext } from '../UserContext';
 import { withRouter } from '../Utility/withRouter';
 import { FavouriteManager } from '../../control/FavouriteManager';
 
+/**
+ * Class to create component to set and unset hawker centre as favourite.
+ */
 class FavouriteToggle extends Component {
     static contextType = UserContext;
 
+    /**
+     * Create a favourite toggle component.
+     * @param {Object} props - The props object that is passed to the component. 
+     */
     constructor(props) {
         super(props);
 
@@ -20,14 +27,23 @@ class FavouriteToggle extends Component {
         };
     }
 
+    /**
+     * Method to close notification for successfully saved hawker centre.
+     */
     closeSavedNotification = () => {
         this.setState({ isSavedNotificationOpen: false });
     };
 
+    /**
+     * Method to close notification for successfully unsaved hawker centre.
+     */
     closeUnsavedNotification = () => {
         this.setState({ isUnsavedNotificationOpen: false });
     };
 
+    /**
+     * Method to display notification for successfully saved/unsaved hawker centre.
+     */
     toggleNotification = async () => {
         if (this.state.isSaved) {
             this.setDisabled();
@@ -50,12 +66,18 @@ class FavouriteToggle extends Component {
         }
     };
 
+    /**
+     * Toggles the log in required tooltip state. 
+     */
     toggleTooltip = () => {
         if (!this.context) {
             this.setState({ isTooltipOpen: !this.state.isTooltipOpen });
         }
     };
 
+    /**
+     * Method to set notification window as disabled.
+     */
     setDisabled = () => {
         this.setState({ disabled: true }, () => {
             window.setTimeout(() => {
@@ -64,11 +86,17 @@ class FavouriteToggle extends Component {
         });
     };
 
+    /**
+     * Method to check if hawker centre is already favourite.
+     */
     checkFavourite = async () => {
         const isSaved = await FavouriteManager.isFavourite(this.context, this.state.hawkerID);
         this.setState({ isSaved: isSaved });
     };
 
+    /**
+     * ReactJS method to render the component. 
+     */
     render() {
         return (
             <>
@@ -104,7 +132,7 @@ class FavouriteToggle extends Component {
                             <button
                                 className='btn-close btn-close-white me-2 m-auto'
                                 onClick={this.closeSavedNotification}
-                             />
+                            />
                         </div>
                     </Toast>
 
@@ -119,7 +147,7 @@ class FavouriteToggle extends Component {
                             <button
                                 className='btn-close btn-close-white me-2 m-auto'
                                 onClick={this.closeUnsavedNotification}
-                             />
+                            />
                         </div>
                     </Toast>
                 </div>
@@ -127,6 +155,9 @@ class FavouriteToggle extends Component {
         );
     }
 
+    /**
+     * ReactJS method that will be called when the component has mounted. 
+     */
     componentDidMount() {
         this.checkFavourite();
     }

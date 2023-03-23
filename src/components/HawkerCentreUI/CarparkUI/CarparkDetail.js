@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, CardText, Progress } from 'reactstrap';
 
+/**
+ * Class to create a component containing the details for the carpark.
+ */
 class CarparkDetail extends Component {
+    /**
+     * ReactJS method that will be called when the component has mounted.
+     */
     render() {
         const percentage = (this.props.availableSlots / this.props.totalSlots) * 100;
         const progressValue = percentage < 17 ? (percentage === 0 ? 0 : 17) : percentage;

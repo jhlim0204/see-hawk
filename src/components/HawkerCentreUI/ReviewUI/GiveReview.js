@@ -6,9 +6,16 @@ import ReviewSubmittedAnimation from '../../Animation/reviewSubmitted.json';
 import { ReviewManager } from '../../../control/ReviewManager';
 import { UserContext } from '../../UserContext';
 
+/**
+ * Class to create component for giving textual review.
+ */
 class GiveReview extends Component {
     static contextType = UserContext;
 
+    /**
+     * Create a textual review component.
+     * @param {Object} props - The props object that is passed to the component. 
+     */
     constructor(props) {
         super(props);
 
@@ -24,6 +31,9 @@ class GiveReview extends Component {
         };
     }
 
+    /**
+     * Toggles the review submission modal state.
+     */
     toggleModal = () => {
         if (this.state.isModalOpen === true) {
             this.setState({
@@ -36,26 +46,44 @@ class GiveReview extends Component {
         }
     };
 
+    /**
+     * Toggles the log in required tooltip state.
+     */
     toggleReviewTooltip = () => {
         if (!this.context) {
             this.setState({ isReviewTooltipOpen: !this.state.isReviewTooltipOpen });
         }
     };
 
+    /**
+     * Toggles the star rating required tooltip state.
+     */
     toggleSubmitTooltip = () => {
         if (this.state.reviewStar === 0) {
             this.setState({ isSubmitTooltipOpen: !this.state.isSubmitTooltipOpen });
         }
     };
 
+    /**
+     * Method to set the number of review stars for hawker centre.
+     * @param {int} reviewStar - The number of review stars.
+     */
     setReviewStar = (reviewStar) => {
         this.setState({ reviewStar: reviewStar });
     };
 
+    /**
+     * Method to handle review input from user.
+     * @param {Event} event - Event object from HTML DOM.
+     */
     handleInput = (event) => {
         this.setState({ [event.target.name]: event.target.value });
     };
 
+    /**
+     * Method to handle user submission of review.
+     * @param {Event} event - Event object from HTML DOM.
+     */
     handleSubmit = async (event) => {
         event.preventDefault();
         //Calling controller
@@ -81,6 +109,9 @@ class GiveReview extends Component {
         }
     };
 
+    /**
+     * ReactJS method to render the component. 
+     */
     render() {
         return (
             <>

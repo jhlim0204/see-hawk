@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: HawkerCentreUI/ViewOnMapUI/ViewOnMap.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: HawkerCentreUI/ViewOnMapUI/ViewOnMap.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import CarparkMarker from './CarparkMarker';
+import HawkerMarker from './HawkerMarker';
+
+/**
+ * Class to create a map component to view carpark and hawker centre locations
+ */
+class ViewOnMap extends Component {
+    /**
+     * Props - property functionality in React to pass data between functions/classes
+     */
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isModalOpen: false,
+            infoWindowOpen: false,
+            center: {
+                lat: Number(this.props.lat),
+                lng: Number(this.props.lng)
+            },
+            zoom: this.props.carpark ? 15 : 13
+        };
+    }
+
+    /**
+     * Method that opens and closes the modal window (React functionality)
+     */
+    toggleModal = () => {
+        this.setState({ isModalOpen: !this.state.isModalOpen });
+    };
+
+    /**
+     * Method to display the window containing more information
+     * @param {void}
+     * @return {void}
+     */
+    openInfoWindow = () => {
+        this.setState({ infoWindowOpen: !this.state.infoWindowOpen });
+    };
+
+    /**
+     * Method to render html components in React
+     */
+    render() {
+        return (
+            &lt;>
+                &lt;Button
+                    color='primary'
+                    onClick={this.toggleModal}
+                    outline={this.props.carpark}
+                    size={this.props.carpark &amp;&amp; 'sm'}
+                    className='ms-2'
+                >
+                    &lt;i className='bi bi-map-fill' /> View on Map
+                &lt;/Button>
+                &lt;Modal
+                    className='text-center modal-xl'
+                    toggle={this.toggleModal}
+                    isOpen={this.state.isModalOpen}
+                >
+                    &lt;ModalHeader toggle={this.toggleModal}>View on Map&lt;/ModalHeader>
+                    &lt;ModalBody className='px-0 py-0'>
+                        &lt;div style={{ height: '80vh', width: '100%' }}>
+                            &lt;LoadScript googleMapsApiKey='AIzaSyBLYQy-AtpqQjTyBRO1Wu6lxmORkwNihGI'>
+                                &lt;GoogleMap
+                                    mapContainerStyle={{
+                                        width: '100%',
+                                        height: '100%'
+                                    }}
+                                    options={{
+                                        mapTypeControlOptions: { mapTypeIds: [] },
+                                        streetViewControl: false
+                                    }}
+                                    center={this.state.center}
+                                    zoom={this.state.zoom}
+                                    clickableIcons={false}
+                                >
+                                    {/* Child components, such as markers, info windows, etc. */}
+                                    {this.props.carpark ? (
+                                        this.props.carparkList.map((carpark) => (
+                                            &lt;CarparkMarker
+                                                key={carpark.carparkNumber}
+                                                number={carpark.carparkNumber}
+                                                position={{ lat: carpark.lat, lng: carpark.lng }}
+                                                address={carpark.address}
+                                                availableSlots={carpark.availableSlots}
+                                            />
+                                        ))
+                                    ) : (
+                                        &lt;HawkerMarker
+                                            position={{
+                                                lat: Number(this.props.lat),
+                                                lng: Number(this.props.lng)
+                                            }}
+                                        />
+                                    )}
+                                &lt;/GoogleMap>
+                            &lt;/LoadScript>
+                        &lt;/div>
+                    &lt;/ModalBody>
+                &lt;/Modal>
+            &lt;/>
+        );
+    }
+}
+
+export default ViewOnMap;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CarparkDetail.html">CarparkDetail</a></li><li><a href="CarparkMarker.html">CarparkMarker</a></li><li><a href="CarparkPage.html">CarparkPage</a></li><li><a href="FavouriteComponent.html">FavouriteComponent</a></li><li><a href="FavouritePage.html">FavouritePage</a></li><li><a href="FavouriteToggle.html">FavouriteToggle</a></li><li><a href="GiveReview.html">GiveReview</a></li><li><a href="HawkerMarker.html">HawkerMarker</a></li><li><a href="HawkerPage.html">HawkerPage</a></li><li><a href="Header.html">Header</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="ReviewDetail.html">ReviewDetail</a></li><li><a href="ReviewPage.html">ReviewPage</a></li><li><a href="ViewOnMap.html">ViewOnMap</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Mar 22 2023 14:11:22 GMT+0800 (Singapore Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

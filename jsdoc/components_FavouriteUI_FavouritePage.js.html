@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/FavouriteUI/FavouritePage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/FavouriteUI/FavouritePage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import FavouriteComponent from './FavouriteComponent';
+import { FavouriteManager } from '../../control/FavouriteManager';
+import { UserContext } from '../UserContext';
+import HawkerPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
+
+/**
+ * Class to create the page for the list of favourited hawker centres
+ */
+class FavouritePage extends Component {
+    static contextType = UserContext;
+    /**
+     * Props - property functionality in React to pass data between functions/classes
+     */
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isLoading: true,
+            favouriteList: []
+        };
+    }
+
+    /**
+     * This method updates the list of favourite hawker centres
+     */
+    updateList = async () => {
+        this.setState({ isLoading: true });
+        let favouriteList = await FavouriteManager.getFavourite(this.context);
+        this.setState({ favouriteList: favouriteList, isLoading: false });
+    };
+
+    /**
+     * Method to render html components in React
+     */
+    render() {
+        if (this.state.isLoading) {
+            return (
+                &lt;div className='background rounded page-transition'>
+                    &lt;HawkerPlaceholder />
+                &lt;/div>
+            );
+        } else {
+            return (
+                &lt;div className='background rounded page-transition'>
+                    &lt;h1 className='display-5 mb-4 fw-semibold'>My Favourite List&lt;/h1>
+                    {this.state.favouriteList.length === 0 ? (
+                        &lt;>
+                            &lt;div className='mt-5 d-flex justify-content-center'>
+                                &lt;img
+                                    className='white-background'
+                                    src='/assets/images/empty-box.svg'
+                                    height={'180px'}
+                                    alt='Empty'
+                                />
+                            &lt;/div>
+                            &lt;div className='mt-2 d-flex justify-content-center'>
+                                &lt;h4 className='fw-semibold text-center'>
+                                    Your favourite list is empty.
+                                &lt;/h4>
+                            &lt;/div>
+                        &lt;/>
+                    ) : (
+                        this.state.favouriteList.map((favourite) => (
+                            &lt;FavouriteComponent
+                                key={favourite.id}
+                                updateList={this.updateList}
+                                name={favourite.name}
+                                address={favourite.address}
+                                noOfStall={favourite.noOfStall}
+                                id={favourite.id}
+                                photoURL={favourite.photoURL}
+                            />
+                        ))
+                    )}
+                &lt;/div>
+            );
+        }
+    }
+
+    /**
+     * This method is run if the component is mounted (React functionality)
+     */
+    componentDidMount() {
+        this.updateList();
+        document.title = 'My Favourite List - SeeHawk';
+    }
+}
+
+export default FavouritePage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CarparkDetail.html">CarparkDetail</a></li><li><a href="CarparkMarker.html">CarparkMarker</a></li><li><a href="CarparkPage.html">CarparkPage</a></li><li><a href="FavouriteComponent.html">FavouriteComponent</a></li><li><a href="FavouritePage.html">FavouritePage</a></li><li><a href="FavouriteToggle.html">FavouriteToggle</a></li><li><a href="GiveReview.html">GiveReview</a></li><li><a href="HawkerMarker.html">HawkerMarker</a></li><li><a href="HawkerPage.html">HawkerPage</a></li><li><a href="Header.html">Header</a></li><li><a href="HomePage.html">HomePage</a></li><li><a href="ReviewDetail.html">ReviewDetail</a></li><li><a href="ReviewPage.html">ReviewPage</a></li><li><a href="ViewOnMap.html">ViewOnMap</a></li></ul><h3>Global</h3><ul><li><a href="global.html#number">number</a></li><li><a href="global.html#petName">petName</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Mar 22 2023 14:09:16 GMT+0800 (Singapore Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

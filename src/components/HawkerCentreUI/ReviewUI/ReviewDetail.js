@@ -3,7 +3,13 @@ import { Card, Col, Row } from 'reactstrap';
 import DisplayStarsSmall from '../../Utility/DisplayStarsSmall';
 import Avatar from 'react-avatar';
 
+/**
+ * Class to create component containing details of review.
+ */
 class ReviewDetail extends Component {
+    /**
+     * ReactJS method to render the component. 
+     */
     render() {
         return (
             <Card className='mb-3 grey-card shadow-sm'>

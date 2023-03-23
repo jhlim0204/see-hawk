@@ -8,9 +8,16 @@ import { withRouter } from '../../Utility/withRouter';
 import ReviewPagePlaceholder from '../../PlaceholderUI/ReviewPagePlaceholder';
 import { UserContext } from '../../UserContext';
 
+/**
+ * Class to create component for the review page.
+ */
 class ReviewPage extends Component {
     static contextType = UserContext;
 
+    /**
+     * Create a review page component.
+     * @param {Object} props - The props object that is passed to the component. 
+     */
     constructor(props) {
         super(props);
 
@@ -22,6 +29,9 @@ class ReviewPage extends Component {
         };
     }
 
+    /**
+     * Method to retrieve the review.
+     */
     retrieveReview = async () => {
         this.setState({ isLoading: true });
         let reviewList = await ReviewManager.getReview(this.props.params.id);
@@ -37,10 +47,16 @@ class ReviewPage extends Component {
         }
     };
 
+    /**
+     * Method to update the parent element.
+     */
     updateParent = () => {
         this.retrieveReview();
     };
 
+    /**
+     * ReactJS method to render the component. 
+     */
     render() {
         if (this.state.isLoading) {
             return <ReviewPagePlaceholder />;
@@ -153,6 +169,9 @@ class ReviewPage extends Component {
         }
     }
 
+    /**
+     * ReactJS method that will be called when the component has mounted.
+     */
     componentDidMount = () => {
         this.retrieveReview();
     };
