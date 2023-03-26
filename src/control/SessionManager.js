@@ -1,5 +1,4 @@
-import { auth } from '../firebase';
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import AuthManager from './AuthManager';
 
 /**
  * Class for managing sessions
@@ -21,30 +20,22 @@ class SessionManager {
      * @return {boolean} Whether the login process is successful
      */
     static async login(username, password) {
-        username = username + '@seehawk.com';
-        var user = null;
-        await signInWithEmailAndPassword(auth, username, password)
-            .then((userCredential) => {
-                user = userCredential.user;
-            })
-            .catch(() => {});
-
-        return !!user;
+        return await AuthManager.login(username, password);
     }
 
     /**
      * Method to logout user
      */
     static async logout() {
-        await signOut(auth);
+        await AuthManager.logout();
     }
 
     /**
      * Method to listen to any changes in authentication status of user
      * @param {function} callback - The callback function
      */
-    static authListener(callback) {
-        onAuthStateChanged(auth, (user) => callback(user));
+    static authListener(callback){
+        AuthManager.authListener(callback);
     }
 }
 

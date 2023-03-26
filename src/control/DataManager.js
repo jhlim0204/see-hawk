@@ -9,7 +9,6 @@ import { doc,
     getDocs,
     query,
     where} from 'firebase/firestore';
-import { ReviewManager } from './ReviewManager.js';
 import { APIManager } from './APIManager.js';
     
 /**
@@ -222,12 +221,6 @@ export class DataManager {
                 });
             }
         });
-
-        for (const hawkerCentre of returnList) {
-            let reviewList = await DataManager.getReview(hawkerCentre.id);
-            let averageRating = ReviewManager.calculateAverage(reviewList);
-            hawkerCentre.averageRating = averageRating;
-        }
 
         return returnList;
     }
