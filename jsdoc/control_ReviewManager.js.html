@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>control/ReviewManager.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="APIManager.html">APIManager</a><ul class='methods'><li data-type='method'><a href="APIManager.html#.cleanAddress">cleanAddress</a></li><li data-type='method'><a href="APIManager.html#.fetchCarpark">fetchCarpark</a></li><li data-type='method'><a href="APIManager.html#.fetchhawkerCentre">fetchhawkerCentre</a></li></ul></li><li><a href="CarparkDetail.html">CarparkDetail</a><ul class='methods'><li data-type='method'><a href="CarparkDetail.html#render">render</a></li></ul></li><li><a href="CarparkManager.html">CarparkManager</a><ul class='methods'><li data-type='method'><a href="CarparkManager.html#.fetchNearbyCarpark">fetchNearbyCarpark</a></li></ul></li><li><a href="CarparkMarker.html">CarparkMarker</a><ul class='methods'><li data-type='method'><a href="CarparkMarker.html#render">render</a></li></ul></li><li><a href="CarparkPage.html">CarparkPage</a><ul class='methods'><li data-type='method'><a href="CarparkPage.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="CarparkPage.html#render">render</a></li></ul></li><li><a href="DataManager.html">DataManager</a><ul class='methods'><li data-type='method'><a href="DataManager.html#.addFavourite">addFavourite</a></li><li data-type='method'><a href="DataManager.html#.addReview">addReview</a></li><li data-type='method'><a href="DataManager.html#.checkIfIDExist">checkIfIDExist</a></li><li data-type='method'><a href="DataManager.html#.deleteFavourite">deleteFavourite</a></li><li data-type='method'><a href="DataManager.html#.getFavourite">getFavourite</a></li><li data-type='method'><a href="DataManager.html#.getReview">getReview</a></li><li data-type='method'><a href="DataManager.html#.isFavourite">isFavourite</a></li><li data-type='method'><a href="DataManager.html#.retrieveHawkerCentreDetails">retrieveHawkerCentreDetails</a></li><li data-type='method'><a href="DataManager.html#.searchHawkerCentre">searchHawkerCentre</a></li><li data-type='method'><a href="DataManager.html#.shouldUpdate">shouldUpdate</a></li><li data-type='method'><a href="DataManager.html#.updateFireBaseHawkerCentreList">updateFireBaseHawkerCentreList</a></li><li data-type='method'><a href="DataManager.html#.updateTime">updateTime</a></li></ul></li><li><a href="FavouriteComponent.html">FavouriteComponent</a><ul class='methods'><li data-type='method'><a href="FavouriteComponent.html#render">render</a></li></ul></li><li><a href="FavouriteManager.html">FavouriteManager</a><ul class='methods'><li data-type='method'><a href="FavouriteManager.html#.addFavourite">addFavourite</a></li><li data-type='method'><a href="FavouriteManager.html#.deleteFavourite">deleteFavourite</a></li><li data-type='method'><a href="FavouriteManager.html#.getFavourite">getFavourite</a></li><li data-type='method'><a href="FavouriteManager.html#.isFavourite">isFavourite</a></li></ul></li><li><a href="FavouritePage.html">FavouritePage</a><ul class='methods'><li data-type='method'><a href="FavouritePage.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="FavouritePage.html#render">render</a></li></ul></li><li><a href="FavouriteToggle.html">FavouriteToggle</a><ul class='methods'><li data-type='method'><a href="FavouriteToggle.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="FavouriteToggle.html#render">render</a></li></ul></li><li><a href="FilterManager.html">FilterManager</a><ul class='methods'><li data-type='method'><a href="FilterManager.html#.convertAddressToRegion">convertAddressToRegion</a></li><li data-type='method'><a href="FilterManager.html#.filter">filter</a></li><li data-type='method'><a href="FilterManager.html#.filterRegion">filterRegion</a></li><li data-type='method'><a href="FilterManager.html#.filterStar">filterStar</a></li></ul></li><li><a href="GiveReview.html">GiveReview</a><ul class='methods'><li data-type='method'><a href="GiveReview.html#render">render</a></li></ul></li><li><a href="HawkerCentreManager.html">HawkerCentreManager</a><ul class='methods'><li data-type='method'><a href="HawkerCentreManager.html#.retrieveHawkerCentreDetails">retrieveHawkerCentreDetails</a></li><li data-type='method'><a href="HawkerCentreManager.html#.searchHawkerCentre">searchHawkerCentre</a></li></ul></li><li><a href="HawkerMarker.html">HawkerMarker</a><ul class='methods'><li data-type='method'><a href="HawkerMarker.html#render">render</a></li></ul></li><li><a href="HawkerPage.html">HawkerPage</a><ul class='methods'><li data-type='method'><a href="HawkerPage.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="HawkerPage.html#getHawkerCenterDetail">getHawkerCenterDetail</a></li><li data-type='method'><a href="HawkerPage.html#render">render</a></li></ul></li><li><a href="HawkerPlaceholder.html">HawkerPlaceholder</a><ul class='methods'><li data-type='method'><a href="HawkerPlaceholder.html#render">render</a></li></ul></li><li><a href="HawkerResult.html">HawkerResult</a><ul class='methods'><li data-type='method'><a href="HawkerResult.html#render">render</a></li></ul></li><li><a href="Header.html">Header</a><ul class='methods'><li data-type='method'><a href="Header.html#render">render</a></li></ul></li><li><a href="HomePage.html">HomePage</a><ul class='methods'><li data-type='method'><a href="HomePage.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="HomePage.html#render">render</a></li></ul></li><li><a href="Login.html">Login</a><ul class='methods'><li data-type='method'><a href="Login.html#render">render</a></li></ul></li><li><a href="LoginRegister.html">LoginRegister</a><ul class='methods'><li data-type='method'><a href="LoginRegister.html#render">render</a></li></ul></li><li><a href="Logout.html">Logout</a><ul class='methods'><li data-type='method'><a href="Logout.html#render">render</a></li></ul></li><li><a href="Main.html">Main</a><ul class='methods'><li data-type='method'><a href="Main.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="Main.html#render">render</a></li></ul></li><li><a href="Profile.html">Profile</a><ul class='methods'><li data-type='method'><a href="Profile.html#render">render</a></li></ul></li><li><a href="Register.html">Register</a><ul class='methods'><li data-type='method'><a href="Register.html#render">render</a></li></ul></li><li><a href="RegisterManager.html">RegisterManager</a><ul class='methods'><li data-type='method'><a href="RegisterManager.html#.register">register</a></li></ul></li><li><a href="ReviewDetail.html">ReviewDetail</a><ul class='methods'><li data-type='method'><a href="ReviewDetail.html#render">render</a></li></ul></li><li><a href="ReviewManager.html">ReviewManager</a><ul class='methods'><li data-type='method'><a href="ReviewManager.html#.addReview">addReview</a></li><li data-type='method'><a href="ReviewManager.html#.calculateAverage">calculateAverage</a></li><li data-type='method'><a href="ReviewManager.html#.calculatePercentage">calculatePercentage</a></li><li data-type='method'><a href="ReviewManager.html#.getReview">getReview</a></li></ul></li><li><a href="ReviewPage.html">ReviewPage</a><ul class='methods'><li data-type='method'><a href="ReviewPage.html#render">render</a></li></ul></li><li><a href="SearchBar.html">SearchBar</a><ul class='methods'><li data-type='method'><a href="SearchBar.html#render">render</a></li></ul></li><li><a href="SearchPage.html">SearchPage</a><ul class='methods'><li data-type='method'><a href="SearchPage.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="SearchPage.html#render">render</a></li></ul></li><li><a href="SessionManager.html">SessionManager</a><ul class='methods'><li data-type='method'><a href="SessionManager.html#.authListener">authListener</a></li><li data-type='method'><a href="SessionManager.html#.login">login</a></li><li data-type='method'><a href="SessionManager.html#.logout">logout</a></li></ul></li><li><a href="SidebarPlaceholder.html">SidebarPlaceholder</a><ul class='methods'><li data-type='method'><a href="SidebarPlaceholder.html#render">render</a></li></ul></li><li><a href="ViewOnMap.html">ViewOnMap</a><ul class='methods'><li data-type='method'><a href="ViewOnMap.html#render">render</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#DisplayStarsSmall">DisplayStarsSmall</a></li><li><a href="global.html#HawkerPagePlaceholder">HawkerPagePlaceholder</a></li><li><a href="global.html#ReviewPagePlaceholder">ReviewPagePlaceholder</a></li><li><a href="global.html#UserContext">UserContext</a></li><li><a href="global.html#withRouter">withRouter</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">control/ReviewManager.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { DataManager } from './DataManager.js';
+
+/**
+ * Class for managing reviews
+ */
+export class ReviewManager {
+
+    /**
+     * Constructor for ReviewManager
+     * @throws Will throw an error if this static class is instantiated
+     */
+    constructor() {
+        throw Error('A static class cannot be instantiated.');
+    }
+
+    /**
+     * Method to get reviews from hawker centre
+     * @param {string} hawkerCentreID - The ID of the hawker centre
+     * @return {Object[] | boolean} If target hawker centre exists, the list of reviews is returned. Else false is returned.
+     */
+    static async getReview(hawkerCentreID) {
+        return await DataManager.getReview(hawkerCentreID);
+    }
+
+     /**
+     * Method to add review to hawker centre
+     * @param {string} hawkerCentreID - The ID of the hawker centre
+     * @param {string} accountID - The ID of the account
+     * @param {number} reviewStar - The numerical rating of review
+     * @param {string} reviewText - The text rating of review
+     * @return {boolean} Whether the review is succesfully added
+     */
+    static async addReview(hawkerCentreID, accountID, reviewStar, reviewText) {
+       return await DataManager.addReview(hawkerCentreID, accountID, reviewStar, reviewText);
+    }
+
+    /**
+     * Method to calculate average rating of a hawker centre
+     * @param {Object[]} reviewList - The list of review of the hawker centre
+     * @returns {number|string} Calculated average rating if there is any rating, else 'unrated' is returned
+     */
+    static calculateAverage(reviewList) {
+        if (Object.keys(reviewList).length === 0) {
+            return 'Unrated';
+        }
+
+        let sumOfRating = 0;
+        for (const userName in reviewList) {
+            sumOfRating += reviewList[userName].reviewStar;
+        }
+        return (sumOfRating / Object.keys(reviewList).length).toFixed(1);
+    }
+
+    /**
+     * Method to calculate percentage of review stars
+     * @param {Object[]} reviewList -  The list of review of the hawker centre
+     * @return {number[]} Array of calculated percentage of review stars
+     */
+    static calculatePercentage(reviewList) {
+        let groupCount = [0, 0, 0, 0, 0];
+        let groupPercentage = [0, 0, 0, 0, 0];
+
+        reviewList = Object.values(reviewList);
+
+        for (let i = 0; i &lt; 5; i++) {
+            groupCount[i] = reviewList.filter((review) => {
+                return review.reviewStar === i + 1;
+            }).length;
+        }
+
+        let maxCount = Math.max(...groupCount);
+
+        for (let i = 0; i &lt; 5; i++) {
+            groupPercentage[i] = (groupCount[i] / maxCount) * 100;
+        }
+
+        return groupPercentage;
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sun Mar 26 2023 22:24:34 GMT+0800 (Malaysia Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

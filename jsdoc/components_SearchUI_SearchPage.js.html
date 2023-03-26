@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/SearchUI/SearchPage.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="APIManager.html">APIManager</a><ul class='methods'><li data-type='method'><a href="APIManager.html#.cleanAddress">cleanAddress</a></li><li data-type='method'><a href="APIManager.html#.fetchCarpark">fetchCarpark</a></li><li data-type='method'><a href="APIManager.html#.fetchhawkerCentre">fetchhawkerCentre</a></li></ul></li><li><a href="CarparkDetail.html">CarparkDetail</a><ul class='methods'><li data-type='method'><a href="CarparkDetail.html#render">render</a></li></ul></li><li><a href="CarparkManager.html">CarparkManager</a><ul class='methods'><li data-type='method'><a href="CarparkManager.html#.fetchNearbyCarpark">fetchNearbyCarpark</a></li></ul></li><li><a href="CarparkMarker.html">CarparkMarker</a><ul class='methods'><li data-type='method'><a href="CarparkMarker.html#render">render</a></li></ul></li><li><a href="CarparkPage.html">CarparkPage</a><ul class='methods'><li data-type='method'><a href="CarparkPage.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="CarparkPage.html#render">render</a></li></ul></li><li><a href="DataManager.html">DataManager</a><ul class='methods'><li data-type='method'><a href="DataManager.html#.addFavourite">addFavourite</a></li><li data-type='method'><a href="DataManager.html#.addReview">addReview</a></li><li data-type='method'><a href="DataManager.html#.checkIfIDExist">checkIfIDExist</a></li><li data-type='method'><a href="DataManager.html#.deleteFavourite">deleteFavourite</a></li><li data-type='method'><a href="DataManager.html#.getFavourite">getFavourite</a></li><li data-type='method'><a href="DataManager.html#.getReview">getReview</a></li><li data-type='method'><a href="DataManager.html#.isFavourite">isFavourite</a></li><li data-type='method'><a href="DataManager.html#.retrieveHawkerCentreDetails">retrieveHawkerCentreDetails</a></li><li data-type='method'><a href="DataManager.html#.searchHawkerCentre">searchHawkerCentre</a></li><li data-type='method'><a href="DataManager.html#.shouldUpdate">shouldUpdate</a></li><li data-type='method'><a href="DataManager.html#.updateFireBaseHawkerCentreList">updateFireBaseHawkerCentreList</a></li><li data-type='method'><a href="DataManager.html#.updateTime">updateTime</a></li></ul></li><li><a href="FavouriteComponent.html">FavouriteComponent</a><ul class='methods'><li data-type='method'><a href="FavouriteComponent.html#render">render</a></li></ul></li><li><a href="FavouriteManager.html">FavouriteManager</a><ul class='methods'><li data-type='method'><a href="FavouriteManager.html#.addFavourite">addFavourite</a></li><li data-type='method'><a href="FavouriteManager.html#.deleteFavourite">deleteFavourite</a></li><li data-type='method'><a href="FavouriteManager.html#.getFavourite">getFavourite</a></li><li data-type='method'><a href="FavouriteManager.html#.isFavourite">isFavourite</a></li></ul></li><li><a href="FavouritePage.html">FavouritePage</a><ul class='methods'><li data-type='method'><a href="FavouritePage.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="FavouritePage.html#render">render</a></li></ul></li><li><a href="FavouriteToggle.html">FavouriteToggle</a><ul class='methods'><li data-type='method'><a href="FavouriteToggle.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="FavouriteToggle.html#render">render</a></li></ul></li><li><a href="FilterManager.html">FilterManager</a><ul class='methods'><li data-type='method'><a href="FilterManager.html#.convertAddressToRegion">convertAddressToRegion</a></li><li data-type='method'><a href="FilterManager.html#.filter">filter</a></li><li data-type='method'><a href="FilterManager.html#.filterRegion">filterRegion</a></li><li data-type='method'><a href="FilterManager.html#.filterStar">filterStar</a></li></ul></li><li><a href="GiveReview.html">GiveReview</a><ul class='methods'><li data-type='method'><a href="GiveReview.html#render">render</a></li></ul></li><li><a href="HawkerCentreManager.html">HawkerCentreManager</a><ul class='methods'><li data-type='method'><a href="HawkerCentreManager.html#.retrieveHawkerCentreDetails">retrieveHawkerCentreDetails</a></li><li data-type='method'><a href="HawkerCentreManager.html#.searchHawkerCentre">searchHawkerCentre</a></li></ul></li><li><a href="HawkerMarker.html">HawkerMarker</a><ul class='methods'><li data-type='method'><a href="HawkerMarker.html#render">render</a></li></ul></li><li><a href="HawkerPage.html">HawkerPage</a><ul class='methods'><li data-type='method'><a href="HawkerPage.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="HawkerPage.html#getHawkerCenterDetail">getHawkerCenterDetail</a></li><li data-type='method'><a href="HawkerPage.html#render">render</a></li></ul></li><li><a href="HawkerPlaceholder.html">HawkerPlaceholder</a><ul class='methods'><li data-type='method'><a href="HawkerPlaceholder.html#render">render</a></li></ul></li><li><a href="HawkerResult.html">HawkerResult</a><ul class='methods'><li data-type='method'><a href="HawkerResult.html#render">render</a></li></ul></li><li><a href="Header.html">Header</a><ul class='methods'><li data-type='method'><a href="Header.html#render">render</a></li></ul></li><li><a href="HomePage.html">HomePage</a><ul class='methods'><li data-type='method'><a href="HomePage.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="HomePage.html#render">render</a></li></ul></li><li><a href="Login.html">Login</a><ul class='methods'><li data-type='method'><a href="Login.html#render">render</a></li></ul></li><li><a href="LoginRegister.html">LoginRegister</a><ul class='methods'><li data-type='method'><a href="LoginRegister.html#render">render</a></li></ul></li><li><a href="Logout.html">Logout</a><ul class='methods'><li data-type='method'><a href="Logout.html#render">render</a></li></ul></li><li><a href="Main.html">Main</a><ul class='methods'><li data-type='method'><a href="Main.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="Main.html#render">render</a></li></ul></li><li><a href="Profile.html">Profile</a><ul class='methods'><li data-type='method'><a href="Profile.html#render">render</a></li></ul></li><li><a href="Register.html">Register</a><ul class='methods'><li data-type='method'><a href="Register.html#render">render</a></li></ul></li><li><a href="RegisterManager.html">RegisterManager</a><ul class='methods'><li data-type='method'><a href="RegisterManager.html#.register">register</a></li></ul></li><li><a href="ReviewDetail.html">ReviewDetail</a><ul class='methods'><li data-type='method'><a href="ReviewDetail.html#render">render</a></li></ul></li><li><a href="ReviewManager.html">ReviewManager</a><ul class='methods'><li data-type='method'><a href="ReviewManager.html#.addReview">addReview</a></li><li data-type='method'><a href="ReviewManager.html#.calculateAverage">calculateAverage</a></li><li data-type='method'><a href="ReviewManager.html#.calculatePercentage">calculatePercentage</a></li><li data-type='method'><a href="ReviewManager.html#.getReview">getReview</a></li></ul></li><li><a href="ReviewPage.html">ReviewPage</a><ul class='methods'><li data-type='method'><a href="ReviewPage.html#render">render</a></li></ul></li><li><a href="SearchBar.html">SearchBar</a><ul class='methods'><li data-type='method'><a href="SearchBar.html#render">render</a></li></ul></li><li><a href="SearchPage.html">SearchPage</a><ul class='methods'><li data-type='method'><a href="SearchPage.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="SearchPage.html#render">render</a></li></ul></li><li><a href="SessionManager.html">SessionManager</a><ul class='methods'><li data-type='method'><a href="SessionManager.html#.authListener">authListener</a></li><li data-type='method'><a href="SessionManager.html#.login">login</a></li><li data-type='method'><a href="SessionManager.html#.logout">logout</a></li></ul></li><li><a href="SidebarPlaceholder.html">SidebarPlaceholder</a><ul class='methods'><li data-type='method'><a href="SidebarPlaceholder.html#render">render</a></li></ul></li><li><a href="ViewOnMap.html">ViewOnMap</a><ul class='methods'><li data-type='method'><a href="ViewOnMap.html#render">render</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#DisplayStarsSmall">DisplayStarsSmall</a></li><li><a href="global.html#HawkerPagePlaceholder">HawkerPagePlaceholder</a></li><li><a href="global.html#ReviewPagePlaceholder">ReviewPagePlaceholder</a></li><li><a href="global.html#UserContext">UserContext</a></li><li><a href="global.html#withRouter">withRouter</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/SearchUI/SearchPage.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* View Component*/
+import React, { Component } from 'react';
+import { Col, FormGroup, Row, Label, Input, Form } from 'reactstrap';
+import HawkerResult from './HawkerResult';
+import Lottie from 'lottie-react';
+import SearchEmptyAnimation from '../Animation/searchEmpty.json';
+import { withRouter } from '../Utility/withRouter';
+import DisplayStarsSmall from '../Utility/DisplayStarsSmall';
+
+/* Placeholder Component*/
+import SidebarPlaceholder from '../PlaceholderUI/SidebarPlaceholder';
+import HawkerPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
+
+/* Controller*/
+import { HawkerCentreManager } from '../../control/HawkerCentreManager';
+import { FilterManager } from '../../control/FilterManager';
+
+/**
+ * A class component representing the search page.
+ * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
+ * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
+ */
+class SearchPage extends Component {
+    /**
+    * Initializes the state of the component with isLoading, oriSearchResult, searchResult, star, and region.
+    * @param {Object} props - The props object that is passed to the component.
+    */
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isLoading: true,
+            oriSearchResult: [],
+            searchResult: [],
+            star: 0,
+            region: {
+                W: false,
+                E: false,
+                N: false,
+                NE: false,
+                C: false
+            }
+        };
+    }
+
+    /**
+    * Handles the search function by calling the searchHawkerCentre function of the HawkerCentreManager controller
+    * and setting the state of isLoading and searchResult accordingly.
+    */
+    handleSearch = async () => {
+        this.setState({ isLoading: true });
+
+        const { search } = this.props.location;
+        const urlQuery = new URLSearchParams(search);
+        const qParam = urlQuery.get('q');
+        let resultList = [];
+        if (qParam &amp;&amp; qParam.trim() !== '') {
+            resultList = await HawkerCentreManager.searchHawkerCentre(qParam);
+        }
+
+        this.setState({ searchResult: resultList, oriSearchResult: resultList, isLoading: false });
+    };
+
+    /**
+    * Handles filtering the search results based on star rating and location.
+    * Filters the oriSearchResult by passing it to the FilterManager's filter function and updating the state
+    * of searchResult with the resulting array.
+    */
+    handleFilter = () => {
+        /* ori search result*/
+        this.setState({
+            searchResult: FilterManager.filter(this.state.oriSearchResult, {
+                star: this.state.star,
+                region: this.state.region
+            })
+        });
+    };
+
+    /**
+    * Handles updating the state of star based on the selected star rating.
+    * Calls handleFilter to update the search results.
+    * @param {Event} event the event object passed in from the onChange handler
+    */
+    handleRating = (event) => {
+        this.setState({ star: parseInt(event.target.value) }, () => {
+            this.handleFilter();
+        });
+    };
+
+    /**
+    * Handles updating the state of the location checkboxes based on which checkboxes were clicked.
+    * Calls handleFilter to update the search results.
+    * @param {Event} event the event object passed in from the onChange handler
+    */
+    handleRegion = (event) => {
+        let regionCopy = { ...this.state.region };
+        regionCopy[event.target.name] = !regionCopy[event.target.name];
+        this.setState({ region: regionCopy }, () => {
+            this.handleFilter();
+        });
+    };
+
+    /**
+    * ReactJS method to render the component.
+    */
+    render() {
+        if (this.state.isLoading) {
+            return (
+                &lt;div className='background page-transition'>
+                    &lt;Row>
+                        &lt;SidebarPlaceholder />
+                        &lt;Col xs={9}>
+                            &lt;HawkerPlaceholder />
+                        &lt;/Col>
+                    &lt;/Row>
+                &lt;/div>
+            );
+        } else {
+            return (
+                &lt;div className='background'>
+                    &lt;Row>
+                        &lt;Col xs={3} className='rounded-3 content shadow-sm'>
+                            &lt;h5 className='mb-4'>
+                                &lt;i className='bi bi-funnel' /> FILTERS
+                            &lt;/h5>
+                            &lt;h6 className='mb-3'>Star Rating&lt;/h6>
+                            &lt;Form className='filter-form'>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            name='star'
+                                            type='radio'
+                                            value={5}
+                                            onChange={this.handleRating}
+                                            checked={this.state.star === 5}
+                                        />
+                                        &lt;DisplayStarsSmall activeCount={5} />
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            name='star'
+                                            type='radio'
+                                            value={4}
+                                            onChange={this.handleRating}
+                                            checked={this.state.star === 4}
+                                        />
+                                        &lt;DisplayStarsSmall activeCount={4} /> &amp; Up
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            name='star'
+                                            type='radio'
+                                            value={3}
+                                            onChange={this.handleRating}
+                                            checked={this.state.star === 3}
+                                        />
+                                        &lt;DisplayStarsSmall activeCount={3} /> &amp; Up
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            name='star'
+                                            type='radio'
+                                            value={2}
+                                            onChange={this.handleRating}
+                                            checked={this.state.star === 2}
+                                        />
+                                        &lt;DisplayStarsSmall activeCount={2} /> &amp; Up
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            name='star'
+                                            type='radio'
+                                            value={1}
+                                            onChange={this.handleRating}
+                                            checked={this.state.star === 1}
+                                        />
+                                        &lt;DisplayStarsSmall activeCount={1} /> &amp; Up
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            name='star'
+                                            type='radio'
+                                            value={0}
+                                            onChange={this.handleRating}
+                                            checked={this.state.star === 0}
+                                        />
+                                        &lt;DisplayStarsSmall activeCount={0} /> &amp; Up
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                            &lt;/Form>
+                            &lt;div className='line my-4' />
+                            &lt;h6 className='mb-3'>Located Region&lt;/h6>
+                            &lt;Form className='filter-form'>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            type='checkbox'
+                                            name='W'
+                                            checked={this.state.region.W}
+                                            onChange={this.handleRegion}
+                                        />
+                                        West Region
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            type='checkbox'
+                                            name='E'
+                                            checked={this.state.region.E}
+                                            onChange={this.handleRegion}
+                                        />
+                                        East Region
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            type='checkbox'
+                                            name='N'
+                                            checked={this.state.region.N}
+                                            onChange={this.handleRegion}
+                                        />
+                                        North Region
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            type='checkbox'
+                                            name='NE'
+                                            checked={this.state.region.NE}
+                                            onChange={this.handleRegion}
+                                        />
+                                        North-East Region
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                                &lt;FormGroup check>
+                                    &lt;Label check>
+                                        &lt;Input
+                                            type='checkbox'
+                                            name='C'
+                                            checked={this.state.region.C}
+                                            onChange={this.handleRegion}
+                                        />
+                                        Central Region
+                                    &lt;/Label>
+                                &lt;/FormGroup>
+                            &lt;/Form>
+                        &lt;/Col>
+                        &lt;Col xs={9}>
+                            {this.state.searchResult.length !== 0 ? (
+                                this.state.searchResult.map((result) => (
+                                    &lt;HawkerResult
+                                        key={result.id}
+                                        name={result.name}
+                                        address={result.address}
+                                        noOfStall={result.noOfStall}
+                                        id={result.id}
+                                        photoURL={result.photoURL}
+                                        averageRating={result.averageRating}
+                                    />
+                                ))
+                            ) : (
+                                &lt;>
+                                    &lt;div className='mt-5 d-flex justify-content-center'>
+                                        &lt;Lottie
+                                            loop={false}
+                                            animationData={SearchEmptyAnimation}
+                                            style={{ height: 180 }}
+                                        />
+                                    &lt;/div>
+                                    &lt;div className='mt-2 d-flex justify-content-center'>
+                                        &lt;h4 className='fw-semibold text-center'>
+                                            No results found.
+                                        &lt;/h4>
+                                    &lt;/div>
+                                &lt;/>
+                            )}
+                        &lt;/Col>
+                    &lt;/Row>
+                &lt;/div>
+            );
+        }
+    }
+
+    /**
+    * ReactJS method that will be called when the component has mounted.
+    */
+    componentDidMount() {
+        this.handleSearch();
+        document.title = 'Search Results - SeeHawk';
+    }
+}
+
+export default withRouter(SearchPage);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sun Mar 26 2023 22:24:34 GMT+0800 (Malaysia Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

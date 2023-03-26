@@ -4,7 +4,7 @@ import { Row, Col } from 'reactstrap';
 * A functional component that displays the loading animation and placeholder text.
 * @returns {JSX.Element} A JSX element that represents the loading animation and placeholder text.
 */
-export default function ReviewPagePlaceholder() {
+function ReviewPagePlaceholder() {
     return (
         <Row className='mb-3 placeholder-glow'>
             <Col xs={8}>
@@ -31,3 +31,5 @@ export default function ReviewPagePlaceholder() {
         </Row>
     );
 }
+
+export default ReviewPagePlaceholder
