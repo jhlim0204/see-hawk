@@ -71,7 +71,13 @@ export class DataManager {
      */
     static async getFavourite(accountName) {
         const docRef = doc(db, 'Account', accountName);
-        const favouriteList = (await getDoc(docRef)).data().favList;
+        const docSnap = await getDoc(docRef);
+
+        if (!docSnap.exists()){
+            return [];
+        }
+        
+        const favouriteList = docSnap.data().favList;
 
         const returnList = [];
         for (let favourite of favouriteList) {
