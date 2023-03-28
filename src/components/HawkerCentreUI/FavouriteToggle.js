@@ -110,7 +110,7 @@ class FavouriteToggle extends Component {
                         className='ms-1'
                     >
                         <i className='bi bi-bookmark-fill' />{' '}
-                        {!this.state.isSaved ? 'Save' : 'Unsave'} Favourite
+                        {!this.context || !this.state.isSaved ? 'Save' : 'Unsave'} Favourite
                     </Button>
                 </span>
                 <Tooltip
