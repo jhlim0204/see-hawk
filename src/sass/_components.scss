@@ -133,3 +133,26 @@
     animation-duration: 200ms;
     animation-timing-function: linear;
 }
+
+/* Pagination Styling */
+.pagination {
+    li {
+        a {
+            color: black;
+        }
+
+        a:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+}
+
+.pagination {
+    .active {
+        a {
+            background-color: grey;
+            border-color: grey;
+        }
+    }
+}

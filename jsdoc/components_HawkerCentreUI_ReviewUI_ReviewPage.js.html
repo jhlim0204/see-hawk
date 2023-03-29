@@ -47,7 +47,7 @@
         <article>
             <pre class="prettyprint source linenums"><code>/* View Component*/
 import React, { Component } from 'react';
-import { Col, Row } from 'reactstrap';
+import { Col, Row, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import StarsRating from 'react-star-rate';
 import GiveReview from './GiveReview';
 import ReviewDetail from './ReviewDetail';
@@ -80,7 +80,11 @@ class ReviewPage extends Component {
             average: '',
             percentage: [],
             isLoading: true,
-            reviewList: {}
+            reviewList: {},
+            reviewLength: 0,
+            currentPage: 1,
+            pageSize: 5,
+            pageCount: 0
         };
     }
 
@@ -93,12 +97,21 @@ class ReviewPage extends Component {
         if (reviewList !== false) {
             let average = ReviewManager.calculateAverage(reviewList);
             let percentage = ReviewManager.calculatePercentage(reviewList);
-            this.setState({
-                average: average,
-                percentage: percentage,
-                reviewList: reviewList,
-                isLoading: false
-            });
+            this.setState(
+                {
+                    average: average,
+                    percentage: percentage,
+                    reviewList: reviewList,
+                    isLoading: false
+                },
+                () =>
+                    this.setState({
+                        reviewLength: Object.keys(this.state.reviewList).length,
+                        pageCount: Math.ceil(
+                            Object.keys(this.state.reviewList).length / this.state.pageSize
+                        )
+                    })
+            );
         }
     };
 
@@ -107,6 +120,17 @@ class ReviewPage extends Component {
      */
     updateParent = () => {
         this.retrieveReview();
+    };
+
+    /**
+     * ??
+     */
+    changePage = (event, page) => {
+        event.preventDefault();
+
+        this.setState({
+            currentPage: page
+        });
     };
 
     /**
@@ -119,7 +143,7 @@ class ReviewPage extends Component {
             return (
                 &lt;>
                     &lt;Row className='mb-3'>
-                        &lt;Col xs={Object.keys(this.state.reviewList).length === 0 ? 12 : 8}>
+                        &lt;Col xs={this.state.reviewLength === 0 ? 12 : 8}>
                             &lt;div className='d-flex align-items-center'>
                                 &lt;h3 className='me-3'>Review Summary&lt;/h3>
                                 &lt;GiveReview
@@ -129,28 +153,94 @@ class ReviewPage extends Component {
                                 />
                             &lt;/div>
                             &lt;ReviewSummary
-                                length={Object.keys(this.state.reviewList).length}
+                                length={this.state.reviewLength}
                                 percentage={this.state.percentage}
                             />
                         &lt;/Col>
-                        {Object.keys(this.state.reviewList).length !== 0 &amp;&amp; (
+                        {this.state.reviewLength !== 0 &amp;&amp; (
                             &lt;Col xs={4} className='text-center align-items-center'>
                                 &lt;h1 className='display-1 mb-0'>{this.state.average}&lt;/h1>
                                 &lt;StarsRating value={Number(this.state.average)} disabled={true} />
-                                &lt;p className='text-muted'>
-                                    {Object.keys(this.state.reviewList).length} reviews
-                                &lt;/p>
+                                &lt;p className='text-muted'>{this.state.reviewLength} reviews&lt;/p>
                             &lt;/Col>
                         )}
                     &lt;/Row>
-                    {Object.entries(this.state.reviewList).map(([userName, review]) => (
-                        &lt;ReviewDetail
-                            key={userName}
-                            userName={userName}
-                            reviewStar={review.reviewStar}
-                            reviewText={review.reviewText}
-                        />
-                    ))}
+                    {Object.entries(this.state.reviewList)
+                        .slice(
+                            (this.state.currentPage - 1) * this.state.pageSize,
+                            this.state.currentPage * this.state.pageSize
+                        )
+                        .map(([userName, review]) => (
+                            &lt;ReviewDetail
+                                key={userName}
+                                userName={userName}
+                                reviewStar={review.reviewStar}
+                                reviewText={review.reviewText}
+                            />
+                        ))}
+
+                    {this.state.pageCount != 0 &amp;&amp; (
+                        &lt;>
+                            &lt;Pagination
+                                aria-label='Page navigation example'
+                                className='d-flex mt-4 justify-content-center'
+                            >
+                                &lt;PaginationItem disabled={this.state.currentPage &lt;= 1}>
+                                    &lt;PaginationLink
+                                        onClick={(e) => this.changePage(e, 1)}
+                                        first
+                                        href='#'
+                                    />
+                                &lt;/PaginationItem>
+
+                                &lt;PaginationItem disabled={this.state.currentPage &lt;= 1}>
+                                    &lt;PaginationLink
+                                        onClick={(e) =>
+                                            this.changePage(e, this.state.currentPage - 1)
+                                        }
+                                        previous
+                                        href='#'
+                                    />
+                                &lt;/PaginationItem>
+
+                                {[...Array(this.state.pageCount)].map((page, i) => (
+                                    &lt;PaginationItem
+                                        active={i + 1 === this.state.currentPage}
+                                        key={i + 1}
+                                    >
+                                        &lt;PaginationLink
+                                            onClick={(e) => this.changePage(e, i + 1)}
+                                            href='#'
+                                        >
+                                            {i + 1}
+                                        &lt;/PaginationLink>
+                                    &lt;/PaginationItem>
+                                ))}
+
+                                &lt;PaginationItem
+                                    disabled={this.state.currentPage >= this.state.pageCount}
+                                >
+                                    &lt;PaginationLink
+                                        onClick={(e) =>
+                                            this.changePage(e, this.state.currentPage + 1)
+                                        }
+                                        next
+                                        href='#'
+                                    />
+                                &lt;/PaginationItem>
+
+                                &lt;PaginationItem
+                                    disabled={this.state.currentPage >= this.state.pageCount}
+                                >
+                                    &lt;PaginationLink
+                                        onClick={(e) => this.changePage(e, this.state.pageCount)}
+                                        last
+                                        href='#'
+                                    />
+                                &lt;/PaginationItem>
+                            &lt;/Pagination>
+                        &lt;/>
+                    )}
                 &lt;/>
             );
         }
@@ -179,7 +269,7 @@ export default withRouter(ReviewPage);
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Wed Mar 29 2023 13:36:01 GMT+0800 (Malaysia Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Wed Mar 29 2023 15:04:16 GMT+0800 (Malaysia Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
