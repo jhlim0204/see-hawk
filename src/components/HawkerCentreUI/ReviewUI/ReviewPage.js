@@ -120,19 +120,21 @@ class ReviewPage extends Component {
                             </Col>
                         )}
                     </Row>
-                    {Object.entries(this.state.reviewList)
-                        .slice(
-                            (this.state.currentPage - 1) * this.state.pageSize,
-                            this.state.currentPage * this.state.pageSize
-                        )
-                        .map(([userName, review]) => (
-                            <ReviewDetail
-                                key={userName}
-                                userName={userName}
-                                reviewStar={review.reviewStar}
-                                reviewText={review.reviewText}
-                            />
-                        ))}
+                    <div className="page-transition" key={this.state.currentPage}>
+                        {Object.entries(this.state.reviewList)
+                            .slice(
+                                (this.state.currentPage - 1) * this.state.pageSize,
+                                this.state.currentPage * this.state.pageSize
+                            )
+                            .map(([userName, review]) => (
+                                <ReviewDetail
+                                    key={userName}
+                                    userName={userName}
+                                    reviewStar={review.reviewStar}
+                                    reviewText={review.reviewText}
+                                />
+                            ))}
+                    </div>
 
                     {this.state.pageCount != 0 && (
                         <>
