@@ -2,9 +2,9 @@ import Lottie from 'lottie-react';
 import RunningLoadingAnimation from '../Animation/runningLoading.json';
 
 /**
-* A functional component that displays the loading animation when loading.
-* @returns {JSX.Element} A JSX element that represents the aimation for transition when loading
-*/
+ * A functional component that displays the loading animation when loading.
+ * @returns {JSX.Element} A JSX element that represents the aimation for transition when loading
+ */
 function HawkerPagePlaceholder() {
     return (
         <>

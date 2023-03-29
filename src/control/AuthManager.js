@@ -1,12 +1,15 @@
 import { auth } from '../firebase';
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from 'firebase/auth';
-
+import {
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signOut,
+    createUserWithEmailAndPassword
+} from 'firebase/auth';
 
 /**
  * Class for managing sessions and new user registration
  */
 class AuthManager {
-
     /**
      * Constructor for AuthManager
      * @throws Will throw an error if this static class is instantiated

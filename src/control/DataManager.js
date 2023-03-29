@@ -1,16 +1,18 @@
 import { db } from '../firebase.js';
-import { doc, 
-    getDoc, 
-    updateDoc, 
-    setDoc, 
-    arrayRemove, 
+import {
+    doc,
+    getDoc,
+    updateDoc,
+    setDoc,
+    arrayRemove,
     arrayUnion,
     collection,
     getDocs,
     query,
-    where} from 'firebase/firestore';
+    where
+} from 'firebase/firestore';
 import { APIManager } from './APIManager.js';
-    
+
 /**
  * Class for interacting with database
  */
@@ -22,7 +24,7 @@ export class DataManager {
     constructor() {
         throw Error('A static class cannot be instantiated.');
     }
-    
+
     /**
      * Method to get the review of hawker centre through its ID
      * @param {string} hawkerCentreID - The ID of the hawker centre
@@ -73,17 +75,15 @@ export class DataManager {
         const docRef = doc(db, 'Account', accountName);
         const docSnap = await getDoc(docRef);
 
-        if (!docSnap.exists()){
+        if (!docSnap.exists()) {
             return [];
         }
-        
+
         const favouriteList = docSnap.data().favList;
 
         const returnList = [];
         for (let favourite of favouriteList) {
-            let tempFavouriteDetail = await DataManager.retrieveHawkerCentreDetails(
-                favourite
-            );
+            let tempFavouriteDetail = await DataManager.retrieveHawkerCentreDetails(favourite);
             let favouriteDetail = (({ name, address, photoURL, noOfStall }) => ({
                 name,
                 address,

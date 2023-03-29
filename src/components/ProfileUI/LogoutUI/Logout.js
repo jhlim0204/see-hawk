@@ -9,9 +9,9 @@ import SessionManager from '../../../control/SessionManager';
  */
 class Logout extends Component {
     /**
-    * Create a Logout component.
-    * @param {Object} props - The props object that is passed to the component.
-    */
+     * Create a Logout component.
+     * @param {Object} props - The props object that is passed to the component.
+     */
     constructor(props) {
         super(props);
 
@@ -32,10 +32,10 @@ class Logout extends Component {
         this.setState({ isLoading: false });
         this.props.toggle();
     };
-    
+
     /**
-    * ReactJS method to render the component.
-    */
+     * ReactJS method to render the component.
+     */
     render() {
         return (
             <Modal toggle={this.props.toggle} isOpen={this.props.isOpen}>

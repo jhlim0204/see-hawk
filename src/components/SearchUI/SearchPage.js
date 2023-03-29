@@ -22,9 +22,9 @@ import { FilterManager } from '../../control/FilterManager';
  */
 class SearchPage extends Component {
     /**
-    * Initializes the state of the component with isLoading, oriSearchResult, searchResult, star, and region.
-    * @param {Object} props - The props object that is passed to the component.
-    */
+     * Initializes the state of the component with isLoading, oriSearchResult, searchResult, star, and region.
+     * @param {Object} props - The props object that is passed to the component.
+     */
     constructor(props) {
         super(props);
 
@@ -44,9 +44,9 @@ class SearchPage extends Component {
     }
 
     /**
-    * Handles the search function by calling the searchHawkerCentre function of the HawkerCentreManager controller
-    * and setting the state of isLoading and searchResult accordingly.
-    */
+     * Handles the search function by calling the searchHawkerCentre function of the HawkerCentreManager controller
+     * and setting the state of isLoading and searchResult accordingly.
+     */
     handleSearch = async () => {
         this.setState({ isLoading: true });
 
@@ -62,10 +62,10 @@ class SearchPage extends Component {
     };
 
     /**
-    * Handles filtering the search results based on star rating and location.
-    * Filters the oriSearchResult by passing it to the FilterManager's filter function and updating the state
-    * of searchResult with the resulting array.
-    */
+     * Handles filtering the search results based on star rating and location.
+     * Filters the oriSearchResult by passing it to the FilterManager's filter function and updating the state
+     * of searchResult with the resulting array.
+     */
     handleFilter = () => {
         /* ori search result*/
         this.setState({
@@ -77,10 +77,10 @@ class SearchPage extends Component {
     };
 
     /**
-    * Handles updating the state of star based on the selected star rating.
-    * Calls handleFilter to update the search results.
-    * @param {Event} event the event object passed in from the onChange handler
-    */
+     * Handles updating the state of star based on the selected star rating.
+     * Calls handleFilter to update the search results.
+     * @param {Event} event the event object passed in from the onChange handler
+     */
     handleRating = (event) => {
         this.setState({ star: parseInt(event.target.value) }, () => {
             this.handleFilter();
@@ -88,10 +88,10 @@ class SearchPage extends Component {
     };
 
     /**
-    * Handles updating the state of the location checkboxes based on which checkboxes were clicked.
-    * Calls handleFilter to update the search results.
-    * @param {Event} event the event object passed in from the onChange handler
-    */
+     * Handles updating the state of the location checkboxes based on which checkboxes were clicked.
+     * Calls handleFilter to update the search results.
+     * @param {Event} event the event object passed in from the onChange handler
+     */
     handleRegion = (event) => {
         let regionCopy = { ...this.state.region };
         regionCopy[event.target.name] = !regionCopy[event.target.name];
@@ -101,8 +101,8 @@ class SearchPage extends Component {
     };
 
     /**
-    * ReactJS method to render the component.
-    */
+     * ReactJS method to render the component.
+     */
     render() {
         if (this.state.isLoading) {
             return (
@@ -295,8 +295,8 @@ class SearchPage extends Component {
     }
 
     /**
-    * ReactJS method that will be called when the component has mounted.
-    */
+     * ReactJS method that will be called when the component has mounted.
+     */
     componentDidMount() {
         this.handleSearch();
         document.title = 'Search Results - SeeHawk';

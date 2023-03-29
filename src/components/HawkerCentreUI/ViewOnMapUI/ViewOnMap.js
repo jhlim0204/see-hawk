@@ -12,7 +12,7 @@ import HawkerMarker from './HawkerMarker';
 class ViewOnMap extends Component {
     /**
      * Create a map component.
-     * @param {Object} props - The props object that is passed to the component. 
+     * @param {Object} props - The props object that is passed to the component.
      */
     constructor(props) {
         super(props);
@@ -29,7 +29,7 @@ class ViewOnMap extends Component {
     }
 
     /**
-     * Toggles the view on map modal state. 
+     * Toggles the view on map modal state.
      */
     toggleModal = () => {
         this.setState({ isModalOpen: !this.state.isModalOpen });
@@ -43,7 +43,7 @@ class ViewOnMap extends Component {
     };
 
     /**
-     * ReactJS method to render the component. 
+     * ReactJS method to render the component.
      */
     render() {
         return (

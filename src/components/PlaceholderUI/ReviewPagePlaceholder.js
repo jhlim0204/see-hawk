@@ -1,9 +1,9 @@
 import { Row, Col } from 'reactstrap';
 
 /**
-* A functional component that displays the loading animation and placeholder text.
-* @returns {JSX.Element} A JSX element that represents the loading animation and placeholder text.
-*/
+ * A functional component that displays the loading animation and placeholder text.
+ * @returns {JSX.Element} A JSX element that represents the loading animation and placeholder text.
+ */
 function ReviewPagePlaceholder() {
     return (
         <Row className='mb-3 placeholder-glow'>
@@ -32,4 +32,4 @@ function ReviewPagePlaceholder() {
     );
 }
 
-export default ReviewPagePlaceholder
+export default ReviewPagePlaceholder;

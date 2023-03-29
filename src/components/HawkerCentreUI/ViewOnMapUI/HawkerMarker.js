@@ -6,7 +6,7 @@ import React, { Component } from 'react';
  */
 class HawkerMarker extends Component {
     /**
-     * ReactJS method to render the component. 
+     * ReactJS method to render the component.
      */
     render() {
         return (

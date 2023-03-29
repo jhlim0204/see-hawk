@@ -4,10 +4,10 @@ import StarsRating from 'react-star-rate';
 import { Link } from 'react-router-dom';
 
 /**
- * A class component representing a hawker result card that displays information about a hawker center, 
+ * A class component representing a hawker result card that displays information about a hawker center,
  * including its name, photo, address, and rating.
  */
-class HawkerResult extends Component {    
+class HawkerResult extends Component {
     /**
      * ReactJS method to render the component.
      */

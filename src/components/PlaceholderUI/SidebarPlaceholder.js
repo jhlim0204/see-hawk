@@ -4,10 +4,10 @@ import { Col } from 'reactstrap';
 /**
  * A class component representing the placeholder sidebar for the search page
  */
-class SidebarPlaceholder extends Component {   
+class SidebarPlaceholder extends Component {
     /**
-    * ReactJS method to render the component.
-    */
+     * ReactJS method to render the component.
+     */
     render() {
         return (
             <Col xs={3} className='rounded-3 content shadow-sm placeholder-glow'>

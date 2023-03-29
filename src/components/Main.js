@@ -15,11 +15,11 @@ import SessionManager from '../control/SessionManager';
 /**
  * A main class component representing the whole application.
  */
-class Main extends Component {    
+class Main extends Component {
     /**
-    * Initializes the state of the main component.
-    * @param {Object} props - The props object that is passed to the component.
-    */
+     * Initializes the state of the main component.
+     * @param {Object} props - The props object that is passed to the component.
+     */
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +28,7 @@ class Main extends Component {
     }
 
     /**
-    * The method to update the user status.
+     * The method to update the user status.
      * @param {Object} user - The dicitionary containing relevant information about a user.
      */
     updateUserStatus = (user) => {
@@ -40,8 +40,8 @@ class Main extends Component {
     };
 
     /**
-    * ReactJS method to render the component.
-    */
+     * ReactJS method to render the component.
+     */
     render() {
         return (
             <UserContext.Provider value={this.state.username}>
@@ -49,11 +49,8 @@ class Main extends Component {
                     <Header />
                     <Routes>
                         <Route path='/' element={<HomePage />} />
-                        <Route path='/search/*' element={<SearchPage />} />
 
-                        {/*
-                            to be grouped
-                        */}
+                        <Route path='/search/*' element={<SearchPage />} />
 
                         <Route path='/view' element={<Navigate to='/' replace />} />
                         <Route path='/view/:id' element={<HawkerPage />} />
@@ -69,8 +66,8 @@ class Main extends Component {
     }
 
     /**
-    * ReactJS method that will be called when the component has mounted.
-    */
+     * ReactJS method that will be called when the component has mounted.
+     */
     componentDidMount() {
         SessionManager.authListener(this.updateUserStatus);
     }

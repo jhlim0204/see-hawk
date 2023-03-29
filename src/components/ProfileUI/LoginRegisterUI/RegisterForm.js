@@ -6,16 +6,16 @@ import RegisterManager from '../../../control/RegisterManager';
 
 /**
  * A class component representing the form for the user to input their username and password to register.
- * It also includes input validation and submission handling logic, as well as displaying 
+ * It also includes input validation and submission handling logic, as well as displaying
  * a success message upon successful registration.
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  */
 class Register extends Component {
     /**
-    * Create a Register component.
-    * @param {Object} props - The props object that is passed to the component.
-    */
+     * Create a Register component.
+     * @param {Object} props - The props object that is passed to the component.
+     */
     constructor(props) {
         super(props);
 
@@ -33,9 +33,9 @@ class Register extends Component {
     }
 
     /**
-    * Updates the state with the new input value and resets the input validation error messages.
-    * @param {Event} event - The event object for the input change event.
-    */
+     * Updates the state with the new input value and resets the input validation error messages.
+     * @param {Event} event - The event object for the input change event.
+     */
     handleInput = (event) => {
         this.setState({ invalidUsername: false, invalidPassword: false, invalidRePassword: false });
         this.setState({
@@ -44,11 +44,11 @@ class Register extends Component {
     };
 
     /**
-    * Submits the form data after validating the input fields, and sets the loading state while waiting for a response from the server.
-    * If the registration is successful, sets the login success state and switches to the login tab after a delay.
-    * Otherwise, sets the username validation error state and displays an error message.
-    * @param {Event} event - The event object for the form submission event.
-    */
+     * Submits the form data after validating the input fields, and sets the loading state while waiting for a response from the server.
+     * If the registration is successful, sets the login success state and switches to the login tab after a delay.
+     * Otherwise, sets the username validation error state and displays an error message.
+     * @param {Event} event - The event object for the form submission event.
+     */
     handleSubmit = async (event) => {
         event.preventDefault();
         if (!(this.checkUsername() && this.checkPassword() && this.checkRePassword())) {
@@ -80,9 +80,9 @@ class Register extends Component {
     };
 
     /**
-    * Checks if the username input field is valid and updates the state with an error message if it is invalid.
-    * @returns {boolean} - Returns true if the input is valid, otherwise returns false.
-    */
+     * Checks if the username input field is valid and updates the state with an error message if it is invalid.
+     * @returns {boolean} - Returns true if the input is valid, otherwise returns false.
+     */
     checkUsername = () => {
         const invalid = this.state.username.length > 13;
 
@@ -96,9 +96,9 @@ class Register extends Component {
     };
 
     /**
-    * Checks if the password input field is valid and updates the state with an error message if it is invalid.
-    * @returns {boolean} - Returns true if the input is valid, otherwise returns false.
-    */
+     * Checks if the password input field is valid and updates the state with an error message if it is invalid.
+     * @returns {boolean} - Returns true if the input is valid, otherwise returns false.
+     */
     checkPassword = () => {
         const invalid = this.state.password.length < 8;
 
@@ -107,9 +107,9 @@ class Register extends Component {
     };
 
     /**
-    * Checks if the re-entered password input field matches the password input field field is valid and updates the state with an error message if it is invalid.
-    * @returns {boolean} - Returns true if the input is valid, otherwise returns false.
-    */
+     * Checks if the re-entered password input field matches the password input field field is valid and updates the state with an error message if it is invalid.
+     * @returns {boolean} - Returns true if the input is valid, otherwise returns false.
+     */
     checkRePassword = () => {
         const invalid = this.state.rePassword !== this.state.password;
 
@@ -118,8 +118,8 @@ class Register extends Component {
     };
 
     /**
-    * ReactJS method to render the component.
-    */
+     * ReactJS method to render the component.
+     */
     render() {
         if (this.state.loginSuccess) {
             return (

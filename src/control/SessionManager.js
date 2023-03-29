@@ -4,7 +4,6 @@ import AuthManager from './AuthManager';
  * Class for managing sessions
  */
 class SessionManager {
-
     /**
      * Constructor for SessionManager
      * @throws Will throw an error if this static class is instantiated
@@ -34,7 +33,7 @@ class SessionManager {
      * Method to listen to any changes in authentication status of user
      * @param {function} callback - The callback function
      */
-    static authListener(callback){
+    static authListener(callback) {
         AuthManager.authListener(callback);
     }
 }

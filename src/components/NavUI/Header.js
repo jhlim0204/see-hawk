@@ -10,7 +10,7 @@ import { withRouter } from '../Utility/withRouter';
  */
 class Header extends Component {
     /**
-     * ReactJS method to render the component. 
+     * ReactJS method to render the component.
      */
     render() {
         return (

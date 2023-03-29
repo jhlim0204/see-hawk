@@ -4,7 +4,6 @@ import proj4 from 'proj4';
  * Class for managing the interaction with API
  */
 export class APIManager {
-    
     /**
      * Constructor for APIManager
      * @throws Will throw an error if this static class is instantiated
@@ -23,7 +22,7 @@ export class APIManager {
         );
         const jsonHawker = await responseHawker.json();
         let hawkerCentreList = jsonHawker.result.records;
-        
+
         hawkerCentreList = hawkerCentreList.map((item) => {
             /* Extract name*/
             var regExp = /\(([^)]+)\)/;

@@ -1,10 +1,13 @@
+/* View Component*/
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Tooltip } from 'reactstrap';
 import StarsRating from 'react-star-rate';
 import Lottie from 'lottie-react';
 import ReviewSubmittedAnimation from '../../Animation/reviewSubmitted.json';
-import { ReviewManager } from '../../../control/ReviewManager';
 import { UserContext } from '../../UserContext';
+
+/* Controller*/
+import { ReviewManager } from '../../../control/ReviewManager';
 
 /**
  * Class component representing the button to give review.
@@ -16,7 +19,7 @@ class GiveReview extends Component {
 
     /**
      * Create a GiveReview component.
-     * @param {Object} props - The props object that is passed to the component. 
+     * @param {Object} props - The props object that is passed to the component.
      */
     constructor(props) {
         super(props);
@@ -112,7 +115,7 @@ class GiveReview extends Component {
     };
 
     /**
-     * ReactJS method to render the component. 
+     * ReactJS method to render the component.
      */
     render() {
         return (

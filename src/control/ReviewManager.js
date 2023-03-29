@@ -4,7 +4,6 @@ import { DataManager } from './DataManager.js';
  * Class for managing reviews
  */
 export class ReviewManager {
-
     /**
      * Constructor for ReviewManager
      * @throws Will throw an error if this static class is instantiated
@@ -22,7 +21,7 @@ export class ReviewManager {
         return await DataManager.getReview(hawkerCentreID);
     }
 
-     /**
+    /**
      * Method to add review to hawker centre
      * @param {string} hawkerCentreID - The ID of the hawker centre
      * @param {string} accountID - The ID of the account
@@ -31,7 +30,7 @@ export class ReviewManager {
      * @return {boolean} Whether the review is succesfully added
      */
     static async addReview(hawkerCentreID, accountID, reviewStar, reviewText) {
-       return await DataManager.addReview(hawkerCentreID, accountID, reviewStar, reviewText);
+        return await DataManager.addReview(hawkerCentreID, accountID, reviewStar, reviewText);
     }
 
     /**

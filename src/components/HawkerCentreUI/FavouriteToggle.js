@@ -14,7 +14,7 @@ class FavouriteToggle extends Component {
 
     /**
      * Create a favourite toggle component.
-     * @param {Object} props - The props object that is passed to the component. 
+     * @param {Object} props - The props object that is passed to the component.
      */
     constructor(props) {
         super(props);
@@ -69,7 +69,7 @@ class FavouriteToggle extends Component {
     };
 
     /**
-     * Toggles the state for the 'log in required' tooltip. 
+     * Toggles the state for the 'log in required' tooltip.
      */
     toggleTooltip = () => {
         if (!this.context) {
@@ -97,7 +97,7 @@ class FavouriteToggle extends Component {
     };
 
     /**
-     * ReactJS method to render the component. 
+     * ReactJS method to render the component.
      */
     render() {
         return (
@@ -158,7 +158,7 @@ class FavouriteToggle extends Component {
     }
 
     /**
-     * ReactJS method that will be called when the component has mounted. 
+     * ReactJS method that will be called when the component has mounted.
      */
     componentDidMount() {
         this.checkFavourite();

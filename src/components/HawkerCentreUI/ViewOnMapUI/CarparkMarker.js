@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 class CarparkMarker extends Component {
     /**
      * Create a carpark marker component.
-     * @param {Object} props - The props object that is passed to the component. 
+     * @param {Object} props - The props object that is passed to the component.
      */
     constructor(props) {
         super(props);
@@ -27,7 +27,7 @@ class CarparkMarker extends Component {
     };
 
     /**
-     * ReactJS method to render the component. 
+     * ReactJS method to render the component.
      */
     render() {
         return (

@@ -9,10 +9,10 @@ import { withRouter } from '../Utility/withRouter';
  */
 class SearchBar extends Component {
     /**
-    * Initializes the state of the component with the value of the search query parameter
-    * extracted from the URL or an empty string.
-    * @param {Object} props - The props object that is passed to the component.
-    */
+     * Initializes the state of the component with the value of the search query parameter
+     * extracted from the URL or an empty string.
+     * @param {Object} props - The props object that is passed to the component.
+     */
     constructor(props) {
         super(props);
 
@@ -55,8 +55,8 @@ class SearchBar extends Component {
     };
 
     /**
-    * ReactJS method to render the component.
-    */
+     * ReactJS method to render the component.
+     */
     render() {
         return (
             <Form

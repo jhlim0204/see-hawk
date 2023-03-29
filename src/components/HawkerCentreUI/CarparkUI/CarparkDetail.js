@@ -6,7 +6,7 @@ import { Card, CardBody, CardTitle, CardText, Progress } from 'reactstrap';
  */
 class CarparkDetail extends Component {
     /**
-     * ReactJS method to render the component. 
+     * ReactJS method to render the component.
      */
     render() {
         const percentage = (this.props.availableSlots / this.props.totalSlots) * 100;

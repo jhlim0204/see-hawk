@@ -1,12 +1,17 @@
+/* View Component*/
 import React, { Component } from 'react';
-import CarparkPage from './CarparkUI/CarparkPage';
 import { Nav, NavItem, NavLink, TabContent, TabPane, Row, Col } from 'reactstrap';
+import CarparkPage from './CarparkUI/CarparkPage';
 import ViewOnMap from './ViewOnMapUI/ViewOnMap';
 import FavouriteToggle from './FavouriteToggle';
 import ReviewPage from './ReviewUI/ReviewPage';
 import { withRouter } from '../Utility/withRouter';
-import { HawkerCentreManager } from '../../control/HawkerCentreManager';
+
+/* Placeholder Component*/
 import HawkerPagePlaceholder from '../PlaceholderUI/HawkerPagePlaceholder';
+
+/* Controller*/
+import { HawkerCentreManager } from '../../control/HawkerCentreManager';
 
 /**
  * Class component representing the hawker centre page.
@@ -16,7 +21,7 @@ import HawkerPagePlaceholder from '../PlaceholderUI/HawkerPagePlaceholder';
 class HawkerPage extends Component {
     /**
      * Create a hawker page component.
-     * @param {Object} props - The props object that is passed to the component. 
+     * @param {Object} props - The props object that is passed to the component.
      */
     constructor(props) {
         super(props);
@@ -74,7 +79,7 @@ class HawkerPage extends Component {
     }
 
     /**
-     * ReactJS method to render the component. 
+     * ReactJS method to render the component.
      */
     render() {
         let hawkerData = this.state.hawkerData;

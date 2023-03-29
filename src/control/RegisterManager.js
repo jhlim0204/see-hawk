@@ -4,7 +4,6 @@ import AuthManager from './AuthManager';
  * Class for registering a new user
  */
 class RegisterManager {
-
     /**
      * Constructor for RegisterManager
      * @throws Will throw an error if this static class is instantiated

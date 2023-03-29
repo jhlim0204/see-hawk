@@ -8,8 +8,8 @@ import Avatar from 'react-avatar';
 
 /**
  * A class component representing the profile user interface.
- * It shows different options for logged-in users and guests. 
- * Logged-in users can access their favorite list and log out, while guests are offered a login/registration option. 
+ * It shows different options for logged-in users and guests.
+ * Logged-in users can access their favorite list and log out, while guests are offered a login/registration option.
  * The dropdown toggle button displays the user's avatar or a default guest image if the user is not logged in.
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
@@ -85,18 +85,21 @@ class Profile extends Component {
                         <>
                             <Link to='/favourites' style={{ textDecoration: 'none' }}>
                                 <DropdownItem>
-                                    <i className='bi bi-bookmark me-2' />Favourite List
+                                    <i className='bi bi-bookmark me-2' />
+                                    Favourite List
                                 </DropdownItem>
                             </Link>
                             <DropdownItem onClick={this.toggleLogoutModal}>
-                                <i className='bi bi-power me-2' />Logout
+                                <i className='bi bi-power me-2' />
+                                Logout
                             </DropdownItem>
                         </>
                     ) : (
                         /* Display option for guest*/
                         <>
                             <DropdownItem toggle={false} onClick={this.toggleLoginModal}>
-                                <i className='bi bi-box-arrow-in-left me-2' />Login / Register
+                                <i className='bi bi-box-arrow-in-left me-2' />
+                                Login / Register
                             </DropdownItem>
                         </>
                     )}

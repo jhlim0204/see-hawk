@@ -19,9 +19,9 @@ import Register from './RegisterForm';
  */
 class LoginRegister extends Component {
     /**
-    * Create a LoginRegister component.
-    * @param {Object} props - The props object that is passed to the component.
-    */
+     * Create a LoginRegister component.
+     * @param {Object} props - The props object that is passed to the component.
+     */
     constructor(props) {
         super(props);
 
@@ -31,9 +31,9 @@ class LoginRegister extends Component {
     }
 
     /**
-    * Toggles the current active tab.
-    * @param {string} tab - The tab to toggle to.
-    */
+     * Toggles the current active tab.
+     * @param {string} tab - The tab to toggle to.
+     */
     toggleTab = (tab) => {
         if (this.state.currentActiveTab !== tab) {
             this.setState({ currentActiveTab: tab });
@@ -41,8 +41,8 @@ class LoginRegister extends Component {
     };
 
     /**
-    * ReactJS method to render the component.
-    */
+     * ReactJS method to render the component.
+     */
     render() {
         return (
             <Modal toggle={this.props.toggle} isOpen={this.props.isOpen}>

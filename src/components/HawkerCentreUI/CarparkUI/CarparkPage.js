@@ -1,9 +1,12 @@
+/* View Component*/
 import React, { Component } from 'react';
-import CarparkDetail from './CarparkDetail';
-import { CarparkManager } from '../../../control/CarparkManager';
-import ViewOnMap from '../ViewOnMapUI/ViewOnMap';
 import Lottie from 'lottie-react';
+import CarparkDetail from './CarparkDetail';
+import ViewOnMap from '../ViewOnMapUI/ViewOnMap';
 import RunningLoadingAnimation from '../../Animation/runningLoading.json';
+
+/* Controller*/
+import { CarparkManager } from '../../../control/CarparkManager';
 
 /**
  * Class component representing the carpark page.
@@ -13,7 +16,7 @@ import RunningLoadingAnimation from '../../Animation/runningLoading.json';
 class CarparkPage extends Component {
     /**
      * Create a carpark page component.
-     * @param {Object} props - The props object that is passed to the component. 
+     * @param {Object} props - The props object that is passed to the component.
      */
     constructor(props) {
         super(props);
@@ -42,7 +45,7 @@ class CarparkPage extends Component {
     };
 
     /**
-     * ReactJS method to render the component. 
+     * ReactJS method to render the component.
      */
     render() {
         if (this.state.isLoading) {

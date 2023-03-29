@@ -1,4 +1,4 @@
-import { DataManager } from './DataManager.js'; 
+import { DataManager } from './DataManager.js';
 
 /**
  * Class for managing favourites
@@ -18,7 +18,7 @@ export class FavouriteManager {
      * @return {Object[]} The list of favourites for that account
      */
     static async getFavourite(accountName) {
-       return await DataManager.getFavourite(accountName);
+        return await DataManager.getFavourite(accountName);
     }
 
     /**
@@ -28,7 +28,7 @@ export class FavouriteManager {
      * @return {boolean} Whether the hawker centre is the favourite of the account
      */
     static async isFavourite(accountName, hawkerID) {
-       return await DataManager.isFavourite(accountName, hawkerID);
+        return await DataManager.isFavourite(accountName, hawkerID);
     }
 
     /**
@@ -38,7 +38,7 @@ export class FavouriteManager {
      * @returns {boolean} Whether the favourite is succesfully added
      */
     static async addFavourite(accountName, hawkerID) {
-       return await DataManager.addFavourite(accountName, hawkerID);
+        return await DataManager.addFavourite(accountName, hawkerID);
     }
 
     /**

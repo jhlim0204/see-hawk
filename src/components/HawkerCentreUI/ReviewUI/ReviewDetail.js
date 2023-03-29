@@ -8,7 +8,7 @@ import Avatar from 'react-avatar';
  */
 class ReviewDetail extends Component {
     /**
-     * ReactJS method to render the component. 
+     * ReactJS method to render the component.
      */
     render() {
         return (
@@ -30,7 +30,7 @@ class ReviewDetail extends Component {
                         <p className='mt-2 mb-0'>
                             <DisplayStarsSmall activeCount={this.props.reviewStar} />
                         </p>
-                        <p>{this.props.reviewText}</p>
+                        <p className='mt-1'>{this.props.reviewText || <i>The user hasn&apos;t given any text review.</i>}</p>
                     </Col>
                 </Row>
             </Card>
