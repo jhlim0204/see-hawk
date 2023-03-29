@@ -137,8 +137,9 @@ class ReviewPage extends Component {
                     {this.state.pageCount != 0 && (
                         <>
                             <Pagination
-                                aria-label='Page navigation example'
+                                aria-label='Page navigation'
                                 className='d-flex mt-4 justify-content-center'
+                                size="larger"
                             >
                                 <PaginationItem disabled={this.state.currentPage <= 1}>
                                     <PaginationLink
@@ -158,19 +159,18 @@ class ReviewPage extends Component {
                                     />
                                 </PaginationItem>
 
-                                {[...Array(this.state.pageCount)].map((page, i) => (
-                                    <PaginationItem
-                                        active={i + 1 === this.state.currentPage}
-                                        key={i + 1}
+                                <PaginationItem
+                                        disabled
+                                        className="center-text"
+                                        key={this.state.currentPage}
                                     >
                                         <PaginationLink
-                                            onClick={(e) => this.changePage(e, i + 1)}
+                                            onClick={e => e.preventDefault()}
                                             href='#'
                                         >
-                                            {i + 1}
+                                            {this.state.currentPage}
                                         </PaginationLink>
                                     </PaginationItem>
-                                ))}
 
                                 <PaginationItem
                                     disabled={this.state.currentPage >= this.state.pageCount}
