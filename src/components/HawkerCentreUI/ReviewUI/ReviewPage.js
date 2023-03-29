@@ -120,7 +120,7 @@ class ReviewPage extends Component {
                             </Col>
                         )}
                     </Row>
-                    <div className="page-transition" key={this.state.currentPage}>
+                    <div className='page-transition' key={this.state.currentPage}>
                         {Object.entries(this.state.reviewList)
                             .slice(
                                 (this.state.currentPage - 1) * this.state.pageSize,
@@ -141,7 +141,7 @@ class ReviewPage extends Component {
                             <Pagination
                                 aria-label='Page navigation'
                                 className='d-flex mt-4 justify-content-center'
-                                size="larger"
+                                size='larger'
                             >
                                 <PaginationItem disabled={this.state.currentPage <= 1}>
                                     <PaginationLink
@@ -162,17 +162,14 @@ class ReviewPage extends Component {
                                 </PaginationItem>
 
                                 <PaginationItem
-                                        disabled
-                                        className="center-text"
-                                        key={this.state.currentPage}
-                                    >
-                                        <PaginationLink
-                                            onClick={e => e.preventDefault()}
-                                            href='#'
-                                        >
-                                            {this.state.currentPage}
-                                        </PaginationLink>
-                                    </PaginationItem>
+                                    disabled
+                                    className='center-text'
+                                    key={this.state.currentPage}
+                                >
+                                    <PaginationLink onClick={(e) => e.preventDefault()} href='#'>
+                                        {this.state.currentPage}
+                                    </PaginationLink>
+                                </PaginationItem>
 
                                 <PaginationItem
                                     disabled={this.state.currentPage >= this.state.pageCount}
