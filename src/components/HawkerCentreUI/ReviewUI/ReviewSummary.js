@@ -14,7 +14,10 @@ class ReviewSummary extends Component {
     constructor(props) {
         super(props);
     }
-
+    
+    /**
+     * ReactJS method to render the component.
+     */
     render() {
         return this.props.length === 0 ? (
             <>

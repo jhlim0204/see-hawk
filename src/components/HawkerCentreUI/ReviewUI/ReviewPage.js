@@ -76,7 +76,9 @@ class ReviewPage extends Component {
     };
 
     /**
-     * ??
+     * Method to change the page.
+     * @param {Event} event - The DOM Event object.
+     * @param {number} page - The page number.
      */
     changePage = (event, page) => {
         event.preventDefault();
