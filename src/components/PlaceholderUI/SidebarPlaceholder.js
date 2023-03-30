@@ -3,6 +3,7 @@ import { Col } from 'reactstrap';
 
 /**
  * A class component representing the placeholder sidebar for the search page
+ * @author Lim Jun Hern
  */
 class SidebarPlaceholder extends Component {
     /**

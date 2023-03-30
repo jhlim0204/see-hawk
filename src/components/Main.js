@@ -14,6 +14,7 @@ import SessionManager from '../control/SessionManager';
 
 /**
  * A main class component representing the whole application.
+ * @author Lim Jun Hern
  */
 class Main extends Component {
     /**

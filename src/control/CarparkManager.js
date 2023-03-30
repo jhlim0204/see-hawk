@@ -3,6 +3,7 @@ import haversine from 'haversine-distance';
 
 /**
  * Class for managing carpark information
+ * @author Lye Cheng Yin
  */
 export class CarparkManager {
     /**

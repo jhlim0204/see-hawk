@@ -2,6 +2,7 @@ import AuthManager from './AuthManager';
 
 /**
  * Class for registering a new user
+ * @author Nicholas Wee
  */
 class RegisterManager {
     /**

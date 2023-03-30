@@ -4,6 +4,7 @@ import { Col, Row } from 'reactstrap';
 
 /**
  * Class component representing the home page.
+ * @author Lim Jun Hern
  */
 class HomePage extends Component {
     /**

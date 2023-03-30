@@ -5,6 +5,7 @@ import { withRouter } from '../../Utility/withRouter';
 /**
  * Class component representing the review page.
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
+ * @author Lim Jun Hern
  */
 class ReviewSummary extends Component {
     /**

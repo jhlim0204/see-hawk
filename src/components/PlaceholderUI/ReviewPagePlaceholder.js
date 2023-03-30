@@ -2,6 +2,7 @@ import { Row, Col } from 'reactstrap';
 
 /**
  * A functional component that displays the loading animation and placeholder text.
+ * @author Lim Jun Hern
  * @returns {JSX.Element} A JSX element that represents the loading animation and placeholder text.
  */
 function ReviewPagePlaceholder() {

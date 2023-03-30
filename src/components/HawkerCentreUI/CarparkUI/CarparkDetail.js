@@ -3,6 +3,7 @@ import { Card, CardBody, CardTitle, CardText, Progress } from 'reactstrap';
 
 /**
  * Class component representing the card containing the details for the carpark.
+ * @author Lim Jun Hern
  */
 class CarparkDetail extends Component {
     /**

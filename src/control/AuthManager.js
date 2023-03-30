@@ -8,6 +8,7 @@ import {
 
 /**
  * Class for managing sessions and new user registration
+ * @author Leong Hong Yi
  */
 class AuthManager {
     /**

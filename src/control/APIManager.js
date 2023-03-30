@@ -2,6 +2,7 @@ import proj4 from 'proj4';
 
 /**
  * Class for managing the interaction with API
+ * @author Lye Cheng Yin
  */
 export class APIManager {
     /**

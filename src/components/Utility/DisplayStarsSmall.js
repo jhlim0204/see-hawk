@@ -1,5 +1,6 @@
 /**
  * A functional component that displays a row of stars, where some are filled and others are not.
+ * @author Lim Jun Hern
  * @param {number} activeCount - The number of stars to be filled.
  * @returns {JSX.Element} A JSX element that represents the row of stars.
  */

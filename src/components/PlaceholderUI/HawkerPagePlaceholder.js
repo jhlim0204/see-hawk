@@ -3,6 +3,7 @@ import RunningLoadingAnimation from '../Animation/runningLoading.json';
 
 /**
  * A functional component that displays the loading animation when loading.
+ * @author Lim Jun Hern
  * @returns {JSX.Element} A JSX element that represents the aimation for transition when loading
  */
 function HawkerPagePlaceholder() {

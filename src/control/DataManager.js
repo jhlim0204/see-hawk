@@ -15,6 +15,7 @@ import { APIManager } from './APIManager.js';
 
 /**
  * Class for interacting with database
+ * @author Leong Hong Yi
  */
 export class DataManager {
     /**

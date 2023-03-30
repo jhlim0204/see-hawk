@@ -2,6 +2,7 @@ import { DataManager } from './DataManager.js';
 
 /**
  * Class for managing reviews
+ * @author Oh Ding Ang
  */
 export class ReviewManager {
     /**

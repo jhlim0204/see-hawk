@@ -3,6 +3,7 @@ import { Card, CardImg, CardBody, CardTitle, CardText, Col, Row } from 'reactstr
 
 /**
  * A class component representing the placeholder card for a hawker centre
+ * @author Lim Jun Hern
  */
 class HawkerPlaceholder extends Component {
     /**

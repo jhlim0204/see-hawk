@@ -3,6 +3,7 @@ import { ReviewManager } from './ReviewManager.js';
 
 /**
  * Class for managing hawker centre
+ * @author Leong Hong Yi
  */
 export class HawkerCentreManager {
     /**

@@ -12,6 +12,7 @@ import { CarparkManager } from '../../../control/CarparkManager';
  * Class component representing the carpark page.
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
+ * @author Lim Jun Hern
  */
 class CarparkPage extends Component {
     /**

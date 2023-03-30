@@ -21,6 +21,7 @@ import { UserContext } from '../UserContext';
  * Class component representing the favourite hawker centre.
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
+ * @author Lim Jun Hern
  */
 class FavouriteComponent extends Component {
     static contextType = UserContext;

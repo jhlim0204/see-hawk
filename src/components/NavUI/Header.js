@@ -7,6 +7,7 @@ import { withRouter } from '../Utility/withRouter';
 
 /**
  * Class component representing the navigation bar.
+ * @author Lim Jun Hern
  */
 class Header extends Component {
     /**

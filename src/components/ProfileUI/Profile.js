@@ -13,6 +13,7 @@ import Avatar from 'react-avatar';
  * The dropdown toggle button displays the user's avatar or a default guest image if the user is not logged in.
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
+ * @author Lim Jun Hern
  */
 class Profile extends Component {
     static contextType = UserContext;
