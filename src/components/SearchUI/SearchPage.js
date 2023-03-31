@@ -121,7 +121,11 @@ class SearchPage extends Component {
             return (
                 <div className='background'>
                     <Row>
-                        <Col xs={3} className='rounded-3 content shadow-sm'>
+                        <Col
+                            xs={0}
+                            md={3}
+                            className='rounded-3 content shadow-sm d-none d-md-block'
+                        >
                             <h5 className='mb-4'>
                                 <i className='bi bi-funnel' /> FILTERS
                             </h5>
@@ -260,7 +264,7 @@ class SearchPage extends Component {
                                 </FormGroup>
                             </Form>
                         </Col>
-                        <Col xs={9}>
+                        <Col xs={12} md={9}>
                             {this.state.searchResult.length !== 0 ? (
                                 this.state.searchResult.map((result) => (
                                     <HawkerResult

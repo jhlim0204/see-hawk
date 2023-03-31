@@ -16,17 +16,17 @@ class Header extends Component {
     render() {
         return (
             <Navbar className='fixed-top bg-light shadow-sm'>
-                <NavbarBrand tag={NavLink} className='d-none d-sm-block ms-2 me-5' to='/home'>
+                <NavbarBrand tag={NavLink} className='d-none d-md-block ms-2 me-5' to='/home'>
                     {this.props.location.pathname !== '/' && (
                         <img src='/assets/images/logo.png' alt='logo' height='45' />
                     )}
                 </NavbarBrand>
 
-                <Nav navbar className='flex-grow-1 mx-2'>
+                <Nav navbar className='flex-grow-1 mx-xs-2'>
                     <NavItem>{this.props.location.pathname !== '/' && <SearchBar />}</NavItem>
                 </Nav>
 
-                <Nav navbar className='ms-1'>
+                <Nav navbar className='ms-xs-1'>
                     <NavItem>
                         <Profile />
                     </NavItem>

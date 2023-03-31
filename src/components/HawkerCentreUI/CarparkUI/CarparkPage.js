@@ -71,9 +71,11 @@ class CarparkPage extends Component {
                             carparkList={this.state.carparkList}
                             carpark
                         />
+                        <br />
+                        <br />
                         <p
                             key={this.state.updatedTimeKey}
-                            className='text-muted ms-auto fst-italic mt-1 updated-date'
+                            className='text-muted ms-auto fst-italic mt-1 updated-date d-none d-lg-block'
                         >
                             Last updated: {this.state.updatedTime}
                         </p>

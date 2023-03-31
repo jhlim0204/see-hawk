@@ -79,7 +79,9 @@ class Profile extends Component {
                             alt='Guest'
                         />
                     )}
-                    {this.context ? this.context : 'Guest'}
+                    <span className='d-none d-sm-inline-block'>
+                        {this.context ? this.context : 'Guest'}
+                    </span>
                 </DropdownToggle>
                 <DropdownMenu className='shadow-lg w-100 border-0' end={true}>
                     {this.context ? (

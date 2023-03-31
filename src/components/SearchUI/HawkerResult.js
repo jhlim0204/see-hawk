@@ -38,7 +38,7 @@ class HawkerResult extends Component {
                                     <span className='d-block mb-1'>
                                         <b>Address:</b> {this.props.address}
                                     </span>
-                                    <span>
+                                    <span className='d-none d-lg-block'>
                                         <b>Number of stalls:</b> {this.props.noOfStall}
                                     </span>
                                 </CardText>

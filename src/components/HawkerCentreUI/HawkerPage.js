@@ -121,7 +121,7 @@ class HawkerPage extends Component {
                     </Row>
                     <div className='content rounded shadow-sm'>
                         <Row className='mt-2'>
-                            <Col xs={5} className='hawker-detail border-end'>
+                            <Col xs={12} lg={5} className='hawker-detail border-end-lg'>
                                 <p>
                                     <b>Address:</b> {hawkerData.address}
                                 </p>
@@ -153,7 +153,11 @@ class HawkerPage extends Component {
                                     </li>
                                 </ul>
                             </Col>
-                            <Col xs={7} className='mt-auto mb-auto'>
+                            <Col
+                                xs={12}
+                                lg={7}
+                                className='pt-3 pt-lg-0 mt-auto mb-auto border-top border-top-lg-0'
+                            >
                                 <p className='lead mb-0'>{hawkerData.description}</p>
                             </Col>
                         </Row>

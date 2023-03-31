@@ -65,7 +65,7 @@ class FavouriteComponent extends Component {
             <>
                 <Card className='my-3 text-start border-0 shadow-sm clickable-card'>
                     <Row>
-                        <Col xs='3'>
+                        <Col xs='4' lg='3'>
                             <Link
                                 to={'/view/' + this.props.id}
                                 style={{ color: 'inherit', textDecoration: 'inherit' }}
@@ -81,7 +81,7 @@ class FavouriteComponent extends Component {
                                 />
                             </Link>
                         </Col>
-                        <Col xs='8' className='ps-0'>
+                        <Col xs='6' lg='8' className='ps-0'>
                             <Link
                                 to={'/view/' + this.props.id}
                                 style={{ color: 'inherit', textDecoration: 'inherit' }}
@@ -91,17 +91,17 @@ class FavouriteComponent extends Component {
                                         {this.props.name}
                                     </CardTitle>
                                     <CardText>
-                                        <span className='d-block mb-1'>
+                                        <span className='d-none d-lg-block'>
                                             <b>Address:</b> {this.props.address}
                                         </span>
-                                        <span>
+                                        <span className='d-none d-md-block'>
                                             <b>Number of stalls:</b> {this.props.noOfStall}
                                         </span>
                                     </CardText>
                                 </CardBody>
                             </Link>
                         </Col>
-                        <Col xs='1'>
+                        <Col xs='2' lg='1'>
                             <Button
                                 className='w-100 h-100 border-0 card-right'
                                 color='danger'

@@ -116,8 +116,15 @@ class ReviewPage extends Component {
                         </Col>
                         {this.state.reviewLength !== 0 && (
                             <Col xs={4} className='text-center align-items-center'>
-                                <h1 className='display-1 mb-0'>{this.state.average}</h1>
-                                <StarsRating value={Number(this.state.average)} disabled={true} />
+                                <h1 className='display-1 mb-0 mt-5 mt-lg-0'>
+                                    {this.state.average}
+                                </h1>
+                                <div className='d-none d-lg-block'>
+                                    <StarsRating
+                                        value={Number(this.state.average)}
+                                        disabled={true}
+                                    />
+                                </div>
                                 <p className='text-muted'>{this.state.reviewLength} reviews</p>
                             </Col>
                         )}
