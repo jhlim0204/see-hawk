@@ -2,6 +2,7 @@ import proj4 from 'proj4';
 
 /**
  * Class for managing the interaction with API
+ * Use case - UC04, UC05, UC08, UC09
  * @author Lye Cheng Yin
  */
 export class APIManager {

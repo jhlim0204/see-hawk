@@ -8,6 +8,7 @@ import RegisterManager from '../../../control/RegisterManager';
  * A class component representing the form for the user to input their username and password to register.
  * It also includes input validation and submission handling logic, as well as displaying
  * a success message upon successful registration.
+ * Use case - UC01
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  * @author Lim Jun Hern

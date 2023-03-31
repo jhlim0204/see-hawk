@@ -2,6 +2,7 @@ import AuthManager from './AuthManager';
 
 /**
  * Class for managing sessions
+ * Use case - UC02, UC03
  * @author Nicholas Wee
  */
 class SessionManager {

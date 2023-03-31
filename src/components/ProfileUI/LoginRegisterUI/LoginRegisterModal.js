@@ -14,6 +14,7 @@ import Register from './RegisterForm';
 
 /**
  * A class component representing the modal containing a login and register form with tabs
+ * Use case - UC01, UC02
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  * @author Lim Jun Hern

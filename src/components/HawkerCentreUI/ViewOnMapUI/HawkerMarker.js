@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 /**
  * Class component representing the marker for hawker centre on map.
+ * Use case - UC09
  * @author Lim Jun Hern
  */
 class HawkerMarker extends Component {

@@ -4,6 +4,7 @@ import SessionManager from '../../../control/SessionManager';
 
 /**
  * A class component that displays a modal to confirm logout and logs out the user on confirmation.
+ * Use case - UC03
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  * @author Lim Jun Hern

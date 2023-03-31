@@ -2,6 +2,7 @@ import { DataManager } from './DataManager.js';
 
 /**
  * Class for managing favourites
+ * Use case - UC10
  * @author Oh Ding Ang
  */
 export class FavouriteManager {

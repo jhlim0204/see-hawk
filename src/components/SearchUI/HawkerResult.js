@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 /**
  * A class component representing a hawker result card that displays information about a hawker center,
  * including its name, photo, address, and rating.
+ * Use case - UC04
  * @author Lim Jun Hern
  */
 class HawkerResult extends Component {

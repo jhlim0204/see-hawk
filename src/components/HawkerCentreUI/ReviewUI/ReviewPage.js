@@ -16,6 +16,7 @@ import { ReviewManager } from '../../../control/ReviewManager';
 
 /**
  * Class component representing the review page.
+ * Use case - UC07
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  * @author Lim Jun Hern

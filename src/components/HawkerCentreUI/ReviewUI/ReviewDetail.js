@@ -5,6 +5,7 @@ import Avatar from 'react-avatar';
 
 /**
  * Class component representing the card contining the details of review.
+ * Use case - UC07
  * @author Lim Jun Hern
  */
 class ReviewDetail extends Component {

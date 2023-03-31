@@ -3,6 +3,7 @@ import { ReviewManager } from './ReviewManager.js';
 
 /**
  * Class for managing hawker centre
+ * Use case - UC04, UC05
  * @author Leong Hong Yi
  */
 export class HawkerCentreManager {

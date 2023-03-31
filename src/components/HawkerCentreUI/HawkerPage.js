@@ -15,6 +15,7 @@ import { HawkerCentreManager } from '../../control/HawkerCentreManager';
 
 /**
  * Class component representing the hawker centre page.
+ * Use case - UC05
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  * @author Lim Jun Hern

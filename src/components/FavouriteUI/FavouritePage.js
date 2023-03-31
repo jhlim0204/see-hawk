@@ -6,6 +6,7 @@ import HawkerPlaceholder from '../PlaceholderUI/HawkerPlaceholder';
 
 /**
  * Class component representing the page containing the list of favourited hawker centres.
+ * Use case - UC10
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  * @author Lim Jun Hern

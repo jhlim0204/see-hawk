@@ -1,5 +1,6 @@
 /**
  * Class for filtering hawker centres
+ * Use case - UC04
  * @author Lim Jun Hern
  */
 export class FilterManager {

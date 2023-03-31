@@ -11,6 +11,7 @@ import Avatar from 'react-avatar';
  * It shows different options for logged-in users and guests.
  * Logged-in users can access their favorite list and log out, while guests are offered a login/registration option.
  * The dropdown toggle button displays the user's avatar or a default guest image if the user is not logged in.
+ * Use case - UC01, UC02, UC03, UC10
  * @property {Object} props - A functionality provided by ReactJS representing the information passed by parent.
  * @property {Object} state - A functionality provided by ReactJS representing the current state of the component.
  * @author Lim Jun Hern
