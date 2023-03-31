@@ -82,7 +82,6 @@ export class FilterManager {
         if (postalCode) {
             postalCode = Number(postalCode.slice(0, 2));
             if (60 <= postalCode && postalCode <= 71) {
-                console.log(postalCode);
                 return 'W';
             }
             if (72 <= postalCode && postalCode <= 76) {
