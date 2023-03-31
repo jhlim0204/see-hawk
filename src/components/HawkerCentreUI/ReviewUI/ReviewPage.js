@@ -88,6 +88,8 @@ class ReviewPage extends Component {
         this.setState({
             currentPage: page
         });
+
+        event.currentTarget.blur();
     };
 
     /**
@@ -154,6 +156,7 @@ class ReviewPage extends Component {
                             >
                                 <PaginationItem disabled={this.state.currentPage <= 1}>
                                     <PaginationLink
+                                        className='pagination-button'
                                         onClick={(e) => this.changePage(e, 1)}
                                         first
                                         href='#'
@@ -162,6 +165,7 @@ class ReviewPage extends Component {
 
                                 <PaginationItem disabled={this.state.currentPage <= 1}>
                                     <PaginationLink
+                                        className='pagination-button'
                                         onClick={(e) =>
                                             this.changePage(e, this.state.currentPage - 1)
                                         }
@@ -175,7 +179,11 @@ class ReviewPage extends Component {
                                     className='center-text'
                                     key={this.state.currentPage}
                                 >
-                                    <PaginationLink onClick={(e) => e.preventDefault()} href='#'>
+                                    <PaginationLink
+                                        className='mt-1'
+                                        onClick={(e) => e.preventDefault()}
+                                        href='#'
+                                    >
                                         {this.state.currentPage}
                                     </PaginationLink>
                                 </PaginationItem>
@@ -184,6 +192,7 @@ class ReviewPage extends Component {
                                     disabled={this.state.currentPage >= this.state.pageCount}
                                 >
                                     <PaginationLink
+                                        className='pagination-button'
                                         onClick={(e) =>
                                             this.changePage(e, this.state.currentPage + 1)
                                         }
@@ -196,6 +205,7 @@ class ReviewPage extends Component {
                                     disabled={this.state.currentPage >= this.state.pageCount}
                                 >
                                     <PaginationLink
+                                        className='pagination-button'
                                         onClick={(e) => this.changePage(e, this.state.pageCount)}
                                         last
                                         href='#'
