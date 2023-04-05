@@ -18,7 +18,7 @@ export class APIManager {
      * Method to fetch dictionary containing attributes of hawker centres
      * @return {Object[]} The fetched list of hawker centres
      */
-    static async fetchhawkerCentre() {
+    static async fetchHawkerCentre() {
         const responseHawker = await fetch(
             'https://data.gov.sg/api/action/datastore_search?resource_id=b80cb643-a732-480d-86b5-e03957bc82aa&limit=500'
         );

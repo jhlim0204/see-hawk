@@ -275,7 +275,7 @@ export class DataManager {
         if (await DataManager.shouldUpdate()) {
             await DataManager.updateTime();
 
-            const updatedHawkerCentreList = await APIManager.fetchhawkerCentre();
+            const updatedHawkerCentreList = await APIManager.fetchHawkerCentre();
             for (const hawkerCentre of updatedHawkerCentreList) {
                 var exist = await DataManager.checkIfIDExist(hawkerCentre.id);
 
