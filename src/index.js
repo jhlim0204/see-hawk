@@ -5,6 +5,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+/**
+ * A default functionality provided by React to initialize the render process
+ */
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 
