@@ -128,9 +128,6 @@ class HawkerPage extends Component {
                                 <p>
                                     <b>No. of Stalls:</b> {hawkerData.noOfStall}
                                 </p>
-                                <p>
-                                    <b>Opening Hours:</b> 6:00 am - 9:00 pm
-                                </p>
                                 <p className='mb-0'>
                                     <b>Closure Date:</b>
                                 </p>
