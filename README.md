@@ -11,3 +11,4 @@ Navigate to the folder where the code is located (i.e. the **see-hawk** folder) 
 Once the installation is complete, run the command **npm run** and wait for the website to launch. You can now access the website at **localhost:3000**. Please note that the initialization process may take some time to complete if you are running the application for the first time.
 
 # Note
+This repository only contains the project's source code and JSDoc. Please be aware that it does not encompass other SDLC-related documentation, which includes but not limited to Use Case Diagrams, Class Diagrams, Sequence Diagrams, Software Requirements Specification and Demo Video.
