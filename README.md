@@ -1,42 +1,13 @@
-# Getting Started with Create React App
+# SeeHawk
+This is a project for Nanyang Tehcnological University SC2006 Software Engineering.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SeeHawk is a website that enables users to search any existing hawker centres in Singapore. The goal of Seehawk is to provide a one-stop-shop for users who are looking for information on hawker centres. By providing ratings, reviews, and live information on nearby car parks, Seehawk aims to make it easier for users to find great food in a convenient location.
 
-## Available Scripts
+# How to Run
+To begin, ensure that you have **npm** installed on your computer.
 
-In the project directory, you can run:
+Navigate to the folder where the code is located (i.e. the **see-hawk** folder) in the command line prompt and enter the command **npm install** to install the necessary dependencies.
 
-### `npm start`
+Once the installation is complete, run the command **npm run** and wait for the website to launch. You can now access the website at **localhost:3000**. Please note that the initialization process may take some time to complete if you are running the application for the first time.
 
-Runs the app.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Note
